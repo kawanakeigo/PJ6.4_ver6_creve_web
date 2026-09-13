@@ -1,0 +1,15 @@
+<head th:fragment="head(title)">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="_csrf" th:if="${_csrf != null}" th:content="${_csrf.token}">
+  <meta name="_csrf_header" th:if="${_csrf != null}" th:content="${_csrf.headerName}">
+  <title th:text="${title}">CreVe</title>
+  <link rel="stylesheet" th:href="@{/css/common.css}">
+  <link rel="stylesheet" th:href="@{/css/creve.css}">
+  <link rel="stylesheet" th:href="@{/css/playpit.css}">
+  <link rel="stylesheet" th:href="@{/css/creator.css}">
+  <link rel="stylesheet" th:href="@{/css/artwork.css}">
+  <link rel="stylesheet" th:href="@{/css/uka.css}">
+  <link rel="stylesheet" th:href="@{/css/live.css}">
+  <link rel="stylesheet" th:href="@{/css/admin.css}">
+</head>

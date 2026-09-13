@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" role="img" aria-label="PLAYPIT Uka event visual">
+  <rect width="1440" height="900" fill="#f5f5f3"/>
+  <path d="M0 681 C189 575 299 735 478 622 C637 522 714 303 909 358 C1093 411 1137 578 1440 474 L1440 900 L0 900 Z" fill="#ead8a2" opacity=".62"/>
+  <path d="M161 244 C350 108 540 186 675 296 C828 421 1000 425 1277 216" fill="none" stroke="#111113" stroke-opacity=".16" stroke-width="2"/>
+  <g fill="#f2c9d4" stroke="#111113" stroke-opacity=".16">
+    <path d="M518 373 C428 286 447 166 561 116 C660 198 658 321 554 389 Z"/>
+    <path d="M624 388 C661 268 766 218 876 283 C849 410 745 458 624 388 Z"/>
+    <path d="M593 461 C498 536 373 510 321 398 C414 317 531 341 593 461 Z"/>
+    <path d="M690 462 C785 533 909 504 958 390 C862 314 746 342 690 462 Z"/>
+    <path d="M600 418 C600 356 648 309 705 309 C762 309 810 356 810 418 C810 479 762 527 705 527 C648 527 600 479 600 418 Z" fill="#ffffff" opacity=".82"/>
+  </g>
+  <circle cx="704" cy="419" r="46" fill="#9fac9a" opacity=".72"/>
+  <g fill="#111113" opacity=".22">
+    <circle cx="247" cy="588" r="6"/>
+    <circle cx="1087" cy="573" r="7"/>
+    <circle cx="1167" cy="278" r="5"/>
+    <circle cx="388" cy="315" r="5"/>
+  </g>
+</svg>

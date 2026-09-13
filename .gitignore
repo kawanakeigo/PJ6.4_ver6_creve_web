@@ -1,3 +1,4 @@
+# Spring Boot / Maven
 HELP.md
 target/
 .mvn/wrapper/maven-wrapper.jar
@@ -40,6 +41,15 @@ target/
 .project
 .settings/
 
+# Legacy local build outputs
+.next
+node_modules
+.pnpm-store
+out
+
 .env
 *.log
 .DS_Store
+
+# Java
+*.class

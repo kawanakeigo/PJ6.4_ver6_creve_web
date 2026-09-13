@@ -1,0 +1,110 @@
+.playpit-hero {
+  background:
+    linear-gradient(rgba(17, 17, 19, 0.032) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(17, 17, 19, 0.026) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+.detail-hero {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 56px;
+  align-items: end;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 96px 28px;
+}
+
+.main-visual {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  background: var(--paper);
+  box-shadow: var(--shadow);
+}
+
+.artist {
+  margin: 20px 0 0;
+  color: rgba(17, 17, 19, 0.5);
+  font-size: 20px;
+}
+
+.avatar {
+  width: 52px;
+  height: 52px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.avatar.large {
+  width: 84px;
+  height: 84px;
+  margin-top: 28px;
+}
+
+.link-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.link-list a {
+  border: 1px solid var(--line);
+  padding: 10px 14px;
+  font-size: 14px;
+}
+
+.creator-grid,
+.artwork-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 34px 20px;
+}
+
+.creator-card,
+.artwork-card {
+  display: block;
+  border-top: 1px solid var(--line);
+  padding-top: 16px;
+}
+
+.creator-card > img,
+.artwork-card > img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  background: var(--paper);
+}
+
+.creator-card > div {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 12px;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.creator-card h3,
+.artwork-card h3 {
+  margin-top: 14px;
+}
+
+.creator-card p,
+.artwork-card p {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+@media (max-width: 900px) {
+  .detail-hero,
+  .creator-grid,
+  .artwork-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .detail-hero {
+    padding: 72px 20px;
+  }
+}

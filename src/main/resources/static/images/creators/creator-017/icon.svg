@@ -1,0 +1,6 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="512" height="512" rx="256" fill="#F5F5F3"/>
+  <circle cx="188" cy="204" r="142" fill="#D8DFCA" fill-opacity="0.62"/>
+  <path d="M106 322C174 214 262 250 408 142" stroke="#111113" stroke-width="5" stroke-opacity="0.22" fill="none"/>
+  <text x="256" y="286" text-anchor="middle" font-family="Arial, sans-serif" font-size="54" fill="#111113">hibiki</text>
+</svg>

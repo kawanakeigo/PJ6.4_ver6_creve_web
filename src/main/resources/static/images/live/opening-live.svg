@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" role="img" aria-label="PLAYPIT opening live visual">
+  <rect width="1440" height="900" fill="#111113"/>
+  <rect x="108" y="118" width="1224" height="664" fill="#f5f5f3" opacity=".08" stroke="#f5f5f3" stroke-opacity=".22"/>
+  <path d="M247 703 C378 456 476 329 624 316 C765 304 819 492 959 460 C1068 434 1120 303 1192 213" fill="none" stroke="#ead8a2" stroke-width="18" stroke-linecap="round"/>
+  <path d="M220 680 L320 488 L427 604 L530 369 L641 585 L744 336 L855 598 L965 421 L1084 536 L1219 219" fill="none" stroke="#f2c9d4" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <g fill="#f5f5f3" opacity=".92">
+    <rect x="302" y="616" width="44" height="86" rx="4"/>
+    <rect x="434" y="545" width="44" height="157" rx="4"/>
+    <rect x="566" y="474" width="44" height="228" rx="4"/>
+    <rect x="698" y="392" width="44" height="310" rx="4"/>
+    <rect x="830" y="513" width="44" height="189" rx="4"/>
+    <rect x="962" y="454" width="44" height="248" rx="4"/>
+  </g>
+  <circle cx="1094" cy="286" r="82" fill="#9fac9a" opacity=".78"/>
+  <circle cx="1094" cy="286" r="29" fill="#111113" opacity=".72"/>
+</svg>
