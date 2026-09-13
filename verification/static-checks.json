@@ -1,0 +1,657 @@
+[
+  {
+    "check": "POM XML: pom.xml",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "POM XML: platform/pom.xml",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "POM XML: app/pom.xml",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "POM XML: projects/lp/pom.xml",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "POM XML: projects/playpit/pom.xml",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "POM XML: projects/live/pom.xml",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "POM XML: projects/creve/pom.xml",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "All literal JS/CSS template references resolve",
+    "pass": true,
+    "detail": "[]"
+  },
+  {
+    "check": "Independent product imports: creve",
+    "pass": true,
+    "detail": "[]"
+  },
+  {
+    "check": "Independent product imports: playpit",
+    "pass": true,
+    "detail": "[]"
+  },
+  {
+    "check": "Independent product imports: live",
+    "pass": true,
+    "detail": "[]"
+  },
+  {
+    "check": "Independent product imports: lp",
+    "pass": true,
+    "detail": "[]"
+  },
+  {
+    "check": "JavaScript syntax: platform/src/main/resources/static/platform/js/common.js",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "JavaScript syntax: projects/playpit/src/main/resources/static/playpit/js/creator.js",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "JavaScript syntax: projects/playpit/src/main/resources/static/playpit/js/artwork.js",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "JavaScript syntax: projects/playpit/src/main/resources/static/playpit/js/uka.js",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "JavaScript syntax: projects/playpit/src/main/resources/static/playpit/js/message.js",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "JavaScript syntax: projects/playpit/src/main/resources/static/playpit/js/analytics.js",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "JavaScript syntax: projects/playpit/src/main/resources/static/playpit/js/admin.js",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/head",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/header",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/footer",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/head",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/header",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/admin-nav",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/footer",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/head",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/header",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/admin-nav",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/footer",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/head",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/header",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/footer",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/head",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/header",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/footer",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/head",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/header",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: playpit/fragments/cards",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/footer",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/head",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/header",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: playpit/fragments/cards",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/footer",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/head",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/header",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: playpit/fragments/cards",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: playpit/fragments/message-form",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: playpit/fragments/uka",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: playpit/fragments/words",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/footer",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/head",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/header",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: playpit/fragments/cards",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: playpit/fragments/cards",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/footer",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/head",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/header",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: playpit/fragments/message-form",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: playpit/fragments/uka",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: playpit/fragments/words",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/footer",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/head",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/header",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: playpit/fragments/cards",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/footer",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/head",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/header",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: playpit/fragments/uka",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: playpit/fragments/words",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/footer",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/head",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/header",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: playpit/fragments/cards",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/footer",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/head",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/header",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/admin-nav",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/footer",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/head",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/header",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/admin-nav",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/footer",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/head",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/header",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/admin-nav",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/footer",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/head",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/header",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/admin-nav",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/footer",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/head",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/header",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/admin-nav",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/footer",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/head",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/header",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/admin-nav",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/footer",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/head",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/header",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/admin-nav",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/footer",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/head",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/header",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/admin-nav",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/footer",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/head",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/header",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/footer",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/head",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/header",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/footer",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/head",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/header",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/footer",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/head",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/header",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/footer",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/head",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/header",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/footer",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/head",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/header",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/footer",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/head",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/header",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Template fragment exists: common/footer",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Actual pure Java policy/layout compilation",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "LocalPolicyProbe",
+    "pass": true,
+    "detail": "ASSERTIONS_PASSED=20039; actual production policy/layout sources; no stubs; no Spring runtime\n"
+  },
+  {
+    "check": "JavaSyntaxCheck",
+    "pass": true,
+    "detail": "PARSED=105 ERRORS=0\n"
+  }
+]

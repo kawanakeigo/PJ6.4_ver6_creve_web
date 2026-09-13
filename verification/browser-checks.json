@@ -1,0 +1,180 @@
+{
+  "scope": "Actual generated HTML fragments and JS/CSS; mocked API responses; not Spring/Thymeleaf/DB integration",
+  "checks": [
+    {
+      "test": "Body validation length 0",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "test": "Body validation length 2",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "test": "Body validation length 300",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "test": "Body validation length 301",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "test": "Display name 31 rejected",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "test": "Display name 30 accepted",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "test": "Agreement required",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "test": "Double submit => one fetch",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "test": "API exact design fields",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "test": "Numeric resource IDs",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "test": "CSRF header present",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "test": "Idempotency header present",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "test": "Artwork page contains new petal",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "test": "Visible count updated",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "test": "Text alternative updated",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "test": "Form reset after save",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "test": "Modal anonymity",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "test": "Modal date/work/creator",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "test": "Modal text not executed as HTML",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "test": "Network failure retains input",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "test": "Network failure reenables button",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "test": "Network retry uses same receipt key",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "test": "429 shows understandable error",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "test": "429 retains input",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "test": "Pending not added to public petals",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "test": "Pending completion copy",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "test": "Rendered maximum 300",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "test": "Total remains 501",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "test": "Growth stage connected",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "test": "Mobile menu locks scroll",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "test": "Escape closes and restores scroll",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "test": "No mobile horizontal page overflow",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "test": "Flying text-to-petal animation executed",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "test": "Animation element cleaned up",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "test": "No JavaScript page errors",
+      "pass": true,
+      "detail": "[]"
+    }
+  ]
+}

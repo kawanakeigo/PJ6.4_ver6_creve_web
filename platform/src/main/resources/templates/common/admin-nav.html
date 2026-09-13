@@ -1,0 +1,4 @@
+<nav xmlns:th="http://www.thymeleaf.org" th:fragment="adminNav" class="admin-nav" aria-label="管理メニュー">
+<a th:href="@{/admin/dashboard}">管理トップ</a><a th:href="@{/admin/events}">イベント</a><a th:href="@{/admin/creators}">クリエイター</a><a th:href="@{/admin/artworks}">作品</a><a th:href="@{/admin/messages}">投稿</a><a th:href="@{/admin/reports}">通報</a><a th:href="@{/admin/analytics}">アクセス解析</a>
+<form method="post" th:action="@{/admin/logout}"><button>ログアウト</button></form>
+</nav>

@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+ <th:block th:replace="~{common/head :: head('アクセス解析')}"></th:block>
+ <link rel="stylesheet" th:href="@{/playpit/css/admin.css}">
+</head>
+<body >
+<a class="skip-link" href="#mainContent">本文へ移動</a>
+<div th:replace="~{common/header :: header}"></div>
+<main id="mainContent"><h1>アクセス解析</h1><div th:replace="~{common/admin-nav :: adminNav}"></div><form method="get" th:action="@{/admin/analytics}"><label>イベントID<input type="number" name="eventId" min="1" required th:value="${eventId}"></label><button>表示</button></form><table><thead><tr><th>行動</th><th>回数</th></tr></thead><tbody><tr th:each="a:${analytics}"><td th:text="${a.event_name}"></td><td th:text="${a.total}"></td></tr></tbody></table><section th:if="${summary != null}"><h2>投稿完了率</h2><p>送信試行 <span th:text="${summary.attempts}"></span> 回／保存成功 <span th:text="${summary.completions}"></span> 件／完了率 <span th:text="${summary.completion_rate == null ? '算出対象なし' : summary.completion_rate + '%'}"></span></p><p>送信試行はブラウザの計測値です。計測遮断や再送により、値の欠落・重複があり、保存成功数との完全一致は保証しません。</p></section>
+<h2>クリエイター別の投稿数</h2><table><thead><tr><th>クリエイター</th><th>削除を除く投稿</th><th>公開状態の投稿</th></tr></thead><tbody><tr th:each="c:${creatorTotals}"><td th:text="${c.name}"></td><td th:text="${c.total}"></td><td th:text="${c.published}"></td></tr></tbody></table><p>submission_completeはサーバーの保存成功数です。本文・表示名・セッションID・IPアドレスは解析データへ送信しません。</p></main>
+<div th:replace="~{common/footer :: footer}"></div>
+</body></html>

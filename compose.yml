@@ -1,0 +1,21 @@
+name: creve-modular-local
+services:
+  db:
+    image: postgres:17
+    environment:
+      POSTGRES_DB: creve_modular
+      POSTGRES_USER: creve
+      POSTGRES_PASSWORD: ${CREVE_DATASOURCE_PASSWORD:?Run scripts/configure-local.sh first}
+      TZ: Asia/Tokyo
+    ports:
+      - "127.0.0.1:${CREVE_DB_PORT:-55432}:5432"
+    volumes:
+      - creve_postgres_v2:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U creve -d creve_modular"]
+      interval: 3s
+      timeout: 3s
+      retries: 30
+    restart: unless-stopped
+volumes:
+  creve_postgres_v2:

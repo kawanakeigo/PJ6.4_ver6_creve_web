@@ -1,0 +1,1 @@
+.media-gallery{display:flex;gap:15px;flex-wrap:wrap;margin:24px 0}.media-gallery button{background:white;border:1px solid var(--line);padding:6px}.media-gallery img{object-fit:contain}.media-gallery video{max-width:100%;max-height:360px}.media-gallery audio{width:100%;max-width:460px}

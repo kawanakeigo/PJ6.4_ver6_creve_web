@@ -1,0 +1,1 @@
+.creator-hero{display:grid;grid-template-columns:240px 1fr;gap:40px;margin:40px 0}.creator-hero>img{width:100%;border-radius:12px}.creator-hero nav{display:flex;gap:20px;flex-wrap:wrap}@media(max-width:680px){.creator-hero{grid-template-columns:1fr}.creator-hero>img{max-width:240px}}

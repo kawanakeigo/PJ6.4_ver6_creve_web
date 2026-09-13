@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+<th:block th:replace="~{common/head :: head('PLAYPIT')}"></th:block>
+<link rel="stylesheet" th:href="@{/playpit/css/playpit.css}"/>
+</head>
+<body>
+<a class="skip-link" href="#mainContent">本文へ移動</a>
+<div th:replace="~{common/header :: header}"></div>
+<main id="mainContent">
+<section class="hero"><p class="eyebrow">PLAYPIT</p><h1>PLAYPIT</h1><p class="lead">まだ言葉にならない表現が、ここで遊びはじめる。作品・人・来場者の言葉を、羽花として残す展示体験です。</p><a class="button" th:href="@{/playpit/events}">イベント一覧</a></section>
+<div class="cards"><th:block th:each="e : ${events.content}"><article th:replace="~{playpit/fragments/cards :: eventCard(${e},'/playpit')}"></article></th:block></div><p th:if="${events.empty}">公開中のイベントはありません。</p><a th:href="@{/playpit/archive}">過去のPLAYPIT</a>
+</main>
+<div th:replace="~{common/footer :: footer}"></div>
+</body></html>

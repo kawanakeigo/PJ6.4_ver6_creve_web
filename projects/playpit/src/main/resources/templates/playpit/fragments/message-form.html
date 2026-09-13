@@ -1,0 +1,16 @@
+<section xmlns:th="http://www.thymeleaf.org" th:fragment="messageForm" class="message-section">
+ <h2>感想を届ける</h2>
+ <p th:unless="${postingEnabled}" class="notice">現在は投稿の受付を停止しています。</p>
+ <form id="messageForm" novalidate th:attr="data-enabled=${postingEnabled}">
+  <input type="hidden" id="eventId" name="eventId" th:value="${event.eventId}">
+  <input type="hidden" id="creatorId" name="creatorId" th:value="${creatorId}">
+  <input type="hidden" id="artworkId" name="artworkId" th:value="${artworkId}">
+  <label for="messageText">感想・メッセージ（必須・300文字以内）</label><textarea id="messageText" name="message" maxlength="300" required aria-describedby="messageCount messageError"></textarea>
+  <p><span id="messageCount">0</span> / 300文字</p>
+  <label for="displayName">表示名（任意・30文字以内）</label><input id="displayName" name="displayName" maxlength="30" autocomplete="nickname">
+  <label class="checkbox"><input type="checkbox" id="anonymousFlag" name="anonymous" checked>匿名で投稿する</label>
+  <label class="checkbox"><input type="checkbox" id="agreementFlag" name="agreement" required><a th:href="@{/terms}" target="_blank" rel="noopener">利用規約</a>と<a th:href="@{/privacy}" target="_blank" rel="noopener">プライバシーポリシー</a>を確認し、同意する</label>
+  <div id="messageError" class="error" role="alert"></div><p id="messageSuccess" role="status" aria-live="polite"></p>
+  <button id="submitMessageButton" type="submit" th:disabled="${!postingEnabled}">言葉を花びらにする</button>
+ </form>
+</section>

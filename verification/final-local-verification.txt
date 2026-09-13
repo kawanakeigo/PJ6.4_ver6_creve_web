@@ -1,0 +1,2 @@
+ASSERTIONS_PASSED=20039; actual production policy/layout sources; no stubs; no Spring runtime
+PARSED=106 ERRORS=0

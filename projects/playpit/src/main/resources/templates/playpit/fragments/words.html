@@ -1,0 +1,10 @@
+<section xmlns:th="http://www.thymeleaf.org" th:fragment="words" class="words-section" th:attr="data-words-page=${messagePage.number}">
+ <h2>届いた言葉</h2><p>花びらを操作せず、一覧でも感想を読むことができます。</p>
+ <div data-words-list><article th:each="p : ${words}" class="word-card"><p th:text="${p.message}" class="preserve-lines"></p><p><span th:text="${p.displayName}"></span> · <time th:text="${p.createdAt}"></time></p><p th:text="${p.artworkTitle}"></p><p th:text="${p.creatorName}"></p></article></div>
+ <p th:if="${#lists.isEmpty(words)}" data-words-empty>まだ感想はありません。</p>
+ <nav aria-label="感想のページ" class="pagination" data-words-pagination>
+  <a th:if="${messagePage.hasPrevious()}" th:href="@{${requestPath}(page=${messagePage.number - 1},creatorId=${creatorId},artworkId=${artworkId})}">前の感想</a>
+  <span th:text="${messagePage.number + 1} + ' / ' + ${T(java.lang.Math).max(1,messagePage.totalPages)}"></span>
+  <a th:if="${messagePage.hasNext()}" th:href="@{${requestPath}(page=${messagePage.number + 1},creatorId=${creatorId},artworkId=${artworkId})}">次の感想</a>
+ </nav>
+</section>

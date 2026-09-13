@@ -1,0 +1,73 @@
+[
+  {
+    "check": "Start.command",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Verify.command",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "Install.command",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "scripts/configure-local.sh",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "scripts/backup-db.sh",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "scripts/start.sh",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "scripts/verify.sh",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "check": "scripts/add-project.py",
+    "pass": true
+  },
+  {
+    "check": "scripts/install.py",
+    "pass": true
+  },
+  {
+    "check": "Installer dry run leaves source intact",
+    "pass": true,
+    "detail": "差し替え先: /tmp/creve-operation-test-llzekgmw/old-project\n旧版を丸ごと保存: /tmp/creve-operation-test-llzekgmw/old-project_backup_20260913_190034\n旧DB・旧.envは読み込みません。旧設定はバックアップ側に残します。\n確認のみ。変更はしていません。反映するには --apply を追加してください。\n"
+  },
+  {
+    "check": "Installer applies with whole original backup and Git history",
+    "pass": true,
+    "detail": "差し替え先: /tmp/creve-operation-test-llzekgmw/old-project\n旧版を丸ごと保存: /tmp/creve-operation-test-llzekgmw/old-project_backup_20260913_190035\n旧DB・旧.envは読み込みません。旧設定はバックアップ側に残します。\n差し替え完了。旧版・旧設定・その他の元ファイルはバックアップに残っています。\n復元時は修正版を別名へ移し、バックアップを元の名前へ戻してください。\n"
+  },
+  {
+    "check": "Add independent project gallery",
+    "pass": true,
+    "detail": "projects/gallery を追加しました。root/appのpomのみ連携変更しました。./mvnw verify を実行してください。\n"
+  },
+  {
+    "check": "Add independent project studio",
+    "pass": true,
+    "detail": "projects/studio を追加しました。root/appのpomのみ連携変更しました。./mvnw verify を実行してください。\n"
+  },
+  {
+    "check": "New project has unique Spring bean name",
+    "pass": true
+  },
+  {
+    "check": "Duplicate project rejected without parent change",
+    "pass": true
+  }
+]

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+<th:block th:replace="~{common/head :: head('クリエイター')}"></th:block>
+<link rel="stylesheet" th:href="@{/playpit/css/playpit.css}"/>
+<link rel="stylesheet" th:href="@{/playpit/css/creator.css}"/>
+<link rel="stylesheet" th:href="@{/playpit/css/artwork.css}"/>
+<link rel="stylesheet" th:href="@{/playpit/css/uka.css}"/>
+<script defer="" th:src="@{/playpit/js/uka.js}"></script>
+<script defer="" th:src="@{/playpit/js/message.js}"></script>
+<script defer="" th:src="@{/playpit/js/artwork.js}"></script>
+<script defer="" th:src="@{/playpit/js/analytics.js}"></script>
+</head>
+<body th:attr="data-event-id=${event.eventId},data-creator-id=${creatorId},data-artwork-id=${artworkId}">
+<a class="skip-link" href="#mainContent">本文へ移動</a>
+<div th:replace="~{common/header :: header}"></div>
+<main id="mainContent">
+<a th:href="@{/playpit/{e}/creators(e=${event.slug})}">参加クリエイター一覧</a>
+<section class="creator-hero"><img th:alt="${creator.name}" th:if="${creator.profileImageUrl}" th:src="${creator.profileImageUrl}"/><div><p class="eyebrow" th:text="${creator.genre}"></p><h1 th:text="${creator.name}"></h1><p class="preserve-lines" th:text="${creator.profile}"></p><h2>制作テーマ</h2><p class="preserve-lines" th:text="${creator.concept}"></p>
+<nav aria-label="クリエイターの外部リンク"><a data-sns-link="" rel="noopener noreferrer" target="_blank" th:each="link : ${creator.snsLinks}" th:href="${link.url}" th:text="${link.label}"></a><a data-sns-link="" rel="noopener noreferrer" target="_blank" th:href="${creator.websiteUrl}" th:if="${creator.websiteUrl}">Webサイト</a></nav></div></section>
+<p>参加イベント：<a th:href="@{/playpit/{e}(e=${event.slug})}" th:text="${event.title}"></a></p>
+<h2>このイベントの出展作品</h2><div class="cards"><th:block th:each="a : ${artworks}"><article th:replace="~{playpit/fragments/cards :: artworkCard(${a})}"></article></th:block></div>
+<nav class="pagination"><a th:href="@{${requestPath}(artworkPage=${artworkPage-1})}" th:if="${artworkPage&gt;0}">前の作品</a><a th:href="@{${requestPath}(artworkPage=${artworkPage+1})}" th:if="${#lists.size(artworks)==30}">次の作品</a></nav>
+<div th:replace="~{playpit/fragments/message-form :: messageForm}"></div><div th:replace="~{playpit/fragments/uka :: ukaBoard}"></div><div th:replace="~{playpit/fragments/words :: words}"></div>
+<details><summary>会場掲示用QRコード</summary><img alt="このクリエイターのページへのQRコード" class="qr-code" height="256" loading="lazy" th:src="@{/playpit/{e}/creators/{c}/qr.png(e=${event.slug},c=${creator.slug})}" width="256"/></details>
+</main>
+<div th:replace="~{common/footer :: footer}"></div>
+</body></html>

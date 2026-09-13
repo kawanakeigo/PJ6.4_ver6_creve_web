@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+ <th:block th:replace="~{common/head :: head('CreVeについて')}"></th:block>
+ <link rel="stylesheet" th:href="@{/creve/css/creve.css}">
+</head>
+<body >
+<a class="skip-link" href="#mainContent">本文へ移動</a>
+<div th:replace="~{common/header :: header}"></div>
+<main id="mainContent"><p class="eyebrow">ABOUT</p><h1>CreVeについて</h1><p class="lead">心躍るものを届ける。</p><p>現実のイベント、Webサイト、将来のVR空間をつなぎ、クリエイターの作品と来場者の言葉を残すための基盤です。</p><nav class="actions"><a th:each="p:${projectLinks}" th:href="@{${p.path}}" th:text="${p.title}"></a></nav></main>
+<div th:replace="~{common/footer :: footer}"></div>
+</body></html>

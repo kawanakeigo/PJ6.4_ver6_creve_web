@@ -1,0 +1,1261 @@
+{
+  "passed": 251,
+  "failed": 0,
+  "checks": [
+    {
+      "check": "no each/replace precedence platform/src/main/resources/templates/admin/dashboard.html",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "fragment common/head",
+      "pass": true,
+      "detail": "platform/src/main/resources/templates/admin/dashboard.html"
+    },
+    {
+      "check": "fragment common/header",
+      "pass": true,
+      "detail": "platform/src/main/resources/templates/admin/dashboard.html"
+    },
+    {
+      "check": "fragment common/admin-nav",
+      "pass": true,
+      "detail": "platform/src/main/resources/templates/admin/dashboard.html"
+    },
+    {
+      "check": "fragment common/footer",
+      "pass": true,
+      "detail": "platform/src/main/resources/templates/admin/dashboard.html"
+    },
+    {
+      "check": "no each/replace precedence platform/src/main/resources/templates/admin/login.html",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "fragment common/head",
+      "pass": true,
+      "detail": "platform/src/main/resources/templates/admin/login.html"
+    },
+    {
+      "check": "fragment common/header",
+      "pass": true,
+      "detail": "platform/src/main/resources/templates/admin/login.html"
+    },
+    {
+      "check": "fragment common/footer",
+      "pass": true,
+      "detail": "platform/src/main/resources/templates/admin/login.html"
+    },
+    {
+      "check": "no each/replace precedence platform/src/main/resources/templates/common/admin-nav.html",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "no each/replace precedence platform/src/main/resources/templates/common/error.html",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "fragment common/head",
+      "pass": true,
+      "detail": "platform/src/main/resources/templates/common/error.html"
+    },
+    {
+      "check": "fragment common/header",
+      "pass": true,
+      "detail": "platform/src/main/resources/templates/common/error.html"
+    },
+    {
+      "check": "fragment common/footer",
+      "pass": true,
+      "detail": "platform/src/main/resources/templates/common/error.html"
+    },
+    {
+      "check": "no each/replace precedence platform/src/main/resources/templates/common/error-message.html",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "no each/replace precedence platform/src/main/resources/templates/common/header.html",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "no each/replace precedence platform/src/main/resources/templates/common/footer.html",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "no each/replace precedence platform/src/main/resources/templates/common/head.html",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "asset /platform/css/common.css",
+      "pass": true,
+      "detail": "platform/src/main/resources/templates/common/head.html"
+    },
+    {
+      "check": "asset /platform/js/common.js",
+      "pass": true,
+      "detail": "platform/src/main/resources/templates/common/head.html"
+    },
+    {
+      "check": "no each/replace precedence projects/lp/src/main/resources/templates/lp/detail.html",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "fragment common/head",
+      "pass": true,
+      "detail": "projects/lp/src/main/resources/templates/lp/detail.html"
+    },
+    {
+      "check": "asset /lp/css/lp.css",
+      "pass": true,
+      "detail": "projects/lp/src/main/resources/templates/lp/detail.html"
+    },
+    {
+      "check": "fragment common/header",
+      "pass": true,
+      "detail": "projects/lp/src/main/resources/templates/lp/detail.html"
+    },
+    {
+      "check": "fragment common/footer",
+      "pass": true,
+      "detail": "projects/lp/src/main/resources/templates/lp/detail.html"
+    },
+    {
+      "check": "no each/replace precedence projects/playpit/src/main/resources/templates/playpit/index.html",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "fragment common/head",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/index.html"
+    },
+    {
+      "check": "asset /playpit/css/playpit.css",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/index.html"
+    },
+    {
+      "check": "fragment common/header",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/index.html"
+    },
+    {
+      "check": "fragment playpit/fragments/cards",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/index.html"
+    },
+    {
+      "check": "fragment common/footer",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/index.html"
+    },
+    {
+      "check": "no each/replace precedence projects/playpit/src/main/resources/templates/playpit/artwork-list.html",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "fragment common/head",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/artwork-list.html"
+    },
+    {
+      "check": "asset /playpit/css/playpit.css",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/artwork-list.html"
+    },
+    {
+      "check": "asset /playpit/css/artwork.css",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/artwork-list.html"
+    },
+    {
+      "check": "fragment common/header",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/artwork-list.html"
+    },
+    {
+      "check": "fragment playpit/fragments/cards",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/artwork-list.html"
+    },
+    {
+      "check": "fragment common/footer",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/artwork-list.html"
+    },
+    {
+      "check": "no each/replace precedence projects/playpit/src/main/resources/templates/playpit/creator-detail.html",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "fragment common/head",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/creator-detail.html"
+    },
+    {
+      "check": "asset /playpit/css/playpit.css",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/creator-detail.html"
+    },
+    {
+      "check": "asset /playpit/css/creator.css",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/creator-detail.html"
+    },
+    {
+      "check": "asset /playpit/css/artwork.css",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/creator-detail.html"
+    },
+    {
+      "check": "asset /playpit/css/uka.css",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/creator-detail.html"
+    },
+    {
+      "check": "asset /playpit/js/uka.js",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/creator-detail.html"
+    },
+    {
+      "check": "asset /playpit/js/message.js",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/creator-detail.html"
+    },
+    {
+      "check": "asset /playpit/js/artwork.js",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/creator-detail.html"
+    },
+    {
+      "check": "asset /playpit/js/analytics.js",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/creator-detail.html"
+    },
+    {
+      "check": "fragment common/header",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/creator-detail.html"
+    },
+    {
+      "check": "fragment playpit/fragments/cards",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/creator-detail.html"
+    },
+    {
+      "check": "fragment playpit/fragments/message-form",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/creator-detail.html"
+    },
+    {
+      "check": "fragment playpit/fragments/uka",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/creator-detail.html"
+    },
+    {
+      "check": "fragment playpit/fragments/words",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/creator-detail.html"
+    },
+    {
+      "check": "fragment common/footer",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/creator-detail.html"
+    },
+    {
+      "check": "no each/replace precedence projects/playpit/src/main/resources/templates/playpit/event-detail.html",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "fragment common/head",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/event-detail.html"
+    },
+    {
+      "check": "asset /playpit/css/playpit.css",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/event-detail.html"
+    },
+    {
+      "check": "fragment common/header",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/event-detail.html"
+    },
+    {
+      "check": "fragment playpit/fragments/cards",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/event-detail.html"
+    },
+    {
+      "check": "fragment playpit/fragments/cards",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/event-detail.html"
+    },
+    {
+      "check": "fragment common/footer",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/event-detail.html"
+    },
+    {
+      "check": "no each/replace precedence projects/playpit/src/main/resources/templates/playpit/artwork-detail.html",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "fragment common/head",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/artwork-detail.html"
+    },
+    {
+      "check": "asset /playpit/css/playpit.css",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/artwork-detail.html"
+    },
+    {
+      "check": "asset /playpit/css/creator.css",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/artwork-detail.html"
+    },
+    {
+      "check": "asset /playpit/css/artwork.css",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/artwork-detail.html"
+    },
+    {
+      "check": "asset /playpit/css/uka.css",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/artwork-detail.html"
+    },
+    {
+      "check": "asset /playpit/js/uka.js",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/artwork-detail.html"
+    },
+    {
+      "check": "asset /playpit/js/message.js",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/artwork-detail.html"
+    },
+    {
+      "check": "asset /playpit/js/artwork.js",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/artwork-detail.html"
+    },
+    {
+      "check": "asset /playpit/js/analytics.js",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/artwork-detail.html"
+    },
+    {
+      "check": "fragment common/header",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/artwork-detail.html"
+    },
+    {
+      "check": "fragment playpit/fragments/message-form",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/artwork-detail.html"
+    },
+    {
+      "check": "fragment playpit/fragments/uka",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/artwork-detail.html"
+    },
+    {
+      "check": "fragment playpit/fragments/words",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/artwork-detail.html"
+    },
+    {
+      "check": "fragment common/footer",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/artwork-detail.html"
+    },
+    {
+      "check": "no each/replace precedence projects/playpit/src/main/resources/templates/playpit/creator-list.html",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "fragment common/head",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/creator-list.html"
+    },
+    {
+      "check": "asset /playpit/css/playpit.css",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/creator-list.html"
+    },
+    {
+      "check": "asset /playpit/css/creator.css",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/creator-list.html"
+    },
+    {
+      "check": "fragment common/header",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/creator-list.html"
+    },
+    {
+      "check": "fragment playpit/fragments/cards",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/creator-list.html"
+    },
+    {
+      "check": "fragment common/footer",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/creator-list.html"
+    },
+    {
+      "check": "no each/replace precedence projects/playpit/src/main/resources/templates/playpit/uka.html",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "fragment common/head",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/uka.html"
+    },
+    {
+      "check": "asset /playpit/css/playpit.css",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/uka.html"
+    },
+    {
+      "check": "asset /playpit/css/uka.css",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/uka.html"
+    },
+    {
+      "check": "asset /playpit/js/uka.js",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/uka.html"
+    },
+    {
+      "check": "asset /playpit/js/analytics.js",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/uka.html"
+    },
+    {
+      "check": "fragment common/header",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/uka.html"
+    },
+    {
+      "check": "fragment playpit/fragments/uka",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/uka.html"
+    },
+    {
+      "check": "fragment playpit/fragments/words",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/uka.html"
+    },
+    {
+      "check": "fragment common/footer",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/uka.html"
+    },
+    {
+      "check": "no each/replace precedence projects/playpit/src/main/resources/templates/playpit/event-list.html",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "fragment common/head",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/event-list.html"
+    },
+    {
+      "check": "asset /playpit/css/playpit.css",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/event-list.html"
+    },
+    {
+      "check": "fragment common/header",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/event-list.html"
+    },
+    {
+      "check": "fragment playpit/fragments/cards",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/event-list.html"
+    },
+    {
+      "check": "fragment common/footer",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/event-list.html"
+    },
+    {
+      "check": "no each/replace precedence projects/playpit/src/main/resources/templates/admin/message-list.html",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "fragment common/head",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/admin/message-list.html"
+    },
+    {
+      "check": "fragment common/header",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/admin/message-list.html"
+    },
+    {
+      "check": "fragment common/admin-nav",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/admin/message-list.html"
+    },
+    {
+      "check": "fragment common/footer",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/admin/message-list.html"
+    },
+    {
+      "check": "no each/replace precedence projects/playpit/src/main/resources/templates/playpit/fragments/cards.html",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "no each/replace precedence projects/playpit/src/main/resources/templates/playpit/fragments/uka.html",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "no each/replace precedence projects/playpit/src/main/resources/templates/playpit/fragments/message-form.html",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "no each/replace precedence projects/playpit/src/main/resources/templates/playpit/fragments/words.html",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "no each/replace precedence projects/playpit/src/main/resources/templates/playpit/admin/artwork-form.html",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "fragment common/head",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/admin/artwork-form.html"
+    },
+    {
+      "check": "asset /playpit/css/admin.css",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/admin/artwork-form.html"
+    },
+    {
+      "check": "asset /playpit/js/admin.js",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/admin/artwork-form.html"
+    },
+    {
+      "check": "fragment common/header",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/admin/artwork-form.html"
+    },
+    {
+      "check": "fragment common/admin-nav",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/admin/artwork-form.html"
+    },
+    {
+      "check": "fragment common/footer",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/admin/artwork-form.html"
+    },
+    {
+      "check": "no each/replace precedence projects/playpit/src/main/resources/templates/playpit/admin/creators.html",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "fragment common/head",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/admin/creators.html"
+    },
+    {
+      "check": "asset /playpit/css/admin.css",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/admin/creators.html"
+    },
+    {
+      "check": "asset /playpit/js/admin.js",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/admin/creators.html"
+    },
+    {
+      "check": "fragment common/header",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/admin/creators.html"
+    },
+    {
+      "check": "fragment common/admin-nav",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/admin/creators.html"
+    },
+    {
+      "check": "fragment common/footer",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/admin/creators.html"
+    },
+    {
+      "check": "no each/replace precedence projects/playpit/src/main/resources/templates/playpit/admin/artworks.html",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "fragment common/head",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/admin/artworks.html"
+    },
+    {
+      "check": "asset /playpit/css/admin.css",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/admin/artworks.html"
+    },
+    {
+      "check": "asset /playpit/js/admin.js",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/admin/artworks.html"
+    },
+    {
+      "check": "fragment common/header",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/admin/artworks.html"
+    },
+    {
+      "check": "fragment common/admin-nav",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/admin/artworks.html"
+    },
+    {
+      "check": "fragment common/footer",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/admin/artworks.html"
+    },
+    {
+      "check": "no each/replace precedence projects/playpit/src/main/resources/templates/playpit/admin/reports.html",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "fragment common/head",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/admin/reports.html"
+    },
+    {
+      "check": "asset /playpit/css/admin.css",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/admin/reports.html"
+    },
+    {
+      "check": "fragment common/header",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/admin/reports.html"
+    },
+    {
+      "check": "fragment common/admin-nav",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/admin/reports.html"
+    },
+    {
+      "check": "fragment common/footer",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/admin/reports.html"
+    },
+    {
+      "check": "no each/replace precedence projects/playpit/src/main/resources/templates/playpit/admin/creator-form.html",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "fragment common/head",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/admin/creator-form.html"
+    },
+    {
+      "check": "asset /playpit/css/admin.css",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/admin/creator-form.html"
+    },
+    {
+      "check": "asset /playpit/js/admin.js",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/admin/creator-form.html"
+    },
+    {
+      "check": "fragment common/header",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/admin/creator-form.html"
+    },
+    {
+      "check": "fragment common/admin-nav",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/admin/creator-form.html"
+    },
+    {
+      "check": "fragment common/footer",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/admin/creator-form.html"
+    },
+    {
+      "check": "no each/replace precedence projects/playpit/src/main/resources/templates/playpit/admin/analytics.html",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "fragment common/head",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/admin/analytics.html"
+    },
+    {
+      "check": "asset /playpit/css/admin.css",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/admin/analytics.html"
+    },
+    {
+      "check": "fragment common/header",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/admin/analytics.html"
+    },
+    {
+      "check": "fragment common/admin-nav",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/admin/analytics.html"
+    },
+    {
+      "check": "fragment common/footer",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/admin/analytics.html"
+    },
+    {
+      "check": "no each/replace precedence projects/playpit/src/main/resources/templates/playpit/admin/event-form.html",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "fragment common/head",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/admin/event-form.html"
+    },
+    {
+      "check": "asset /playpit/css/admin.css",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/admin/event-form.html"
+    },
+    {
+      "check": "asset /playpit/js/admin.js",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/admin/event-form.html"
+    },
+    {
+      "check": "fragment common/header",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/admin/event-form.html"
+    },
+    {
+      "check": "fragment common/admin-nav",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/admin/event-form.html"
+    },
+    {
+      "check": "fragment common/footer",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/admin/event-form.html"
+    },
+    {
+      "check": "no each/replace precedence projects/playpit/src/main/resources/templates/playpit/admin/events.html",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "fragment common/head",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/admin/events.html"
+    },
+    {
+      "check": "asset /playpit/css/admin.css",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/admin/events.html"
+    },
+    {
+      "check": "asset /playpit/js/admin.js",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/admin/events.html"
+    },
+    {
+      "check": "fragment common/header",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/admin/events.html"
+    },
+    {
+      "check": "fragment common/admin-nav",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/admin/events.html"
+    },
+    {
+      "check": "fragment common/footer",
+      "pass": true,
+      "detail": "projects/playpit/src/main/resources/templates/playpit/admin/events.html"
+    },
+    {
+      "check": "no each/replace precedence projects/live/src/main/resources/templates/live/detail.html",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "fragment common/head",
+      "pass": true,
+      "detail": "projects/live/src/main/resources/templates/live/detail.html"
+    },
+    {
+      "check": "asset /live/css/live.css",
+      "pass": true,
+      "detail": "projects/live/src/main/resources/templates/live/detail.html"
+    },
+    {
+      "check": "fragment common/header",
+      "pass": true,
+      "detail": "projects/live/src/main/resources/templates/live/detail.html"
+    },
+    {
+      "check": "fragment common/footer",
+      "pass": true,
+      "detail": "projects/live/src/main/resources/templates/live/detail.html"
+    },
+    {
+      "check": "no each/replace precedence projects/live/src/main/resources/templates/live/list.html",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "fragment common/head",
+      "pass": true,
+      "detail": "projects/live/src/main/resources/templates/live/list.html"
+    },
+    {
+      "check": "asset /live/css/live.css",
+      "pass": true,
+      "detail": "projects/live/src/main/resources/templates/live/list.html"
+    },
+    {
+      "check": "fragment common/header",
+      "pass": true,
+      "detail": "projects/live/src/main/resources/templates/live/list.html"
+    },
+    {
+      "check": "fragment common/footer",
+      "pass": true,
+      "detail": "projects/live/src/main/resources/templates/live/list.html"
+    },
+    {
+      "check": "no each/replace precedence projects/creve/src/main/resources/templates/creve/index.html",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "fragment common/head",
+      "pass": true,
+      "detail": "projects/creve/src/main/resources/templates/creve/index.html"
+    },
+    {
+      "check": "asset /creve/css/creve.css",
+      "pass": true,
+      "detail": "projects/creve/src/main/resources/templates/creve/index.html"
+    },
+    {
+      "check": "fragment common/header",
+      "pass": true,
+      "detail": "projects/creve/src/main/resources/templates/creve/index.html"
+    },
+    {
+      "check": "fragment common/footer",
+      "pass": true,
+      "detail": "projects/creve/src/main/resources/templates/creve/index.html"
+    },
+    {
+      "check": "no each/replace precedence projects/creve/src/main/resources/templates/creve/about.html",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "fragment common/head",
+      "pass": true,
+      "detail": "projects/creve/src/main/resources/templates/creve/about.html"
+    },
+    {
+      "check": "asset /creve/css/creve.css",
+      "pass": true,
+      "detail": "projects/creve/src/main/resources/templates/creve/about.html"
+    },
+    {
+      "check": "fragment common/header",
+      "pass": true,
+      "detail": "projects/creve/src/main/resources/templates/creve/about.html"
+    },
+    {
+      "check": "fragment common/footer",
+      "pass": true,
+      "detail": "projects/creve/src/main/resources/templates/creve/about.html"
+    },
+    {
+      "check": "no each/replace precedence projects/creve/src/main/resources/templates/creve/vr.html",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "fragment common/head",
+      "pass": true,
+      "detail": "projects/creve/src/main/resources/templates/creve/vr.html"
+    },
+    {
+      "check": "asset /creve/css/creve.css",
+      "pass": true,
+      "detail": "projects/creve/src/main/resources/templates/creve/vr.html"
+    },
+    {
+      "check": "fragment common/header",
+      "pass": true,
+      "detail": "projects/creve/src/main/resources/templates/creve/vr.html"
+    },
+    {
+      "check": "fragment common/footer",
+      "pass": true,
+      "detail": "projects/creve/src/main/resources/templates/creve/vr.html"
+    },
+    {
+      "check": "no each/replace precedence projects/creve/src/main/resources/templates/creve/public-content.html",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "fragment common/head",
+      "pass": true,
+      "detail": "projects/creve/src/main/resources/templates/creve/public-content.html"
+    },
+    {
+      "check": "asset /creve/css/creve.css",
+      "pass": true,
+      "detail": "projects/creve/src/main/resources/templates/creve/public-content.html"
+    },
+    {
+      "check": "fragment common/header",
+      "pass": true,
+      "detail": "projects/creve/src/main/resources/templates/creve/public-content.html"
+    },
+    {
+      "check": "fragment common/footer",
+      "pass": true,
+      "detail": "projects/creve/src/main/resources/templates/creve/public-content.html"
+    },
+    {
+      "check": "no each/replace precedence projects/creve/src/main/resources/templates/creve/news/list.html",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "fragment common/head",
+      "pass": true,
+      "detail": "projects/creve/src/main/resources/templates/creve/news/list.html"
+    },
+    {
+      "check": "asset /creve/css/creve.css",
+      "pass": true,
+      "detail": "projects/creve/src/main/resources/templates/creve/news/list.html"
+    },
+    {
+      "check": "fragment common/header",
+      "pass": true,
+      "detail": "projects/creve/src/main/resources/templates/creve/news/list.html"
+    },
+    {
+      "check": "fragment common/footer",
+      "pass": true,
+      "detail": "projects/creve/src/main/resources/templates/creve/news/list.html"
+    },
+    {
+      "check": "no cross product import projects/creve/src/main/java/world/creve/portal/service/PublicContentService.java",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "no cross product import projects/creve/src/main/java/world/creve/portal/service/NewsService.java",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "no cross product import projects/creve/src/main/java/world/creve/portal/entity/News.java",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "no cross product import projects/creve/src/main/java/world/creve/portal/repository/NewsRepository.java",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "no cross product import projects/creve/src/main/java/world/creve/portal/controller/CreveController.java",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "no cross product import projects/playpit/src/main/java/world/creve/playpit/PlaypitContribution.java",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "no cross product import projects/playpit/src/main/java/world/creve/playpit/validation/MessagePolicy.java",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "no cross product import projects/playpit/src/main/java/world/creve/playpit/validation/MessageTargetValidator.java",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "no cross product import projects/playpit/src/main/java/world/creve/playpit/validation/ValidMessageTarget.java",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "no cross product import projects/playpit/src/main/java/world/creve/playpit/service/MessageService.java",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "no cross product import projects/playpit/src/main/java/world/creve/playpit/service/UkaService.java",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "no cross product import projects/playpit/src/main/java/world/creve/playpit/service/ContentAdminService.java",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "no cross product import projects/playpit/src/main/java/world/creve/playpit/service/PostingPolicy.java",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "no cross product import projects/playpit/src/main/java/world/creve/playpit/service/VisitorSignalService.java",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "no cross product import projects/playpit/src/main/java/world/creve/playpit/entity/MessageStatus.java",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "no cross product import projects/playpit/src/main/java/world/creve/playpit/entity/SmallIntegerConverter.java",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "no cross product import projects/playpit/src/main/java/world/creve/playpit/entity/Message.java",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "no cross product import projects/playpit/src/main/java/world/creve/playpit/repository/SubmissionStore.java",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "no cross product import projects/playpit/src/main/java/world/creve/playpit/repository/MessageRepository.java",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "no cross product import projects/playpit/src/main/java/world/creve/playpit/controller/QrCodeController.java",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "no cross product import projects/playpit/src/main/java/world/creve/playpit/controller/AdminController.java",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "no cross product import projects/playpit/src/main/java/world/creve/playpit/controller/PlaypitController.java",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "no cross product import projects/playpit/src/main/java/world/creve/playpit/controller/VisitorSignalController.java",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "no cross product import projects/playpit/src/main/java/world/creve/playpit/controller/UkaController.java",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "no cross product import projects/playpit/src/main/java/world/creve/playpit/controller/MessageController.java",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "no cross product import projects/playpit/src/main/java/world/creve/playpit/controller/CreatorController.java",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "no cross product import projects/playpit/src/main/java/world/creve/playpit/controller/PlaypitAdminController.java",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "no cross product import projects/playpit/src/main/java/world/creve/playpit/controller/ArtworkController.java",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "no cross product import projects/playpit/src/main/java/world/creve/playpit/util/PetalLayout.java",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "no cross product import projects/playpit/src/main/java/world/creve/playpit/dto/request/ArtworkForm.java",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "no cross product import projects/playpit/src/main/java/world/creve/playpit/dto/request/CreatorForm.java",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "no cross product import projects/playpit/src/main/java/world/creve/playpit/dto/request/EventForm.java",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "no cross product import projects/playpit/src/main/java/world/creve/playpit/dto/request/MessageRequest.java",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "no cross product import projects/playpit/src/main/java/world/creve/playpit/dto/response/PetalResponse.java",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "no cross product import projects/playpit/src/main/java/world/creve/playpit/dto/response/UkaResponse.java",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "no cross product import projects/playpit/src/main/java/world/creve/playpit/dto/response/CreatorMessageCount.java",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "no cross product import projects/playpit/src/main/java/world/creve/playpit/dto/response/PageResponse.java",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "no cross product import projects/playpit/src/main/java/world/creve/playpit/dto/response/MessageResponse.java",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "no cross product import projects/playpit/src/main/java/world/creve/playpit/dto/response/MessageRow.java",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "no cross product import projects/live/src/main/java/world/creve/live/LiveContribution.java",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "no cross product import projects/live/src/main/java/world/creve/live/service/LiveService.java",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "no cross product import projects/live/src/main/java/world/creve/live/controller/LiveController.java",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "no cross product import projects/lp/src/main/java/world/creve/lp/service/LandingPageService.java",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "no cross product import projects/lp/src/main/java/world/creve/lp/dto/LandingPageResponse.java",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "no cross product import projects/lp/src/main/java/world/creve/lp/entity/LandingPage.java",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "no cross product import projects/lp/src/main/java/world/creve/lp/repository/LandingPageRepository.java",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "no cross product import projects/lp/src/main/java/world/creve/lp/controller/LandingPageController.java",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "js parse platform/src/main/resources/static/platform/js/common.js",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "js parse projects/playpit/src/main/resources/static/playpit/js/creator.js",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "js parse projects/playpit/src/main/resources/static/playpit/js/artwork.js",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "js parse projects/playpit/src/main/resources/static/playpit/js/uka.js",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "js parse projects/playpit/src/main/resources/static/playpit/js/message.js",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "js parse projects/playpit/src/main/resources/static/playpit/js/analytics.js",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "js parse projects/playpit/src/main/resources/static/playpit/js/admin.js",
+      "pass": true,
+      "detail": ""
+    }
+  ]
+}

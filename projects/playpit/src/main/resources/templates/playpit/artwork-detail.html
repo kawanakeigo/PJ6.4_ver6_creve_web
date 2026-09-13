@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+ <th:block th:replace="~{common/head :: head('作品詳細')}"></th:block>
+ <link rel="stylesheet" th:href="@{/playpit/css/playpit.css}">
+ <link rel="stylesheet" th:href="@{/playpit/css/creator.css}">
+ <link rel="stylesheet" th:href="@{/playpit/css/artwork.css}">
+ <link rel="stylesheet" th:href="@{/playpit/css/uka.css}">
+ <script defer th:src="@{/playpit/js/uka.js}"></script>
+ <script defer th:src="@{/playpit/js/message.js}"></script>
+ <script defer th:src="@{/playpit/js/artwork.js}"></script>
+ <script defer th:src="@{/playpit/js/analytics.js}"></script>
+</head>
+<body th:attr="data-event-id=${event.eventId},data-creator-id=${creatorId},data-artwork-id=${artworkId}">
+<a class="skip-link" href="#mainContent">本文へ移動</a>
+<div th:replace="~{common/header :: header}"></div>
+<main id="mainContent">
+<a th:href="@{/playpit/{e}/artworks(e=${event.slug})}">展示作品一覧</a><h1 th:text="${artwork.title}"></h1>
+<img id="artworkMainImage" class="hero-image" th:if="${artwork.mainImageUrl}" th:src="${artwork.mainImageUrl}" th:alt="${artwork.title}">
+<div class="media-gallery"><th:block th:each="media : ${artwork.media}"><button type="button" th:if="${media.mediaType=='IMAGE'}" data-media-image th:attr="data-src=${media.url},data-alt=${media.altText}"><img th:src="${media.url}" th:alt="${media.altText}" width="160" height="120" loading="lazy"></button><video th:if="${media.mediaType=='VIDEO'}" controls preload="metadata" th:src="${media.url}" th:aria-label="${media.altText}"></video><audio th:if="${media.mediaType=='AUDIO'}" controls preload="metadata" th:src="${media.url}" th:aria-label="${media.altText}"></audio></th:block></div>
+<p>制作者：<a th:href="@{/playpit/{e}/creators/{c}(e=${event.slug},c=${artwork.creatorSlug})}" th:text="${artwork.creatorName}"></a></p>
+<p>展示イベント：<a th:href="@{/playpit/{e}(e=${event.slug})}" th:text="${event.title}"></a></p>
+<h2>作品について</h2><p class="preserve-lines" th:text="${artwork.description}"></p><h2>制作背景</h2><p class="preserve-lines" th:text="${artwork.background}"></p><h2>制作意図</h2><p class="preserve-lines" th:text="${artwork.concept}"></p><dl><dt>素材・技法</dt><dd th:text="${artwork.materials}"></dd><dt>制作年</dt><dd th:text="${artwork.productionYear}"></dd></dl>
+<div th:replace="~{playpit/fragments/message-form :: messageForm}"></div><div th:replace="~{playpit/fragments/uka :: ukaBoard}"></div><div th:replace="~{playpit/fragments/words :: words}"></div>
+<details><summary>会場掲示用QRコード</summary><img class="qr-code" th:src="@{/playpit/{e}/artworks/{a}/qr.png(e=${event.slug},a=${artwork.slug})}" alt="この作品のページへのQRコード" loading="lazy" width="256" height="256"></details>
+</main>
+<div th:replace="~{common/footer :: footer}"></div>
+</body></html>

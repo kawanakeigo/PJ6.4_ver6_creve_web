@@ -1,0 +1,23 @@
+<section xmlns:th="http://www.thymeleaf.org" th:fragment="ukaBoard" class="uka-section">
+ <div class="section-title"><h2>羽花</h2><p><span data-message-count th:text="${uka.messageCount}">0</span>枚の言葉</p></div>
+ <p class="uka-stage-description" data-growth-label th:text="'成長段階：' + ${uka.growthStage}"></p>
+ <div class="uka-board" data-uka-board role="group" aria-label="言葉で育つ羽花"
+  th:attr="data-event-id=${event.eventId},data-creator-id=${creatorId},data-artwork-id=${artworkId},data-growth-stage=${uka.growthStage}">
+  <div class="uka-silhouette" aria-hidden="true"></div>
+  <p class="uka-empty" th:hidden="${uka.messageCount > 0}" data-uka-empty>最初の言葉を待っています。</p>
+  <div class="uka-petals" data-uka-petals>
+   <button type="button" class="petal" th:each="p : ${uka.petals}" th:classappend="'petal-type-' + ${p.petalType}"
+    th:style="'left:' + ${p.positionX} + '%;top:' + ${p.positionY} + '%;transform:translate(-50%,-50%) rotate(' + ${p.rotation} + 'deg) scale(' + ${p.scale} + ')'"
+    th:attr="data-message-id=${p.messageId},data-message=${p.message},data-display-name=${p.displayName},data-created-at=${p.createdAt},data-artwork-title=${p.artworkTitle},data-creator-name=${p.creatorName}"
+    th:aria-label="'感想を読む：' + ${p.displayName}"></button>
+  </div>
+ </div>
+ <p th:if="${uka.messageCount > 300}" data-representative-note>花びらは最大300件を代表表示しています。総投稿数は別に表示しています。</p>
+ <a th:href="@{/playpit/{e}/uka(e=${event.slug})}">イベント全体の羽花を見る</a>
+ <dialog id="messageModal" aria-labelledby="messageModalTitle">
+  <h2 id="messageModalTitle">花びらに届いた言葉</h2><p id="modalMessage" class="preserve-lines"></p>
+  <dl><dt>表示名</dt><dd id="modalDisplayName"></dd><dt>投稿日</dt><dd id="modalCreatedAt"></dd><dt>作品名</dt><dd id="modalArtworkTitle"></dd><dt>クリエイター</dt><dd id="modalCreatorName"></dd></dl>
+  <details><summary>この投稿を通報する</summary><form id="reportForm"><label for="reportReason">通報理由</label><textarea id="reportReason" maxlength="300" required></textarea><button type="submit">運営に報告する</button><p id="reportResult" role="status"></p></form></details>
+  <button type="button" id="closeMessageModalButton">閉じる</button>
+ </dialog>
+</section>

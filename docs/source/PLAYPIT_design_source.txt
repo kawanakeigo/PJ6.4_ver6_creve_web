@@ -1,0 +1,1979 @@
+CreVe_HP作成
+依頼内容＜
+以下のディレクトリに詳細設計のものを作成してほしい
+
+/Users/k5/Documents/creve-web/workspace/creve/creve-web
+CreVe Web基盤 要件定義書 変更内容
+PLAYPIT参加クリエイターページ・参加型作品「羽花」機能
+
+
+
+1. 変更概要
+PLAYPITに参加したクリエイターごとに、CreVe内の個人ページを用意する。
+来場者はクリエイターの作品やプロフィールを閲覧するだけでなく、そのページから作品への感想やメッセージを投稿できるものとする。
+投稿された言葉は「羽花」の一枚の花びらとして蓄積される。
+投稿数が増えるほど画面上の花びらも増え、最終的に大きな羽の形へ変化する参加型作品を実現する。
+
+
+
+2. 参加型作品「羽花」の位置付け
+「羽花」は、来場者一人ひとりの言葉によって完成していく、CreVe独自の参加型作品である。
+来場者が会場で感じたこと、心に残ったこと、クリエイターへ届けたい言葉などを投稿すると、その言葉が一枚の花びらとして作品に加わる。
+はじめは花びらの少ない状態から始まり、感想やメッセージが集まるほど花びらが増えていく。
+多くの花びらが集まることで、最終的に一つの大きな羽が完成する。
+この仕組みにより、来場者は展示を見るだけの存在ではなく、自分の言葉を残すことで作品をつくる参加者となる。
+一人ひとりの言葉は小さな花びらであるが、多くの言葉が集まることで大きな羽となり、誰かの背中を押したり、新しい場所へ羽ばたく力になったりすることを表現する。
+
+
+
+3. クリエイター個人ページ
+3.1 目的
+PLAYPITに参加したクリエイターと来場者との接点を、イベント終了後もCreVe上に残す。
+クリエイターの作品、プロフィール、活動情報、来場者からの言葉を一つのページに集約する。
+3.2 URL構成
+creve.world/creators/{creatorId}
+
+例：
+creve.world/creators/001
+creve.world/creators/kawanakeigo
+
+URLには表示名ではなく、変更されにくい一意のクリエイターIDを使用する。
+3.3 掲載内容
+クリエイター個人ページには、最低限以下を表示する。
+    • クリエイター名
+    • プロフィール画像
+    • 自己紹介
+    • 制作テーマ
+    • 作品画像
+    • 作品名
+    • 作品説明
+    • 参加したPLAYPITイベント
+    • SNSへのリンク
+    • Webサイトへのリンク
+    • 感想投稿フォーム
+    • 投稿によって変化する羽花
+    • 来場者から届いた言葉
+    • 投稿数
+3.4 将来の拡張
+将来的に以下を追加できる構成とする。
+    • クリエイター本人による情報更新
+    • 作品の追加
+    • VR展示空間への移動
+    • デジタル作品の販売
+    • ファン登録
+    • お気に入り登録
+    • クリエイターへの支援
+    • 過去の展示履歴
+    • ライブ出演履歴
+
+
+
+4. 感想・メッセージ投稿機能
+4.1 投稿対象
+来場者は、以下に対して感想を投稿できるものとする。
+    • クリエイター
+    • 展示作品
+    • PLAYPITイベント
+    • ライブイベント
+初期リリースでは、クリエイター個人ページからの投稿を優先して実装する。
+4.2 投稿内容
+最低限、以下の項目を用意する。
+項目	必須	内容
+感想・メッセージ	必須	作品やクリエイターへの言葉
+表示名	任意	投稿者として表示する名前
+匿名設定	任意	匿名で投稿するか
+対象クリエイター	必須	感想を届けるクリエイター
+対象イベント	必須	感想を書いたイベント
+対象作品	任意	特定の作品への感想の場合に使用
+投稿日時	自動	システムで記録
+公開状態	自動	審査待ち、公開、非公開など
+4.3 文字数
+初期段階では、感想・メッセージの文字数を以下とする。
+1文字以上、300文字以内
+入力欄には現在の文字数を表示する。
+4.4 投稿完了時の演出
+投稿が完了した場合、以下の演出を行う。
+    1. 入力した言葉が一枚の花びらとして表示される
+    2. 花びらが羽花へ移動する
+    3. 羽花に新しい花びらが追加される
+    4. 投稿完了メッセージを表示する
+表示例：
+あなたの言葉が、一枚の花びらになりました。
+5. 羽花の表示機能
+5.1 基本仕様
+投稿された感想一件を、一枚の花びらとして扱う。
+感想数に応じて花びらを増加させ、画面上に羽の形をつくる。
+5.2 表示単位
+羽花は、以下の単位で表示できるようにする。
+    • クリエイターごとの羽花
+    • イベント全体の羽花
+    • 将来的なCreVe全体の羽花
+初期リリースでは、クリエイターごとの羽花を実装する。
+5.3 花びらの情報
+各花びらには、以下の情報を関連付ける。
+    • 感想ID
+    • 投稿された言葉
+    • 対象クリエイター
+    • 対象イベント
+    • 対象作品
+    • 投稿日時
+    • 表示名または匿名
+    • 花びらの表示位置
+    • 花びらの角度
+    • 花びらの大きさ
+    • 花びらの形
+    • 公開状態
+5.4 花びらの操作
+利用者が花びらを押した場合、対応する感想を表示できるものとする。
+表示する内容は以下とする。
+    • 感想・メッセージ
+    • 表示名または「匿名」
+    • 投稿日
+    • 対象となる作品名
+5.5 成長表現
+投稿数に応じて、羽花の見た目を段階的に変化させる。
+例：
+投稿数	表現
+0件	小さな芽または羽の輪郭のみ
+1～10件	花びらが少しずつ現れる
+11～30件	羽の一部が形成される
+31～60件	羽の形が明確になる
+61件以上	大きな羽として完成する
+正確な投稿件数や変化の段階は、詳細設計およびデザイン工程で決定する。
+6. イベント全体の羽花
+各クリエイターに集まった花びらを統合し、PLAYPITイベント全体の羽花を表示できるようにする。
+URL例：
+creve.world/playpit/{eventId}/uka
+イベント全体ページでは、以下を表示する。
+    • イベントに集まった総投稿数
+    • イベント全体の羽
+    • 参加クリエイターごとの投稿数
+    • クリエイター個人ページへのリンク
+    • 投稿された言葉の一部
+    • 羽が完成していく過程
+将来的には、過去のPLAYPITで生まれた羽をアーカイブとして保存する。
+7. 投稿内容の表示・管理
+7.1 公開方式
+不適切な投稿を防ぐため、以下のいずれかの方式を採用する。
+方式A：即時公開
+投稿後、すぐに花びらとして表示する。
+ただし、不適切な言葉を検知するフィルターと通報機能を設ける。
+方式B：承認後公開
+投稿後は審査待ちとし、運営が確認した後に公開する。
+初期リリースでは、イベント当日の体験を損なわないため、基本的には即時公開とする。ただし、禁止語句の検知と運営による非公開化機能を用意する。
+7.2 管理者機能
+運営者は以下の操作を行えるものとする。
+    • 投稿一覧の確認
+    • 投稿内容の検索
+    • クリエイター別の絞り込み
+    • イベント別の絞り込み
+    • 公開・非公開の切り替え
+    • 不適切な投稿の削除
+    • 投稿数の確認
+    • 通報された投稿の確認
+7.3 禁止する投稿
+以下の内容は投稿を禁止する。
+    • 誹謗中傷
+    • 差別的な表現
+    • 個人情報
+    • 宣伝・営業目的の投稿
+    • 無関係なURL
+    • 公序良俗に反する内容
+    • 同じ内容の連続投稿
+    • 第三者の権利を侵害する内容
+8. サイト構成の変更
+creve.world
+├── /
+│   └── CreVe公式トップ
+│
+├── /about
+│   └── CreVeについて
+│
+├── /creators
+│   ├── クリエイター一覧
+│   └── /{creatorId}
+│       ├── プロフィール
+│       ├── 作品
+│       ├── 参加イベント
+│       ├── 感想投稿
+│       └── クリエイター個人の羽花
+│
+├── /playpit
+│   ├── PLAYPITについて
+│   ├── /events
+│   └── /{eventId}
+│       ├── イベント詳細
+│       ├── 参加クリエイター
+│       └── /uka
+│           └── イベント全体の羽花
+│
+├── /live
+│   ├── ライブイベント一覧
+│   └── /{eventId}
+│
+├── /lp
+│   └── /{lpId}
+│
+├── /vr
+│   └── VR構想・将来のVR空間
+│
+├── /contact
+├── /privacy
+└── /terms
+9. 初期インフラ要件の変更
+感想投稿機能を実装するため、静的なWebサイトだけでは完結しない。
+初期リリースから、最低限以下のバックエンド機能を用意する。
+    • 投稿内容を受け取るAPI
+    • 感想を保存するデータベース
+    • 投稿一覧を取得するAPI
+    • 投稿数を取得するAPI
+    • 管理者による投稿管理機能
+    • 不正な連続投稿を防ぐ機能
+    • 投稿内容を検査する機能
+推奨構成
+利用者
+  ↓
+Cloudflare
+  ↓
+Next.js Webサイト
+  ├── CreVe
+  ├── PLAYPIT
+  ├── クリエイターページ
+  ├── ライブ
+  ├── LP
+  └── 羽花
+        ↓
+   投稿用API
+        ↓
+   データベース
+初期構成案
+項目	使用目的
+GitHub	ソースコード管理
+Vercel	WebサイトとAPIの公開
+Supabaseなど	データベース・管理
+Cloudflare	DNS・CDN・セキュリティ
+Google Analytics	アクセス解析
+エラー監視サービス	投稿エラーなどの検知
+データベースには、イベント、クリエイター、作品、感想を保存する。
+10. データ要件
+10.1 クリエイターデータ
+項目	内容
+creator_id	クリエイターの一意ID
+name	表示名
+profile	プロフィール
+concept	制作テーマ
+profile_image	プロフィール画像
+website_url	Webサイト
+sns_urls	SNS情報
+published	公開状態
+created_at	登録日時
+updated_at	更新日時
+10.2 感想データ
+項目	内容
+message_id	感想の一意ID
+creator_id	対象クリエイター
+event_id	対象イベント
+artwork_id	対象作品
+message	感想・メッセージ
+display_name	表示名
+is_anonymous	匿名設定
+status	審査待ち・公開・非公開
+created_at	投稿日時
+petal_type	花びらの種類
+petal_position	花びらの表示位置
+petal_rotation	花びらの角度
+10.3 イベント参加データ
+クリエイターとイベントの関係を管理する。
+項目	内容
+participation_id	参加情報の一意ID
+creator_id	クリエイターID
+event_id	イベントID
+exhibition_title	展示名
+display_order	表示順
+created_at	登録日時
+11. 非機能要件の追加
+11.1 同時アクセス
+PLAYPIT開催中に複数の来場者が同時に投稿しても、正常に保存・表示できること。
+11.2 投稿反映速度
+投稿完了後、原則として数秒以内に花びらへ反映されること。
+11.3 スマートフォン対応
+会場内での利用を想定し、スマートフォンから以下を無理なく操作できること。
+    • QRコードからのアクセス
+    • クリエイターの選択
+    • 感想の入力
+    • 投稿
+    • 羽花の閲覧
+    • 花びらに記録された言葉の閲覧
+11.4 通信環境への対応
+会場の通信状況が悪い場合を考慮し、以下を行う。
+    • 画像を軽量化する
+    • 投稿中の状態を表示する
+    • 投稿失敗時に再送できるようにする
+    • 同じ内容が二重登録されないようにする
+11.5 アクセシビリティ
+羽花の視覚表現だけでなく、投稿された言葉を一覧形式でも確認できること。
+12. セキュリティ要件の追加
+    • 一定時間内の連続投稿回数を制限する
+    • 自動投稿への対策を行う
+    • 投稿内容をHTMLとして実行しない
+    • スクリプトや不正な文字列を除去する
+    • APIへ直接大量投稿されないようにする
+    • 管理画面には認証を設定する
+    • 管理者以外は投稿を削除できないようにする
+    • 個人を特定する情報を必要以上に保存しない
+    • IPアドレスを保存する場合は用途と保存期間を定める
+13. アクセス解析要件の追加
+以下を計測する。
+    • クリエイター個人ページの閲覧数
+    • 感想フォームの表示数
+    • 感想投稿数
+    • 投稿完了率
+    • クリエイターごとの投稿数
+    • イベント全体の投稿数
+    • 花びらが押された回数
+    • SNSへの遷移数
+    • QRコードからのアクセス数
+感想の本文自体は、アクセス解析ツールへ送信しない。
+14. 初期リリース対象の変更
+初期リリースに以下を追加する。
+    1. PLAYPIT参加クリエイター一覧
+    2. クリエイター個人ページ
+    3. クリエイターへの感想投稿フォーム
+    4. 感想保存用データベース
+    5. 感想投稿用API
+    6. クリエイターごとの羽花表示
+    7. 投稿内容の管理機能
+    8. 不適切な投稿への対策
+    9. 投稿失敗時のエラー表示
+    10. 会場掲示用QRコード
+イベント全体の大きな羽の表示は、初期リリースまたは第二段階での実装対象とする。
+15. 初期リリースの完了条件
+以下を満たした場合、羽花機能の初期リリース完了とする。
+    • クリエイターごとのページが表示できる
+    • クリエイターのプロフィールと作品を閲覧できる
+    • スマートフォンから感想を投稿できる
+    • 投稿内容がデータベースへ保存される
+    • 投稿完了時に花びらの演出が表示される
+    • 投稿数に応じて羽花の花びらが増える
+    • 花びらから感想を閲覧できる
+    • 運営者が投稿を非公開または削除できる
+    • 不正な連続投稿を制限できる
+    • 投稿エラー時に利用者へ案内できる
+    • イベント終了後も投稿内容と羽花が残る
+    • 過去イベントの羽花を再度閲覧できる
+16. 将来のVR空間との連携
+羽花のデータは、将来的にVR空間でも利用できる構造とする。
+想定する利用方法は以下とする。
+    • VR空間内でクリエイターの作品を展示する
+    • VR空間から感想を投稿する
+    • WebとVRで同じ羽花を成長させる
+    • 花びらに触れると投稿された言葉が表示される
+    • 現実のPLAYPITで集まった言葉をVR空間へ持ち込む
+    • 過去イベントで完成した羽をVR空間に展示する
+    • クリエイターごとに異なる羽を表示する
+    • イベントを越えてCreVe全体の大きな羽を育てる
+WebサイトとVR空間で同じクリエイターID、イベントID、作品ID、感想IDを利用する。
+これにより、現実のイベント、Webサイト、VR空間を一つのCreVe体験としてつなげる。
+17. 本機能の役割
+PLAYPITは、作品を見せて終わる展示イベントではない。
+来場者が作品を見て感じたことを言葉として残し、その言葉がクリエイターのページと羽花の中に蓄積される。
+PLAYPITで生まれた出会いと言葉を、イベント終了後もWeb上へ残し、将来はVR空間へ引き継ぐ。
+参加型作品「羽花」は、現実のイベントと将来のVR空間をつなぐ、CreVeの中心的な体験として位置付ける。
+CreVe Web基盤 基本設計変更案
+1. サイト構成
+creve.world
+├── /
+│   └── CreVe公式トップ
+│
+├── /about
+│   └── CreVeについて
+│
+├── /news
+│   └── お知らせ
+│
+├── /playpit
+│   ├── PLAYPITトップ・コンセプト
+│   │
+│   ├── /events
+│   │   └── PLAYPITイベント一覧
+│   │
+│   ├── /{eventId}
+│   │   ├── イベント詳細
+│   │   ├── 参加クリエイター一覧
+│   │   ├── 展示作品一覧
+│   │   │
+│   │   ├── /creators
+│   │   │   └── /{creatorId}
+│   │   │       ├── クリエイタープロフィール
+│   │   │       ├── 出展作品一覧
+│   │   │       ├── SNS・外部サイト
+│   │   │       └── クリエイターへの感想投稿
+│   │   │
+│   │   ├── /artworks
+│   │   │   └── /{artworkId}
+│   │   │       ├── 作品画像・映像
+│   │   │       ├── 作品名
+│   │   │       ├── 作品説明
+│   │   │       ├── 制作者情報
+│   │   │       ├── 作品への感想投稿
+│   │   │       └── 投稿された感想
+│   │   │
+│   │   └── /uka
+│   │       ├── イベント全体の羽花
+│   │       ├── 投稿された言葉
+│   │       ├── クリエイター別の羽花
+│   │       └── 作品別の羽花
+│   │
+│   └── /archive
+│       └── 過去のPLAYPIT・羽花
+│
+├── /live
+│   ├── ライブイベント一覧
+│   └── /{eventId}
+│       └── ライブイベント詳細
+│
+├── /lp
+│   └── /{lpId}
+│       └── 集客・募集用LP
+│
+├── /vr
+│   └── VR構想・将来のVR空間
+│
+├── /contact
+├── /privacy
+└── /terms
+2. PLAYPIT内の情報構造
+PLAYPITでは、次の順序で情報をたどれる構成とする。
+PLAYPIT
+  ↓
+イベント
+  ↓
+参加クリエイター
+  ↓
+クリエイター個人ページ
+  ↓
+作品詳細ページ
+  ↓
+感想投稿
+  ↓
+羽花へ反映
+イベントを起点とすることで、どのPLAYPITで、誰が、どの作品を展示したのかを明確に管理する。
+3. URL構成
+PLAYPITイベント一覧
+/playpit/events
+PLAYPITイベント詳細
+/playpit/{eventId}
+例：
+/playpit/202606-uka
+イベント参加クリエイター一覧
+/playpit/{eventId}/creators
+クリエイター個人ページ
+/playpit/{eventId}/creators/{creatorId}
+例：
+/playpit/202606-uka/creators/creator-001
+展示作品一覧
+/playpit/{eventId}/artworks
+作品詳細ページ
+/playpit/{eventId}/artworks/{artworkId}
+例：
+/playpit/202606-uka/artworks/artwork-001
+イベント全体の羽花
+/playpit/{eventId}/uka
+この構成により、クリエイター、作品、感想、羽花が、どのイベントに属する情報なのかをURLから判断できる。
+4. 作品詳細ページ
+4.1 目的
+作品詳細ページは、来場者が展示作品について深く知り、その作品に対する感想を残すためのページとする。
+会場に掲示した作品別QRコードから、直接アクセスできるようにする。
+4.2 掲載内容
+最低限、以下を表示する。
+    • 作品名
+    • メイン画像
+    • 複数の作品画像
+    • 動画または音声
+    • 作品説明
+    • 制作背景
+    • 制作意図
+    • 使用素材・技法
+    • 制作年
+    • クリエイター名
+    • クリエイター個人ページへのリンク
+    • 展示されたPLAYPITイベント
+    • 作品への感想投稿フォーム
+    • 作品に届いた感想
+    • 投稿数
+    • 羽花への導線
+4.3 作品詳細ページからの投稿
+来場者は作品詳細ページから、その作品を対象に感想を投稿できる。
+投稿された感想には、以下を関連付ける。
+    • イベントID
+    • クリエイターID
+    • 作品ID
+    • 感想ID
+作品への感想は、次のすべてに反映できる構成とする。
+    • 作品詳細ページの感想一覧
+    • クリエイターに届いた感想
+    • クリエイター別の羽花
+    • PLAYPITイベント全体の羽花
+5. 羽花の配置
+羽花はCreVe全体の独立ページではなく、PLAYPITの体験機能として配置する。
+初期リリース
+    • PLAYPITイベント全体の羽花
+    • クリエイター別に集まった言葉の表示
+    • 作品別に集まった言葉の表示
+    • 花びらを押した際の感想表示
+将来対応
+    • 複数イベントの羽花アーカイブ
+    • PLAYPIT全体を通した大きな羽
+    • CreVe全体の羽
+    • VR空間上での羽花表示
+6. クリエイター個人ページの役割
+クリエイター個人ページでは、人物を中心とした情報を表示する。
+    • プロフィール
+    • 制作テーマ
+    • SNS
+    • Webサイト
+    • PLAYPITでの活動
+    • 当該イベントの出展作品一覧
+    • クリエイター全体への感想
+    • 各作品詳細ページへのリンク
+作品に対する詳しい説明や作品単位の感想は、作品詳細ページで扱う。
+7. 画面一覧の変更
+画面ID	画面名	主な役割
+CRV-001	CreVeトップ	CreVe全体の活動への入口
+CRV-002	CreVeについて	理念・将来構想の紹介
+PPT-001	PLAYPITトップ	PLAYPITのコンセプト紹介
+PPT-002	PLAYPITイベント一覧	開催予定・過去イベントの表示
+PPT-003	PLAYPITイベント詳細	開催情報と展示内容の紹介
+PPT-004	参加クリエイター一覧	イベント参加者の一覧表示
+PPT-005	クリエイター個人	プロフィール・出展作品の表示
+ART-001	展示作品一覧	イベント内の作品一覧
+ART-002	作品詳細	作品説明・感想投稿
+UKA-001	羽花表示	イベント全体の羽花を表示
+UKA-002	感想投稿	クリエイター・作品への投稿
+UKA-003	感想表示	花びらに紐づく言葉を表示
+LIV-001	ライブ一覧	ライブイベント一覧
+LIV-002	ライブ詳細	出演者・日時・チケット情報
+LP-001	LP	来場予約・募集・販売への誘導
+ADM-001	投稿管理	投稿の確認・非公開・削除
+ADM-002	コンテンツ管理	イベント・人物・作品の管理
+8. 画面遷移
+会場で作品のQRコードを読み取る場合
+作品横のQRコード
+  ↓
+作品詳細ページ
+  ↓
+作品説明を見る
+  ↓
+感想を書く
+  ↓
+投稿完了
+  ↓
+言葉が花びらになる
+  ↓
+イベント全体の羽花に加わる
+クリエイターから作品を探す場合
+PLAYPITイベント詳細
+  ↓
+参加クリエイター一覧
+  ↓
+クリエイター個人ページ
+  ↓
+出展作品一覧
+  ↓
+作品詳細ページ
+  ↓
+感想投稿
+作品からクリエイターを知る場合
+PLAYPITイベント詳細
+  ↓
+展示作品一覧
+  ↓
+作品詳細ページ
+  ↓
+クリエイター個人ページ
+  ↓
+他の出展作品を見る
+9. データ構造への影響
+作品詳細ページを追加するため、artworksデータを正式に初期リリース対象とする。
+artworks
+項目	内容
+artwork_id	作品の一意ID
+creator_id	制作者ID
+title	作品名
+description	作品説明
+background	制作背景
+concept	制作意図
+materials	素材・技法
+production_year	制作年
+main_image_url	メイン画像
+media_urls	その他の画像・動画・音声
+published	公開状態
+created_at	登録日時
+updated_at	更新日時
+event_artworks
+作品がどのイベントに展示されたかを管理する。
+項目	内容
+event_artwork_id	展示情報の一意ID
+event_id	イベントID
+artwork_id	作品ID
+exhibition_area	展示場所・エリア
+display_order	表示順
+qr_code_url	作品用QRコード
+created_at	登録日時
+10. 機能一覧への追加
+機能ID	機能名
+F-001	PLAYPITイベント一覧表示
+F-002	PLAYPITイベント詳細表示
+F-003	イベント参加クリエイター一覧表示
+F-004	クリエイター詳細表示
+F-005	展示作品一覧表示
+F-006	作品詳細表示
+F-007	作品別QRコード表示
+F-008	クリエイターへの感想投稿
+F-009	作品への感想投稿
+F-010	感想保存
+F-011	感想一覧取得
+F-012	花びら表示
+F-013	イベント全体の羽花表示
+F-014	クリエイター別投稿表示
+F-015	作品別投稿表示
+F-016	投稿の公開・非公開管理
+F-017	作品情報管理
+F-018	クリエイター情報管理
+F-019	イベント情報管理
+11. 設計方針
+CreVeのトップページでは、CreVeの理念、PLAYPIT、ライブイベント、将来のVR空間を紹介する。
+PLAYPIT内では、次の情報と体験を一つにまとめる。
+イベント
+＋
+クリエイター
+＋
+作品
+＋
+来場者の言葉
+＋
+羽花
+これにより、PLAYPITで生まれた作品・人・言葉をイベント終了後もWeb上へ残し、将来的にVR空間へ移行できる構造とする。
+基本設計書 使用技術変更
+1. 使用言語
+CreVe Web基盤では、以下の言語を使用する。
+区分	使用言語	用途
+バックエンド	Java	API、業務処理、データベース操作、管理機能
+フロントエンド	HTML	Webページの構造
+フロントエンド	CSS	デザイン、レイアウト、レスポンシブ対応
+フロントエンド	JavaScript	画面操作、非同期通信、羽花の表示・アニメーション
+データベース	SQL	データの登録、取得、更新、削除
+2. 推奨システム構成
+利用者
+  │
+  ├─ スマートフォン
+  ├─ タブレット
+  └─ パソコン
+       │
+       ▼
+Cloudflare
+  ├─ DNS
+  ├─ HTTPS
+  ├─ CDN
+  └─ セキュリティ対策
+       │
+       ▼
+Java Webアプリケーション
+  ├─ HTML
+  ├─ CSS
+  ├─ JavaScript
+  ├─ Spring Boot
+  ├─ REST API
+  └─ 管理画面
+       │
+       ▼
+データベース
+  ├─ イベント
+  ├─ クリエイター
+  ├─ 作品
+  ├─ 感想
+  └─ 管理者
+3. バックエンド構成
+3.1 使用技術
+JavaのWebフレームワークとして、Spring Bootを使用する。
+技術	用途
+Java	サーバー側の処理
+Spring Boot	Webアプリケーションの構築
+Spring MVC	画面遷移・API受付
+Spring Security	管理者ログイン・権限制御
+Spring Data JPAまたはMyBatis	データベース操作
+Maven	ライブラリ・ビルド管理
+JUnit 5	単体テスト
+3.2 Javaで実装する処理
+    • イベント情報の取得
+    • クリエイター情報の取得
+    • 作品情報の取得
+    • 感想の登録
+    • 感想の取得
+    • 感想の公開・非公開管理
+    • 管理者ログイン
+    • 投稿回数の制限
+    • 入力値チェック
+    • データベース操作
+    • 画像情報の管理
+    • APIの提供
+    • エラー処理
+4. フロントエンド構成
+4.1 HTML
+HTMLでは、各ページの構造を作成する。
+対象ページは以下とする。
+    • CreVeトップ
+    • CreVeについて
+    • PLAYPITトップ
+    • イベント一覧
+    • イベント詳細
+    • クリエイター一覧
+    • クリエイター個人ページ
+    • 作品一覧
+    • 作品詳細
+    • 羽花
+    • ライブイベント
+    • LP
+    • お問い合わせ
+    • 管理画面
+4.2 CSS
+CSSでは、以下を実装する。
+    • ページレイアウト
+    • 色・フォント
+    • ヘッダー・フッター
+    • ボタン
+    • フォーム
+    • カード表示
+    • 画像サイズ調整
+    • スマートフォン対応
+    • タブレット対応
+    • パソコン対応
+    • 羽花の基本デザイン
+    • 花びらのアニメーション補助
+必要に応じて、CSSフレームワークは使用できるが、初期段階では通常のCSSを基本とする。
+4.3 JavaScript
+JavaScriptでは、以下を実装する。
+    • 感想投稿フォームの入力チェック
+    • 文字数カウント
+    • APIへの非同期通信
+    • 感想投稿
+    • 投稿完了メッセージ
+    • 花びら追加演出
+    • 羽花の表示
+    • 花びらを押したときの感想表示
+    • モーダル表示
+    • メニューの開閉
+    • 画像切り替え
+    • 投稿データの再読み込み
+    • エラー表示
+5. 画面作成方式
+画面作成方式は、Spring BootとThymeleafを使用する構成を基本とする。
+Java・Spring Boot
+       │
+       ▼
+Thymeleaf
+       │
+       ├─ HTML
+       ├─ CSS
+       └─ JavaScript
+Thymeleafの役割
+Thymeleafは、Javaで取得したデータをHTMLへ表示するために使用する。
+例：
+    • イベント名の表示
+    • クリエイター一覧の表示
+    • 作品一覧の表示
+    • 感想一覧の表示
+    • 管理画面のデータ表示
+採用理由
+    • JavaとHTMLを組み合わせやすい
+    • Spring Bootとの相性がよい
+    • 小規模から中規模のWebサイトに適している
+    • 管理画面も同じプロジェクトで作成できる
+    • Javaを学びながら構築しやすい
+    • フロントエンドを別プロジェクトに分ける必要がない
+6. システム内部構成
+ブラウザ
+  │
+  ├─ HTML
+  ├─ CSS
+  └─ JavaScript
+       │
+       ▼
+Controller
+  │
+  ├─ 画面表示
+  ├─ API受付
+  └─ 入力値受取
+       │
+       ▼
+Service
+  │
+  ├─ 業務処理
+  ├─ 投稿判定
+  ├─ 公開状態判定
+  └─ 羽花用データ生成
+       │
+       ▼
+Repository・DAO
+  │
+  └─ データベース操作
+       │
+       ▼
+Database
+7. Javaの基本構成
+src/main/java
+└── world/creve
+    ├── controller
+    │   ├── CreveController
+    │   ├── PlaypitController
+    │   ├── CreatorController
+    │   ├── ArtworkController
+    │   ├── MessageController
+    │   ├── LiveController
+    │   └── AdminController
+    │
+    ├── service
+    │   ├── EventService
+    │   ├── CreatorService
+    │   ├── ArtworkService
+    │   ├── MessageService
+    │   └── UkaService
+    │
+    ├── repository
+    │   ├── EventRepository
+    │   ├── CreatorRepository
+    │   ├── ArtworkRepository
+    │   └── MessageRepository
+    │
+    ├── entity
+    │   ├── Event
+    │   ├── Creator
+    │   ├── Artwork
+    │   ├── Message
+    │   └── Admin
+    │
+    ├── dto
+    │   ├── MessageRequest
+    │   ├── MessageResponse
+    │   └── UkaResponse
+    │
+    ├── validation
+    ├── security
+    ├── exception
+    └── config
+8. HTML・CSS・JavaScriptの構成
+src/main/resources
+├── templates
+│   ├── index.html
+│   ├── about.html
+│   ├── news
+│   ├── playpit
+│   │   ├── index.html
+│   │   ├── events.html
+│   │   ├── event-detail.html
+│   │   ├── creators.html
+│   │   ├── creator-detail.html
+│   │   ├── artworks.html
+│   │   ├── artwork-detail.html
+│   │   └── uka.html
+│   │
+│   ├── live
+│   ├── lp
+│   ├── contact
+│   ├── admin
+│   └── common
+│       ├── header.html
+│       └── footer.html
+│
+└── static
+    ├── css
+    │   ├── common.css
+    │   ├── creve.css
+    │   ├── playpit.css
+    │   ├── artwork.css
+    │   ├── uka.css
+    │   └── admin.css
+    │
+    ├── js
+    │   ├── common.js
+    │   ├── message.js
+    │   ├── artwork.js
+    │   ├── uka.js
+    │   └── admin.js
+    │
+    └── images
+        ├── brand
+        ├── events
+        ├── creators
+        ├── artworks
+        └── uka
+9. 羽花機能の処理構成
+9.1 投稿処理
+作品詳細ページ
+  ↓
+JavaScriptで入力内容を確認
+  ↓
+Javaの投稿APIへ送信
+  ↓
+Controller
+  ↓
+MessageService
+  ↓
+禁止内容・連続投稿の確認
+  ↓
+MessageRepository
+  ↓
+データベースへ保存
+  ↓
+投稿結果をJavaScriptへ返却
+  ↓
+花びら追加アニメーション
+9.2 羽花表示処理
+羽花ページを開く
+  ↓
+Javaが公開済み感想を取得
+  ↓
+感想ID・投稿数・花びら情報を返す
+  ↓
+JavaScriptが花びらを配置
+  ↓
+投稿数に応じて羽の形を表示
+9.3 JavaとJavaScriptの役割
+処理	担当
+感想の保存	Java
+感想の取得	Java
+投稿内容の確認	Java
+管理者権限の確認	Java
+花びらの位置データ作成	JavaまたはJavaScript
+花びらの表示	JavaScript
+花びらのアニメーション	JavaScript
+感想モーダルの表示	JavaScript
+羽のデザイン	HTML・CSS・JavaScript
+10. データベース
+データベースには、PostgreSQLまたはMySQLを使用する。
+初期構成では、PostgreSQLを推奨する。
+主なテーブル
+    • events
+    • creators
+    • artworks
+    • event_creators
+    • event_artworks
+    • messages
+    • news
+    • landing_pages
+    • admins
+    • media_files
+Javaからの接続
+Spring Data JPAまたはMyBatisを使用する。
+初期段階では、次のいずれかを選択する。
+Spring Data JPA
+    • 基本的な登録・取得処理を簡潔に記述できる
+    • Entityを中心に開発できる
+    • 一般的なWebシステムに適している
+MyBatis
+    • SQLを自分で細かく書ける
+    • 複雑な検索や集計を制御しやすい
+    • SQLを明確に管理できる
+CreVeの初期構築では、Spring Data JPAを基本とし、複雑な羽花集計などで必要になった場合にSQLを追加する構成を推奨する。
+11. 公開環境
+Javaアプリケーションを動作させるため、Next.js用のVercel中心構成から変更する。
+構成案
+利用者
+  ↓
+Cloudflare
+  ↓
+Java対応クラウド・サーバー
+  ↓
+Spring Boot
+  ↓
+PostgreSQL
+公開先候補
+    • AWS
+    • Google Cloud
+    • Azure
+    • Render
+    • Railway
+    • Java対応レンタルサーバー
+    • VPS
+初期段階では、JavaアプリケーションとPostgreSQLを簡単に公開できるサービスを使用する。
+ただし、将来的なVR連携やアクセス増加を考慮すると、AWSなどのクラウドへ移行できる構成にする。
+12. 開発ツール
+ツール	用途
+EclipseまたはIntelliJ IDEA	Java開発
+Visual Studio Code	HTML・CSS・JavaScript編集
+GitHub	ソースコード管理
+Maven	Javaプロジェクト管理
+JUnit 5	Java単体テスト
+Postman	API確認
+A5:SQL Mk-2	データベース確認
+Chrome開発者ツール	画面・通信確認
+Docker	開発環境の統一
+13. テスト方針
+Java
+JUnit 5を使用して以下を確認する。
+    • Serviceの業務処理
+    • 感想登録処理
+    • 入力値チェック
+    • 投稿状態の変更
+    • クリエイター・作品取得
+    • 羽花の投稿数集計
+JavaScript
+以下を確認する。
+    • 文字数カウント
+    • 未入力チェック
+    • API通信
+    • 投稿成功・失敗表示
+    • 花びら表示
+    • モーダル表示
+    • スマートフォン操作
+HTML・CSS
+以下を確認する。
+    • 表示崩れ
+    • リンク切れ
+    • スマートフォン表示
+    • タブレット表示
+    • パソコン表示
+    • Safari・Chrome等での表示
+14. 修正後の技術構成
+フロントエンド
+├── HTML
+├── CSS
+└── JavaScript
+バックエンド
+├── Java
+├── Spring Boot
+├── Spring MVC
+├── Spring Security
+└── Spring Data JPAまたはMyBatis
+画面テンプレート
+└── Thymeleaf
+データベース
+└── PostgreSQL
+テスト
+├── JUnit 5
+└── ブラウザテスト
+ソースコード管理
+└── GitHub
+15. 採用方針
+CreVe Web基盤は、Javaをシステムの中心として構築する。
+HTML・CSS・JavaScriptで利用者向け画面を作成し、JavaとSpring Bootでイベント、クリエイター、作品、感想、管理者情報を処理する。
+HTML・CSS・JavaScript
+          ↓
+     Spring Boot
+          ↓
+      PostgreSQL
+初期段階では、Spring BootとThymeleafを使用して一つのWebアプリケーションとして構築する。
+将来VR空間を開発する際は、Java側の処理をREST APIとして切り出し、WebサイトとVR空間の両方から共通データへアクセスできる構成へ拡張する。
+CreVe Web基盤 詳細設計書
+1. 文書概要
+1.1 文書名
+CreVe Web基盤 詳細設計書
+1.2 目的
+本書は、CreVe Web基盤の要件定義書および基本設計書で定義した内容を、実装可能な粒度まで具体化することを目的とする。
+実装担当者が本書を確認することで、以下を判断できる状態とする。
+    • 作成するHTMLファイル
+    • HTMLに配置する表示項目・入力項目
+    • JavaScriptで実装する処理
+    • Javaで作成するクラス
+    • Javaクラスに作成するメソッド
+    • メソッドの引数・戻り値
+    • Controller、Service、Repositoryの処理分担
+    • APIのURL・送受信項目
+    • データベースへ登録・取得する内容
+    • 入力エラー・システムエラー時の動作
+    • 参加型作品「羽花」の表示ロジック
+2. 対象範囲
+本詳細設計では、初期リリース対象である以下を設計する。
+    1. CreVeトップ
+    2. CreVeについて
+    3. PLAYPITトップ
+    4. PLAYPITイベント一覧
+    5. PLAYPITイベント詳細
+    6. 参加クリエイター一覧
+    7. クリエイター個人ページ
+    8. 展示作品一覧
+    9. 作品詳細ページ
+    10. 感想投稿機能
+    11. 羽花表示
+    12. ライブイベント一覧
+    13. ライブイベント詳細
+    14. LP
+    15. 管理者ログイン
+    16. イベント管理
+    17. クリエイター管理
+    18. 作品管理
+    19. 投稿管理
+3. システム構成
+ブラウザ
+├── HTML
+├── CSS
+└── JavaScript
+      │
+      ▼
+Spring Boot
+├── Controller
+├── Service
+├── Repository
+├── Entity
+├── DTO
+├── Validation
+├── Security
+└── Exception
+      │
+      ▼
+PostgreSQL
+3.1 使用技術
+区分	使用技術
+バックエンド	Java
+フレームワーク	Spring Boot
+画面制御	Spring MVC
+テンプレート	Thymeleaf
+認証・認可	Spring Security
+DBアクセス	Spring Data JPA
+フロントエンド	HTML・CSS・JavaScript
+データベース	PostgreSQL
+ビルド管理	Maven
+単体テスト	JUnit 5
+ソース管理	GitHub
+4. Javaパッケージ構成
+world.creve
+├── controller
+│   ├── CreveController
+│   ├── PlaypitController
+│   ├── CreatorController
+│   ├── ArtworkController
+│   ├── MessageController
+│   ├── UkaController
+│   ├── LiveController
+│   ├── LandingPageController
+│   └── AdminController
+│
+├── service
+│   ├── EventService
+│   ├── CreatorService
+│   ├── ArtworkService
+│   ├── MessageService
+│   ├── UkaService
+│   ├── LiveService
+│   └── AdminService
+│
+├── repository
+│   ├── EventRepository
+│   ├── CreatorRepository
+│   ├── ArtworkRepository
+│   ├── EventCreatorRepository
+│   ├── EventArtworkRepository
+│   ├── MessageRepository
+│   ├── NewsRepository
+│   └── AdminRepository
+│
+├── entity
+│   ├── Event
+│   ├── Creator
+│   ├── Artwork
+│   ├── EventCreator
+│   ├── EventArtwork
+│   ├── Message
+│   ├── News
+│   └── Admin
+│
+├── dto
+│   ├── request
+│   └── response
+│
+├── validation
+├── security
+├── exception
+├── config
+└── util
+5. HTML・CSS・JavaScript構成
+src/main/resources
+├── templates
+│   ├── index.html
+│   ├── about.html
+│   ├── news/
+│   ├── playpit/
+│   │   ├── index.html
+│   │   ├── event-list.html
+│   │   ├── event-detail.html
+│   │   ├── creator-list.html
+│   │   ├── creator-detail.html
+│   │   ├── artwork-list.html
+│   │   ├── artwork-detail.html
+│   │   └── uka.html
+│   ├── live/
+│   │   ├── list.html
+│   │   └── detail.html
+│   ├── lp/
+│   ├── admin/
+│   └── common/
+│       ├── header.html
+│       ├── footer.html
+│       └── error-message.html
+│
+└── static
+    ├── css
+    │   ├── common.css
+    │   ├── creve.css
+    │   ├── playpit.css
+    │   ├── creator.css
+    │   ├── artwork.css
+    │   ├── uka.css
+    │   ├── live.css
+    │   └── admin.css
+    ├── js
+    │   ├── common.js
+    │   ├── message.js
+    │   ├── creator.js
+    │   ├── artwork.js
+    │   ├── uka.js
+    │   └── admin.js
+    └── images/
+6. 共通画面設計
+6.1 ヘッダー
+HTMLファイル
+templates/common/header.html
+表示項目
+    • CreVeロゴ
+    • CreVeについて
+    • PLAYPIT
+    • ライブ
+    • VR構想
+    • お知らせ
+    • お問い合わせ
+    • スマートフォン用メニューボタン
+JavaScript
+common.jsに以下の関数を作成する。
+関数名	処理
+openGlobalMenu()	スマートフォンメニューを開く
+closeGlobalMenu()	スマートフォンメニューを閉じる
+toggleGlobalMenu()	メニューの開閉状態を切り替える
+CSS
+    • PC表示では横並び
+    • スマートフォン表示ではメニューボタンを表示
+    • メニュー開閉時に背景スクロールを停止
+    • 現在表示中のページを強調
+6.2 フッター
+HTMLファイル
+templates/common/footer.html
+表示項目
+    • CreVeロゴ
+    • サイト内リンク
+    • SNSリンク
+    • お問い合わせ
+    • プライバシーポリシー
+    • 利用規約
+    • 著作権表示
+7. CreVeトップ画面詳細設計
+7.1 基本情報
+項目	内容
+画面ID	CRV-001
+画面名	CreVeトップ
+URL	/
+HTML	templates/index.html
+Controller	CreveController
+メソッド	showTopPage()
+7.2 Controller処理
+CreveController#showTopPage()は以下を行う。
+    1. 公開中または開催予定のイベントを取得する
+    2. 最新のお知らせを取得する
+    3. PLAYPITイベントを最大3件取得する
+    4. ライブイベントを最大3件取得する
+    5. 取得結果をModelへ登録する
+    6. index.htmlを返す
+7.3 Service呼び出し
+    • EventService#getUpcomingPlaypitEvents()
+    • LiveService#getUpcomingLiveEvents()
+    • EventService#getLatestNews()
+7.4 Model項目
+属性名	型	内容
+playpitEvents	List<EventResponse>	PLAYPITイベント
+liveEvents	List<EventResponse>	ライブイベント
+newsList	List<NewsResponse>	最新のお知らせ
+8. PLAYPITイベント一覧画面
+8.1 基本情報
+項目	内容
+画面ID	PPT-002
+URL	/playpit/events
+HTML	playpit/event-list.html
+Controller	PlaypitController
+メソッド	showEventList()
+8.2 処理内容
+    1. event_typeがPLAYPITのイベントを取得する
+    2. 公開状態がPUBLISHEDのデータだけを対象とする
+    3. 開催日時の降順で並べる
+    4. 開催予定・開催中・終了済みに分類する
+    5. Modelへ設定する
+    6. 一覧画面を表示する
+8.3 表示項目
+    • メイン画像
+    • イベント名
+    • 開催日時
+    • 会場名
+    • 短い説明
+    • 開催状態
+    • 詳細ページへのリンク
+9. PLAYPITイベント詳細画面
+9.1 基本情報
+項目	内容
+画面ID	PPT-003
+URL	/playpit/{eventSlug}
+HTML	playpit/event-detail.html
+Controller	PlaypitController
+メソッド	showEventDetail()
+9.2 Controller引数
+引数	型	内容
+eventSlug	String	URL上のイベント識別子
+9.3 処理内容
+    1. eventSlugを使用してイベントを取得する
+    2. イベントが存在しない場合は404画面へ遷移する
+    3. イベント種別がPLAYPITであることを確認する
+    4. 公開状態を確認する
+    5. 参加クリエイターを表示順で取得する
+    6. 展示作品を表示順で取得する
+    7. 公開済み感想数を取得する
+    8. Modelへ設定する
+    9. イベント詳細画面を表示する
+9.4 使用Service
+    • EventService#getPublishedPlaypitEventBySlug()
+    • CreatorService#getCreatorsByEventId()
+    • ArtworkService#getArtworksByEventId()
+    • MessageService#countPublishedMessagesByEventId()
+9.5 Model項目
+属性名	型
+event	EventDetailResponse
+creators	List<CreatorSummaryResponse>
+artworks	List<ArtworkSummaryResponse>
+messageCount	long
+10. クリエイター一覧画面
+10.1 基本情報
+項目	内容
+画面ID	PPT-004
+URL	/playpit/{eventSlug}/creators
+HTML	playpit/creator-list.html
+Controller	CreatorController
+メソッド	showCreatorList()
+10.2 処理内容
+    1. イベントを取得する
+    2. イベントに参加しているクリエイターを取得する
+    3. event_creators.display_orderの昇順で並べる
+    4. 非公開クリエイターは除外する
+    5. 各クリエイターの出展作品数を取得する
+    6. 一覧画面へ表示する
+10.3 表示項目
+    • プロフィール画像
+    • 表示名
+    • ジャンル
+    • 紹介文
+    • 出展作品数
+    • 個人ページへのリンク
+11. クリエイター個人ページ
+11.1 基本情報
+項目	内容
+画面ID	PPT-005
+URL	/playpit/{eventSlug}/creators/{creatorSlug}
+HTML	playpit/creator-detail.html
+Controller	CreatorController
+メソッド	showCreatorDetail()
+11.2 Controller引数
+    • eventSlug
+    • creatorSlug
+11.3 処理内容
+    1. イベントを取得する
+    2. クリエイターを取得する
+    3. イベントとクリエイターの参加関係を確認する
+    4. 関係が存在しない場合は404とする
+    5. 該当イベントに出展された作品を取得する
+    6. クリエイター向け公開済み感想を取得する
+    7. 感想数を取得する
+    8. Modelへ設定する
+    9. 個人ページを表示する
+11.4 Serviceメソッド
+Service	メソッド
+CreatorService	getCreatorDetailBySlug()
+CreatorService	validateCreatorParticipation()
+ArtworkService	getArtworksByEventAndCreator()
+MessageService	getPublishedMessagesByCreator()
+MessageService	countPublishedMessagesByCreator()
+12. 作品一覧画面
+12.1 基本情報
+項目	内容
+画面ID	ART-001
+URL	/playpit/{eventSlug}/artworks
+HTML	playpit/artwork-list.html
+Controller	ArtworkController
+メソッド	showArtworkList()
+12.2 処理内容
+    1. イベントを取得する
+    2. イベントに紐づく作品を取得する
+    3. event_artworks.display_orderの昇順で表示する
+    4. 非公開作品は除外する
+    5. 制作者情報を同時に取得する
+    6. 一覧画面を表示する
+13. 作品詳細画面
+13.1 基本情報
+項目	内容
+画面ID	ART-002
+URL	/playpit/{eventSlug}/artworks/{artworkSlug}
+HTML	playpit/artwork-detail.html
+Controller	ArtworkController
+メソッド	showArtworkDetail()
+13.2 処理内容
+    1. イベントを取得する
+    2. 作品を取得する
+    3. 作品が該当イベントに出展されているか確認する
+    4. 出展されていない場合は404とする
+    5. 制作者情報を取得する
+    6. 作品に紐づく公開済み感想を取得する
+    7. 感想件数を取得する
+    8. 感想投稿用のイベントID、クリエイターID、作品IDをModelへ設定する
+    9. 作品詳細画面を表示する
+13.3 表示項目
+    • 作品名
+    • メイン画像
+    • サブ画像
+    • 作品説明
+    • 制作背景
+    • 制作意図
+    • 素材・技法
+    • 制作年
+    • クリエイター名
+    • クリエイター個人ページへのリンク
+    • 感想投稿フォーム
+    • 公開済み感想
+    • 羽花ページへのリンク
+14. 感想投稿フォーム詳細設計
+14.1 HTML項目
+項目名	HTML要素	id	name
+感想本文	textarea	messageText	message
+表示名	input	displayName	displayName
+匿名設定	checkbox	anonymousFlag	anonymous
+規約同意	checkbox	agreementFlag	agreement
+投稿ボタン	button	submitMessageButton	なし
+エラー表示	div	messageError	なし
+文字数表示	span	messageCount	なし
+14.2 hidden項目
+    • eventId
+    • creatorId
+    • artworkId
+14.3 入力条件
+項目	条件
+感想本文	必須、1〜300文字
+表示名	任意、30文字以内
+匿名設定	任意
+規約同意	必須
+匿名設定がONの場合、表示名が入力されていても公開時は「匿名」と表示する。
+15. JavaScript感想投稿処理
+15.1 ファイル
+static/js/message.js
+15.2 関数一覧
+関数名	処理
+initializeMessageForm()	初期イベント登録
+updateMessageCount()	文字数更新
+validateMessageForm()	入力チェック
+submitMessage()	API送信
+disableSubmitButton()	投稿ボタン非活性
+enableSubmitButton()	投稿ボタン活性
+showMessageError()	エラー表示
+clearMessageError()	エラー削除
+showPetalAnimation()	花びら追加演出
+resetMessageForm()	入力欄初期化
+15.3 validateMessageForm()処理
+    1. 感想本文の前後空白を除去する
+    2. 感想本文が空の場合はエラーとする
+    3. 300文字を超える場合はエラーとする
+    4. 表示名が30文字を超える場合はエラーとする
+    5. 規約同意がOFFの場合はエラーとする
+    6. エラーがある場合はfalseを返す
+    7. 正常の場合はtrueを返す
+15.4 submitMessage()処理
+    1. 二重送信中でないことを確認する
+    2. validateMessageForm()を実行する
+    3. エラーの場合は処理を終了する
+    4. 投稿ボタンを非活性にする
+    5. フォームの入力値からJSONを生成する
+    6. POST /api/messagesを呼び出す
+    7. HTTP 201の場合は投稿成功と判定する
+    8. レスポンスから感想IDと花びら情報を取得する
+    9. showPetalAnimation()を実行する
+    10. フォームを初期化する
+    11. エラーの場合は内容に応じたメッセージを表示する
+    12. 最終的に投稿ボタンを活性化する
+16. 感想投稿API詳細設計
+16.1 API情報
+項目	内容
+API ID	API-MSG-001
+URL	/api/messages
+メソッド	POST
+Content-Type	application/json
+Controller	MessageController
+メソッド	createMessage()
+16.2 リクエスト
+項目	型	必須
+eventId	Long	必須
+creatorId	Long	条件付き
+artworkId	Long	条件付き
+message	String	必須
+displayName	String	任意
+anonymous	Boolean	必須
+agreement	Boolean	必須
+creatorIdまたはartworkIdのどちらか一方以上を必須とする。
+16.3 Controller処理
+MessageController#createMessage()は以下を行う。
+    1. MessageRequestを受け取る
+    2. Bean Validationを実行する
+    3. Validationエラー時はHTTP 400を返す
+    4. MessageService#registerMessage()を呼び出す
+    5. Serviceの戻り値をMessageResponseへ設定する
+    6. 正常時はHTTP 201を返す
+16.4 レスポンス
+項目	型	内容
+messageId	Long	登録された感想ID
+status	String	公開状態
+petalType	Integer	花びら種類
+petalSeed	Long	花びら配置用値
+createdAt	String	投稿日時
+completionMessage	String	完了メッセージ
+17. MessageRequest設計
+17.1 クラス
+world.creve.dto.request.MessageRequest
+17.2 フィールド
+フィールド	型	Validation
+eventId	Long	@NotNull
+creatorId	Long	独自チェック
+artworkId	Long	独自チェック
+message	String	@NotBlank, @Size(max=300)
+displayName	String	@Size(max=30)
+anonymous	Boolean	@NotNull
+agreement	Boolean	@AssertTrue
+18. MessageController設計
+18.1 クラス責務
+感想投稿APIの受付とHTTPレスポンス生成を担当する。
+18.2 メソッド
+createMessage()
+項目	内容
+引数	MessageRequest request
+戻り値	ResponseEntity<MessageResponse>
+正常時	HTTP 201
+入力エラー	HTTP 400
+対象なし	HTTP 404
+投稿制限	HTTP 429
+システムエラー	HTTP 500
+Controller内では業務判定やRepository操作を行わない。
+19. MessageService設計
+19.1 クラス責務
+感想投稿に関する業務処理を担当する。
+19.2 registerMessage()処理
+項目	内容
+引数	MessageRequest request
+戻り値	MessageResponse
+処理順
+    1. イベントIDでイベントを取得する
+    2. イベントが存在しない場合はEventNotFoundExceptionを送出する
+    3. イベントが公開中または投稿可能状態か確認する
+    4. creatorIdが指定されている場合はクリエイターを取得する
+    5. クリエイターがイベント参加者か確認する
+    6. artworkIdが指定されている場合は作品を取得する
+    7. 作品がイベント展示作品か確認する
+    8. 作品の制作者とcreatorIdが一致するか確認する
+    9. 感想本文をtrimする
+    10. 禁止文字列・不適切表現を確認する
+    11. 同一内容の連続投稿を確認する
+    12. 花びら種類を決定する
+    13. 花びら配置用のpetalSeedを生成する
+    14. Message Entityを生成する
+    15. 公開状態を設定する
+    16. MessageRepository#save()を実行する
+    17. 保存結果からMessageResponseを生成する
+    18. 呼び出し元へ返す
+20. 投稿公開状態
+状態	値	内容
+審査待ち	PENDING	管理者確認前
+公開	PUBLISHED	一般画面へ表示
+非公開	HIDDEN	管理者が非表示
+削除	DELETED	論理削除
+初期リリースでは、禁止条件に該当しない投稿をPUBLISHEDとする。
+簡易フィルターで判断できない投稿はPENDINGとする。
+21. 連続投稿判定
+21.1 判定条件
+同一利用者から以下の条件に該当する場合、投稿を制限する。
+    • 短時間に一定回数以上投稿
+    • 同一本文を連続投稿
+    • 同一イベント・同一作品への連続投稿
+21.2 初期設定
+項目	値
+判定時間	60秒
+最大投稿回数	3回
+同一本文判定時間	10分
+具体的な利用者識別方法は、セッションIDと一時的なハッシュ値を使用する。
+生のIPアドレスは永続保存しない。
+22. Message Entity設計
+22.1 テーブル
+messages
+22.2 カラム
+カラム	Java型	DB型	NULL
+message_id	Long	BIGSERIAL	不可
+event_id	Long	BIGINT	不可
+creator_id	Long	BIGINT	可
+artwork_id	Long	BIGINT	可
+message	String	VARCHAR(300)	不可
+display_name	String	VARCHAR(30)	可
+is_anonymous	Boolean	BOOLEAN	不可
+status	MessageStatus	VARCHAR(20)	不可
+petal_type	Integer	SMALLINT	不可
+petal_seed	Long	BIGINT	不可
+created_at	LocalDateTime	TIMESTAMP	不可
+updated_at	LocalDateTime	TIMESTAMP	不可
+22.3 制約
+    • event_idはeventsテーブルの外部キー
+    • creator_idはcreatorsテーブルの外部キー
+    • artwork_idはartworksテーブルの外部キー
+    • creator_idまたはartwork_idのどちらかを必須とする
+    • petal_typeは1〜5
+    • 物理削除は原則行わない
+23. 羽花表示画面
+23.1 基本情報
+項目	内容
+画面ID	UKA-001
+URL	/playpit/{eventSlug}/uka
+HTML	playpit/uka.html
+Controller	UkaController
+メソッド	showUka()
+23.2 Controller処理
+    1. イベントを取得する
+    2. 公開済み感想を取得する
+    3. 投稿総数を取得する
+    4. 羽の成長段階を判定する
+    5. 花びら表示用データを作成する
+    6. Modelへ設定する
+    7. 羽花画面を表示する
+23.3 Service
+UkaService#getUkaData(eventId)
+23.4 戻り値
+UkaResponse
+項目	型
+eventId	Long
+eventTitle	String
+messageCount	Long
+growthStage	Integer
+petals	List<PetalResponse>
+24. 羽花成長判定
+24.1 calculateGrowthStage()処理
+投稿数	成長段階
+0	0
+1〜10	1
+11〜30	2
+31〜60	3
+61以上	4
+24.2 Javaメソッド
+項目	内容
+クラス	UkaService
+メソッド	calculateGrowthStage()
+引数	long messageCount
+戻り値	int
+25. 花びら情報生成
+25.1 PetalResponse
+項目	型	内容
+messageId	Long	感想ID
+petalType	Integer	花びら種類
+positionX	Double	X座標比率
+positionY	Double	Y座標比率
+rotation	Double	回転角度
+scale	Double	拡大率
+message	String	感想本文
+displayName	String	表示名
+artworkTitle	String	作品名
+creatorName	String	クリエイター名
+25.2 配置ロジック
+    1. petalSeedを疑似乱数の初期値として使用する
+    2. 同じ感想は再表示時も同じ位置に配置する
+    3. 成長段階ごとに使用可能な配置領域を変える
+    4. 花びら同士が完全に重ならないように調整する
+    5. 画面サイズに応じて座標を比率で変換する
+    6. 投稿順ではなく、羽全体の形を優先して配置する
+26. 羽花JavaScript設計
+26.1 ファイル
+static/js/uka.js
+26.2 関数
+関数	処理
+initializeUka()	初期表示
+renderPetals()	花びら描画
+createPetalElement()	花びら要素生成
+openMessageModal()	感想モーダル表示
+closeMessageModal()	モーダルを閉じる
+addNewPetal()	投稿直後の花びら追加
+resizeUkaCanvas()	画面サイズ変更対応
+26.3 描画方式
+初期リリースでは、HTML要素とCSS transformを使用して花びらを配置する。
+大量投稿時に性能上の問題が発生した場合はCanvasまたはWebGLへ変更する。
+27. 管理者ログイン
+27.1 基本情報
+項目	内容
+URL	/admin/login
+HTML	admin/login.html
+認証	Spring Security
+成功後	/admin/dashboard
+失敗時	ログイン画面へエラー表示
+27.2 入力項目
+    • メールアドレス
+    • パスワード
+    • ログインボタン
+27.3 セキュリティ
+    • パスワードはハッシュ化して保存
+    • 一定回数失敗時は一時制限
+    • セッション固定攻撃対策
+    • CSRF対策
+    • 管理画面は未認証アクセス不可
+28. 投稿管理画面
+28.1 基本情報
+項目	内容
+画面ID	ADM-006
+URL	/admin/messages
+HTML	admin/message-list.html
+Controller	AdminController
+メソッド	showMessageList()
+28.2 検索条件
+    • イベント
+    • クリエイター
+    • 作品
+    • 公開状態
+    • 投稿日
+    • キーワード
+28.3 操作
+    • 公開
+    • 非公開
+    • 論理削除
+    • 詳細表示
+28.4 Service
+    • MessageService#searchMessages()
+    • MessageService#changeStatus()
+    • MessageService#deleteMessage()
+29. 例外設計
+29.1 独自例外
+例外	発生条件
+EventNotFoundException	イベントが存在しない
+CreatorNotFoundException	クリエイターが存在しない
+ArtworkNotFoundException	作品が存在しない
+InvalidParticipationException	イベント参加関係が不正
+InvalidMessageException	感想内容が不正
+RateLimitExceededException	投稿回数超過
+UnauthorizedException	未認証
+ForbiddenException	権限不足
+29.2 共通例外処理
+GlobalExceptionHandlerを作成する。
+例外	HTTPステータス
+入力エラー	400
+未認証	401
+権限不足	403
+データなし	404
+投稿制限	429
+その他	500
+内部例外の詳細を一般利用者へ表示しない。
+30. ログ設計
+30.1 出力対象
+    • アプリケーション起動
+    • 管理者ログイン成功・失敗
+    • 感想投稿成功
+    • 感想投稿失敗
+    • 投稿状態変更
+    • データ登録・更新失敗
+    • APIエラー
+    • DB接続エラー
+30.2 ログに含めない情報
+    • 感想本文全体
+    • パスワード
+    • APIキー
+    • セッションID
+    • 個人を特定できる情報
+31. DB詳細設計
+31.1 events
+カラム	DB型	制約
+event_id	BIGSERIAL	PK
+event_type	VARCHAR(20)	NOT NULL
+slug	VARCHAR(100)	UNIQUE、NOT NULL
+title	VARCHAR(150)	NOT NULL
+summary	VARCHAR(300)	NULL可
+description	TEXT	NULL可
+main_image_url	VARCHAR(500)	NULL可
+start_at	TIMESTAMP	NOT NULL
+end_at	TIMESTAMP	NOT NULL
+venue_name	VARCHAR(150)	NULL可
+address	VARCHAR(300)	NULL可
+access	TEXT	NULL可
+price	VARCHAR(100)	NULL可
+ticket_url	VARCHAR(500)	NULL可
+status	VARCHAR(20)	NOT NULL
+created_at	TIMESTAMP	NOT NULL
+updated_at	TIMESTAMP	NOT NULL
+31.2 creators
+カラム	DB型	制約
+creator_id	BIGSERIAL	PK
+slug	VARCHAR(100)	UNIQUE、NOT NULL
+name	VARCHAR(100)	NOT NULL
+name_kana	VARCHAR(100)	NULL可
+profile	TEXT	NULL可
+concept	TEXT	NULL可
+genre	VARCHAR(100)	NULL可
+profile_image_url	VARCHAR(500)	NULL可
+website_url	VARCHAR(500)	NULL可
+status	VARCHAR(20)	NOT NULL
+created_at	TIMESTAMP	NOT NULL
+updated_at	TIMESTAMP	NOT NULL
+31.3 artworks
+カラム	DB型	制約
+artwork_id	BIGSERIAL	PK
+creator_id	BIGINT	FK、NOT NULL
+slug	VARCHAR(100)	UNIQUE、NOT NULL
+title	VARCHAR(150)	NOT NULL
+description	TEXT	NULL可
+background	TEXT	NULL可
+concept	TEXT	NULL可
+materials	VARCHAR(300)	NULL可
+production_year	SMALLINT	NULL可
+main_image_url	VARCHAR(500)	NULL可
+status	VARCHAR(20)	NOT NULL
+created_at	TIMESTAMP	NOT NULL
+updated_at	TIMESTAMP	NOT NULL
+32. Repository詳細設計
+32.1 EventRepository
+必要なメソッド：
+    • findBySlugAndStatus()
+    • findByEventTypeAndStatusOrderByStartAtDesc()
+    • findUpcomingEvents()
+32.2 CreatorRepository
+必要なメソッド：
+    • findBySlugAndStatus()
+    • findCreatorsByEventId()
+32.3 ArtworkRepository
+必要なメソッド：
+    • findBySlugAndStatus()
+    • findArtworksByEventId()
+    • findArtworksByEventIdAndCreatorId()
+32.4 MessageRepository
+必要なメソッド：
+    • save()
+    • findPublishedMessagesByEventId()
+    • findPublishedMessagesByCreatorId()
+    • findPublishedMessagesByArtworkId()
+    • countPublishedMessagesByEventId()
+    • countRecentMessagesBySessionHash()
+    • existsRecentDuplicateMessage()
+複雑な検索が必要な場合は、MessageRepositoryCustomを作成する。
+33. セキュリティ設計
+33.1 公開画面
+認証不要：
+    • CreVe
+    • PLAYPIT
+    • クリエイター
+    • 作品
+    • 羽花
+    • ライブ
+    • LP
+    • 感想投稿API
+33.2 管理画面
+認証必須：
+/admin/**
+/api/admin/**
+33.3 CSRF
+    • HTMLフォーム送信ではCSRFトークンを使用
+    • JavaScriptからPOSTする場合もCSRFヘッダーを付与
+    • 管理画面はSpring SecurityのCSRF対策を有効にする
+34. 性能設計
+    • イベント詳細は関連情報を必要以上に個別取得しない
+    • 一覧画面はページングまたは表示件数制限を行う
+    • 画像はWebPを優先する
+    • 花びらが多い場合は表示件数を制御する
+    • 羽花では最大表示花びら数を初期段階で300件とする
+    • 300件を超えた場合は一部を代表表示し、投稿総数は別に表示する
+35. テスト観点
+35.1 感想投稿
+    • 正常な感想を投稿できる
+    • 空文字を投稿できない
+    • 空白だけを投稿できない
+    • 300文字を投稿できる
+    • 301文字を投稿できない
+    • 規約未同意では投稿できない
+    • 匿名投稿できる
+    • 表示名ありで投稿できる
+    • 存在しないイベントには投稿できない
+    • イベントに存在しない作品には投稿できない
+    • 連続投稿が制限される
+    • 同一内容の重複投稿が制限される
+    • 投稿成功後に花びらが表示される
+    • 通信失敗時に再投稿できる
+35.2 羽花
+    • 投稿0件の表示
+    • 1件の表示
+    • 10件の表示
+    • 11件の表示
+    • 30件の表示
+    • 31件の表示
+    • 60件の表示
+    • 61件以上の表示
+    • 花びらクリックで感想が表示される
+    • 画面幅変更後も配置が崩れない
+    • 非公開投稿が表示されない
+36. 実装順序
+実装は以下の順番で行う。
+    1. Spring Bootプロジェクト作成
+    2. DB接続設定
+    3. Entity作成
+    4. Repository作成
+    5. Service作成
+    6. Controller作成
+    7. CreVe・PLAYPIT基本画面作成
+    8. クリエイター一覧・詳細作成
+    9. 作品一覧・詳細作成
+    10. 感想投稿API作成
+    11. 感想投稿JavaScript作成
+    12. 羽花表示ロジック作成
+    13. 管理者認証作成
+    14. 投稿管理画面作成
+    15. ライブ画面作成
+    16. LP作成
+    17. 単体テスト
+    18. 結合テスト
+    19. 総合テスト
+    20. 本番公開
+37. 詳細設計完了条件
+以下を満たした時点で詳細設計完了とする。
+    • 全画面のHTMLファイルが決まっている
+    • 全画面のURLが決まっている
+    • Controllerクラスとメソッドが決まっている
+    • Serviceクラスとメソッドが決まっている
+    • Repositoryの検索処理が決まっている
+    • DTOの項目が決まっている
+    • EntityとDBカラムが決まっている
+    • APIのURL、入力、出力が決まっている
+    • JavaScriptの関数と処理順が決まっている
+    • 羽花の成長・配置ロジックが決まっている
+    • 入力チェックが決まっている
+    • エラー処理が決まっている
+    • 管理者権限が決まっている
+    • テスト観点が決まっている
+38. 詳細設計の結論
+本システムでは、HTML・CSS・JavaScriptで画面と羽花の表現を実装し、Java・Spring Bootでイベント、クリエイター、作品、感想、管理者情報を処理する。
+感想投稿は、以下の処理経路で実装する。
+作品詳細・クリエイター詳細
+        ↓
+HTML入力フォーム
+        ↓
+JavaScript入力チェック
+        ↓
+感想投稿API
+        ↓
+MessageController
+        ↓
+MessageService
+        ↓
+MessageRepository
+        ↓
+messagesテーブル
+        ↓
+投稿結果
+        ↓
+花びら追加演出
+        ↓
+羽花への反映
+本書を確認することで、実装担当者が作成すべきクラス、メソッド、画面、API、データベース処理を判断できる状態とする。
+＞

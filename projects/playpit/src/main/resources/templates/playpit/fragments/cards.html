@@ -1,0 +1,18 @@
+<div xmlns:th="http://www.thymeleaf.org">
+ <article th:fragment="eventCard(e,base)" class="card event-card">
+  <img th:if="${e.mainImageUrl}" th:src="${e.mainImageUrl}" th:alt="${e.title}" loading="lazy" width="640" height="420">
+  <p class="eyebrow" th:text="${e.phase}"></p><h2><a th:href="@{${base + '/' + e.slug}}" th:text="${e.title}"></a></h2>
+  <p><time th:text="${#temporals.format(e.startAt,'yyyy/MM/dd HH:mm')}"></time> 〜 <time th:text="${#temporals.format(e.endAt,'yyyy/MM/dd HH:mm')}"></time></p>
+  <p th:text="${e.venueName}"></p><p th:text="${e.summary}"></p>
+ </article>
+ <article th:fragment="creatorCard(c)" class="card creator-card">
+  <img th:if="${c.profileImageUrl}" th:src="${c.profileImageUrl}" th:alt="${c.name}" loading="lazy" width="320" height="320">
+  <h3><a th:href="@{/playpit/{e}/creators/{c}(e=${event.slug},c=${c.slug})}" th:text="${c.name}"></a></h3>
+  <p th:text="${c.genre}"></p><p class="preserve-lines" th:text="${c.profile}"></p><p th:text="'出展作品：' + ${c.artworkCount} + '点'"></p>
+ </article>
+ <article th:fragment="artworkCard(a)" class="card artwork-card">
+  <img th:if="${a.mainImageUrl}" th:src="${a.mainImageUrl}" th:alt="${a.title}" loading="lazy" width="500" height="400">
+  <h3><a th:href="@{/playpit/{e}/artworks/{a}(e=${event.slug},a=${a.slug})}" th:text="${a.title}"></a></h3>
+  <a th:href="@{/playpit/{e}/creators/{c}(e=${event.slug},c=${a.creatorSlug})}" th:text="${a.creatorName}"></a>
+ </article>
+</div>

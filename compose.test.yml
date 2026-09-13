@@ -1,0 +1,18 @@
+name: creve-design-test
+services:
+  db:
+    image: postgres:17
+    environment:
+      POSTGRES_DB: creve_modular_test
+      POSTGRES_USER: creve_test
+      POSTGRES_PASSWORD: ${CREVE_TEST_DB_PASSWORD:?Use scripts/verify.sh}
+      TZ: Asia/Tokyo
+    ports:
+      - "127.0.0.1:55433:5432"
+    tmpfs:
+      - /var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U creve_test -d creve_modular_test"]
+      interval: 3s
+      timeout: 3s
+      retries: 30

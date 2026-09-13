@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+<th:block th:replace="~{common/head :: head('PLAYPITイベント詳細')}"></th:block>
+<link rel="stylesheet" th:href="@{/playpit/css/playpit.css}"/>
+</head>
+<body>
+<a class="skip-link" href="#mainContent">本文へ移動</a>
+<div th:replace="~{common/header :: header}"></div>
+<main id="mainContent">
+<a th:href="@{/playpit/events}">イベント一覧</a><p class="eyebrow" th:text="${event.phase}"></p><h1 th:text="${event.title}"></h1>
+<img class="hero-image" th:alt="${event.title}" th:if="${event.mainImageUrl}" th:src="${event.mainImageUrl}"/>
+<p class="lead" th:text="${event.summary}"></p><p class="preserve-lines" th:text="${event.description}"></p>
+<dl class="event-facts"><dt>開催日時</dt><dd><time th:text="${event.startAt}"></time> 〜 <time th:text="${event.endAt}"></time></dd><dt>会場</dt><dd th:text="${event.venueName}"></dd><dt>住所</dt><dd th:text="${event.address}"></dd><dt>アクセス</dt><dd class="preserve-lines" th:text="${event.access}"></dd><dt>料金</dt><dd th:text="${event.price}"></dd></dl>
+<a class="button" rel="noopener noreferrer" target="_blank" th:href="${event.ticketUrl}" th:if="${event.ticketUrl}">チケット・来場予約</a>
+<h2>参加クリエイター</h2><div class="cards"><th:block th:each="c : ${creators}"><article th:replace="~{playpit/fragments/cards :: creatorCard(${c})}"></article></th:block></div><a th:href="@{/playpit/{e}/creators(e=${event.slug})}">クリエイター一覧</a>
+<h2>展示作品</h2><div class="cards"><th:block th:each="a : ${artworks}"><article th:replace="~{playpit/fragments/cards :: artworkCard(${a})}"></article></th:block></div><a th:href="@{/playpit/{e}/artworks(e=${event.slug})}">作品一覧</a>
+<section class="panel"><h2>言葉で育つ羽花</h2><p th:text="${messageCount} + '件の言葉が届いています。'"></p><a class="button" th:href="@{/playpit/{e}/uka(e=${event.slug})}">イベント全体の羽花</a></section>
+</main>
+<div th:replace="~{common/footer :: footer}"></div>
+</body></html>

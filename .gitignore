@@ -1,55 +1,13 @@
-# Spring Boot / Maven
-HELP.md
-target/
-.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
-
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
-
-### IntelliJ IDEA ###
-.idea
-*.iws
-*.iml
-*.ipr
-
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-build/
-!**/src/main/**/build/
-!**/src/test/**/build/
-
-### VS Code ###
-
-.vscode/
-
-
-target/
-.metadata/
+**/target/
+.env
+.env.*
+!.env.example
+private-backups/
+*.log
+.DS_Store
+.idea/
 .classpath
 .project
 .settings/
-
-# Legacy local build outputs
-.next
-node_modules
-.pnpm-store
-out
-
-.env
-*.log
-.DS_Store
-
-# Java
-*.class
+verification/local-results/
+__pycache__/

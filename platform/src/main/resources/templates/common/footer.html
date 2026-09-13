@@ -1,0 +1,8 @@
+<footer xmlns:th="http://www.thymeleaf.org" th:fragment="footer" class="global-footer">
+ <a class="brand" th:href="@{/}">CreVe</a>
+ <nav aria-label="フッターナビゲーション"><a th:href="@{/about}">CreVeについて</a>
+ <a th:each="link : ${projectLinks}" th:href="@{${link.path}}" th:text="${link.title}">プロジェクト</a>
+ <a th:if="${socialUrl != null}" th:href="${socialUrl}" target="_blank" rel="noopener noreferrer">SNS</a>
+ <a th:href="@{/contact}">お問い合わせ</a><a th:href="@{/privacy}">プライバシーポリシー</a><a th:href="@{/terms}">利用規約</a></nav>
+ <small>© CreVe. 作品の著作権は各権利者に帰属します。</small>
+</footer>
