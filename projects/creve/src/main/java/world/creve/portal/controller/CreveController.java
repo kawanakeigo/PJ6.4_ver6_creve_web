@@ -22,7 +22,7 @@ import world.creve.portal.service.*;
         for(var p:projects)projectEvents.put(p.key(),p.upcomingEvents());
         model.addAttribute("projectEvents",projectEvents);
         model.addAttribute("playpitEvents",projectEvents.getOrDefault("PLAYPIT",List.of()));
-        model.addAttribute("liveEvents",projectEvents.getOrDefault("LIVE",List.of()));
+        model.addAttribute("nljEvents",projectEvents.getOrDefault("NLJ",List.of()));
         model.addAttribute("newsList",events.getLatestNews());
         return "creve/index";
     }

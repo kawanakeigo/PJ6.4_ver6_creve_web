@@ -8,7 +8,7 @@
 <a class="skip-link" href="#mainContent">本文へ移動</a>
 <div th:replace="~{common/header :: header}"></div>
 <main id="mainContent">
-<section class="hero"><p class="eyebrow">CreVe</p><h1>CreVe</h1><p class="lead">PLAYPIT、ライブ、LP、将来のVR空間をつなぐ、クリエイターと来場者のためのWeb基盤。</p></section>
+<section class="hero"><p class="eyebrow">CreVe</p><h1>CreVe</h1><p class="lead">PLAYPIT、NLJ、LP、将来のVR空間をつなぐ、クリエイターと来場者のためのWeb基盤。</p></section>
 <section class="cards"><article class="card" th:each="p : ${projectLinks}"><h2><a th:href="@{${p.path}}" th:text="${p.title}"></a></h2><ul><li th:each="e : ${projectEvents[p.key]}"><a th:href="@{${p.path + '/' + e.slug}}" th:text="${e.title}"></a><p th:text="${e.summary}"></p><time th:text="${e.startAt}"></time></li></ul></article></section>
 <section><h2>最新のお知らせ</h2><article th:each="n : ${newsList}" class="card"><time th:text="${n.publishedAt}"></time><h3 th:text="${n.title}"></h3><p class="preserve-lines" th:text="${n.body}"></p></article><a th:href="@{/news}">お知らせ一覧</a></section>
 </main>

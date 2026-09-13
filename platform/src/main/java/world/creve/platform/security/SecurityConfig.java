@@ -14,7 +14,7 @@ import org.slf4j.LoggerFactory;
         return new BCryptPasswordEncoder(12);
     }
     @Bean public SecurityFilterChain filterChain(HttpSecurity http,LoginAttemptService attempts)throws Exception {
-        http.authorizeHttpRequests(a->a.dispatcherTypeMatchers(DispatcherType.ERROR).permitAll() .requestMatchers("/admin/login","/platform/**","/creve/**","/playpit/**","/live/**","/lp/**").permitAll() .requestMatchers("/admin/**","/api/admin/**").hasRole("ADMIN").anyRequest().permitAll());
+        http.authorizeHttpRequests(a->a.dispatcherTypeMatchers(DispatcherType.ERROR).permitAll() .requestMatchers("/admin/login","/platform/**","/creve/**","/creators/**","/playpit/**","/PLAYPIT/**","/NLJ/**","/live/**","/lp/**").permitAll() .requestMatchers("/admin/**","/api/admin/**").hasRole("ADMIN").anyRequest().permitAll());
         http.formLogin(f->f.loginPage("/admin/login").loginProcessingUrl("/admin/login").usernameParameter("email") .successHandler((req,res,auth)-> {
             attempts.success(auth.getName());log.info("admin_login_success");res.sendRedirect(req.getContextPath()+"/admin/dashboard");
         }

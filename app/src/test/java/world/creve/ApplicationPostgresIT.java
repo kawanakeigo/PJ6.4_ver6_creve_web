@@ -15,7 +15,8 @@ import java.util.concurrent.*;
     static ConfigurableApplicationContext context;
     static JdbcTemplate db;
     static String base;
-    static long event,creator,artwork;
+    static long event,creator,artwork,nljEvent;
+    static String playpitSlug,nljSlug;
     static Client client;
     @BeforeAll static void boot() throws Exception {
         String url=System.getenv("CREVE_DATASOURCE_URL");
@@ -23,14 +24,17 @@ import java.util.concurrent.*;
         context=new SpringApplication(CreveApplication.class).run("--server.port=0","--creve.posting-enabled=true","--creve.bootstrap-admin=false","--spring.thymeleaf.cache=false");
         db=context.getBean(JdbcTemplate.class);
         base="http://localhost:"+context.getEnvironment().getProperty("local.server.port");
-        String slug="test-"+UUID.randomUUID().toString().substring(0,8);
-        event=db.queryForObject("insert into events(event_type,slug,title,start_at,end_at,status) values('PLAYPIT',?,'テスト展示',localtimestamp,localtimestamp+interval '1 day','PUBLISHED') returning event_id",Long.class,slug);
-        creator=db.queryForObject("insert into creators(slug,name,status) values(?,'作者','PUBLISHED') returning creator_id",Long.class,slug+"-creator");
-        artwork=db.queryForObject("insert into artworks(creator_id,slug,title,status) values(?,?,'作品','PUBLISHED') returning artwork_id",Long.class,creator,slug+"-art");
+        playpitSlug="test-"+UUID.randomUUID().toString().substring(0,8);
+        nljSlug=playpitSlug+"-nlj";
+        event=db.queryForObject("insert into events(event_type,slug,title,start_at,end_at,status) values('PLAYPIT',?,'テスト展示',localtimestamp,localtimestamp+interval '1 day','PUBLISHED') returning event_id",Long.class,playpitSlug);
+        nljEvent=db.queryForObject("insert into events(event_type,slug,title,start_at,end_at,status) values('NLJ',?,'テストライブ',localtimestamp,localtimestamp+interval '1 day','PUBLISHED') returning event_id",Long.class,nljSlug);
+        creator=db.queryForObject("insert into creators(slug,name,status) values(?,'作者','PUBLISHED') returning creator_id",Long.class,playpitSlug+"-creator");
+        artwork=db.queryForObject("insert into artworks(creator_id,slug,title,status) values(?,?,'作品','PUBLISHED') returning artwork_id",Long.class,creator,playpitSlug+"-art");
         db.update("insert into event_creators(event_id,creator_id,display_order) values(?,?,1)",event,creator);
+        db.update("insert into event_creators(event_id,creator_id,display_order) values(?,?,1)",nljEvent,creator);
         db.update("insert into event_artworks(event_id,artwork_id,display_order) values(?,?,1)",event,artwork);
         client=new Client();
-        client.refresh("/playpit/"+slug+"/artworks/"+slug+"-art");
+        client.refresh("/playpit/"+playpitSlug+"/artworks/"+playpitSlug+"-art");
         assertTrue(client.page.contains("messageText"));
     }
     @AfterAll static void stop() {
@@ -66,7 +70,20 @@ import java.util.concurrent.*;
     }
     @Test @Order(1)void publicAndMissingRoutes()throws Exception {
         assertEquals(200,client.get("/").statusCode());
+        assertEquals(200,client.get("/creators").statusCode());
+        var creatorPage=client.get("/creators/"+playpitSlug+"-creator");
+        assertEquals(200,creatorPage.statusCode(),creatorPage.body());
+        assertTrue(creatorPage.body().contains("messageText"));
+        assertTrue(creatorPage.body().contains("テストライブ"));
         assertEquals(200,client.get("/playpit/events").statusCode());
+        assertEquals(200,client.get("/NLJ").statusCode());
+        assertEquals(200,client.get("/NLJ/"+nljSlug).statusCode());
+        var legacyNlj=client.get("/live/"+nljSlug);
+        assertEquals(308,legacyNlj.statusCode());
+        assertEquals("/NLJ/"+nljSlug,legacyNlj.headers().firstValue("location").orElseThrow());
+        var uppercasePlaypit=client.get("/PLAYPIT/events");
+        assertEquals(308,uppercasePlaypit.statusCode());
+        assertEquals("/playpit/events",uppercasePlaypit.headers().firstValue("location").orElseThrow());
         assertEquals(404,client.get("/playpit/does-not-exist").statusCode());
         assertEquals(302,client.get("/admin/messages").statusCode());
         assertEquals(401,client.get("/api/admin/no-route").statusCode());

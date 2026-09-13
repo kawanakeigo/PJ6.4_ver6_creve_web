@@ -3,7 +3,8 @@
  <button type="button" id="globalMenuButton" aria-controls="globalMenu" aria-expanded="false">メニュー</button>
  <nav id="globalMenu" aria-label="サイト内ナビゲーション">
   <a th:href="@{/about}">CreVeについて</a>
-  <a th:each="link : ${projectLinks}" th:href="@{${link.path}}" th:text="${link.title}" th:classappend="${requestPath.startsWith(link.path)} ? 'active' : ''">プロジェクト</a>
+  <a th:href="@{/creators}" th:classappend="${requestPath != null and requestPath.startsWith('/creators')} ? 'active' : ''">クリエイター</a>
+  <a th:each="link : ${projectLinks}" th:href="@{${link.path}}" th:text="${link.title}" th:classappend="${requestPath != null and requestPath.startsWith(link.path)} ? 'active' : ''">プロジェクト</a>
   <a th:href="@{/vr}">VR構想</a><a th:href="@{/news}">お知らせ</a><a th:href="@{/contact}">お問い合わせ</a>
  </nav>
 </header>

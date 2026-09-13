@@ -27,6 +27,7 @@ docs/DECISIONS.md
 docs/FILE_INDEX.md
 docs/LEGACY_DATA.md
 docs/REMEDIATION.md
+docs/SITE_STRUCTURE.md
 docs/VERIFICATION.md
 docs/source/PLAYPIT_design_source.txt
 docs/source/previous-audit.md
@@ -83,6 +84,7 @@ platform/src/main/java/world/creve/platform/spi/ProjectContribution.java
 platform/src/main/java/world/creve/platform/util/PageBounds.java
 platform/src/main/java/world/creve/platform/util/SafeUrls.java
 platform/src/main/resources/db/migration/V001__shared_catalog.sql
+platform/src/main/resources/db/migration/V005__rename_live_event_type_to_nlj.sql
 platform/src/main/resources/static/platform/css/common.css
 platform/src/main/resources/static/platform/js/common.js
 platform/src/main/resources/templates/admin/dashboard.html
@@ -108,14 +110,14 @@ projects/creve/src/main/resources/templates/creve/index.html
 projects/creve/src/main/resources/templates/creve/news/list.html
 projects/creve/src/main/resources/templates/creve/public-content.html
 projects/creve/src/main/resources/templates/creve/vr.html
-projects/live/pom.xml
-projects/live/src/main/java/world/creve/live/LiveContribution.java
-projects/live/src/main/java/world/creve/live/controller/LiveController.java
-projects/live/src/main/java/world/creve/live/service/LiveService.java
-projects/live/src/main/resources/static/live/css/live.css
-projects/live/src/main/resources/static/live/images/live/opening-live.svg
-projects/live/src/main/resources/templates/live/detail.html
-projects/live/src/main/resources/templates/live/list.html
+projects/nlj/pom.xml
+projects/nlj/src/main/java/world/creve/nlj/NljContribution.java
+projects/nlj/src/main/java/world/creve/nlj/controller/NljController.java
+projects/nlj/src/main/java/world/creve/nlj/service/NljService.java
+projects/nlj/src/main/resources/static/nlj/css/nlj.css
+projects/nlj/src/main/resources/static/nlj/images/nlj/opening-nlj.svg
+projects/nlj/src/main/resources/templates/nlj/detail.html
+projects/nlj/src/main/resources/templates/nlj/list.html
 projects/lp/pom.xml
 projects/lp/src/main/java/world/creve/lp/controller/LandingPageController.java
 projects/lp/src/main/java/world/creve/lp/dto/LandingPageResponse.java
@@ -130,6 +132,7 @@ projects/playpit/src/main/java/world/creve/playpit/PlaypitContribution.java
 projects/playpit/src/main/java/world/creve/playpit/controller/AdminController.java
 projects/playpit/src/main/java/world/creve/playpit/controller/ArtworkController.java
 projects/playpit/src/main/java/world/creve/playpit/controller/CreatorController.java
+projects/playpit/src/main/java/world/creve/playpit/controller/LegacyPlaypitRouteController.java
 projects/playpit/src/main/java/world/creve/playpit/controller/MessageController.java
 projects/playpit/src/main/java/world/creve/playpit/controller/PlaypitAdminController.java
 projects/playpit/src/main/java/world/creve/playpit/controller/PlaypitController.java
@@ -249,6 +252,8 @@ projects/playpit/src/main/resources/templates/playpit/creator-detail.html
 projects/playpit/src/main/resources/templates/playpit/creator-list.html
 projects/playpit/src/main/resources/templates/playpit/event-detail.html
 projects/playpit/src/main/resources/templates/playpit/event-list.html
+projects/playpit/src/main/resources/templates/playpit/global-creator-detail.html
+projects/playpit/src/main/resources/templates/playpit/global-creator-list.html
 projects/playpit/src/main/resources/templates/playpit/fragments/cards.html
 projects/playpit/src/main/resources/templates/playpit/fragments/message-form.html
 projects/playpit/src/main/resources/templates/playpit/fragments/uka.html

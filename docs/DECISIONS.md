@@ -5,6 +5,8 @@
 | 項目 | 今回の扱い |
 |---|---|
 | 事業別モジュール化 | 今回のユーザー指示による構造変更。別サーバー化ではない。 |
+| 公開URLの大文字・小文字 | 正規URLは詳細サイト構成の `/playpit` と `/NLJ`。資料内の `/PLAYPIT` と旧実装の `/live` は308で正規URLへ転送する。 |
+| 共通クリエイター画面 | `/creators/{creatorId}` の作品・参加履歴は横断表示し、感想と羽花は選択したPLAYPITイベントの範囲に限定する。複数参加時は `event` クエリで切り替える。 |
 | 公開環境のDB | 新規のPostgreSQLを使い、旧DBは移行元として別扱い。ローカル支援はPostgreSQL 17、ポート55432、別名volume。 |
 | 技術バージョン | 提出物のSpring Boot 4.1.0 / Java 21を維持。設計指定のJUnit 5は5.13.4で管理。Framework 7のSpringExtensionはJUnit 6以上が必要なため、結合試験ではSpringExtensionを使わずSpringApplicationをJUnit5の@BeforeAllで起動する。 |
 | 投稿の再送 | 任意の`Idempotency-Key` HTTPヘッダーを追加。設計のJSON項目は変えない。同一セッション・同一キー・同一内容は同じmessageIdを返す。10分経過後はこの再送保証の対象外。 |

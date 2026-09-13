@@ -6,15 +6,16 @@
 
 |確認|結果|何を確認したか／確認していないか|
 |---|---|---|
-|Java構文|全98製品Java＋6テストJava＋2検証用JavaをJDK 21で構文解析しエラー0|構文解析であり、Spring依存込みの型解決・コンパイルではない|
+|Java構文|全99製品Java＋6テストJava＋2検証用JavaをJDK 21で構文解析しエラー0|構文解析であり、Spring依存込みの型解決・コンパイルではない|
 |純Java部品|実製品ソース7ファイルをjavacでコンパイルし実行。20,039アサーション成功|投稿境界・制限・URL・5,000個の座標/種別/安定性の反復検査。20,039個の独立業務ケースという意味ではない。スタブなし|
 |画面部品|Chromiumで35項目成功|実HTML断片・JS/CSSを使用。APIは明示的に模擬。Spring/Thymeleaf/実DBは起動していない|
 |静的資材・依存|131チェック成功|POM XML、JS構文、資材リンク、断片ファイル、PJ間import禁止等。最終の管理画面移動後も構文・資材を再確認|
 |導入・PJ追加|15チェック成功|shell/Python構文、仮フォルダでのdry-run/バックアップ差し替え、2つの新PJ追加、重複拒否。Mac原本は触らない|
 |元ファイルの保持|177ファイルのSHA-256が提出ZIPと一致|原本を変更しない再構成|
 |Maven全体ビルド・JUnit|成功|全7モジュールをJDK 25（Java 21 release指定）でコンパイル・パッケージ化。単体テスト60件、失敗0・エラー0・スキップ0|
-|実PostgreSQL・Spring・HTTP・CSRF|成功|PostgreSQL 17.11、Flyway 4マイグレーション、JPA validate、Spring Boot実起動、HTTP/CSRF/投稿/制限/公開境界/DB制約の結合テスト9件が成功。管理者の実ログイン操作は未実施|
-|Safari・実端末・負荷・本番構成|**未検証**|Chromiumの部品検証で代替できない|
+|実PostgreSQL・Spring・HTTP・CSRF|成功|PostgreSQL 17.11、Flyway 5マイグレーション、JPA validate、Spring Boot実起動、HTTP/CSRF/投稿/制限/公開境界/DB制約の結合テスト9件が成功。`/creators`、`/NLJ`、旧URLの308転送を含む。管理者の実ログイン操作は未実施|
+|起動後の公開画面|成功|Chromiumの1440×900と390×844で `/creators` と `/NLJ` の空状態、ナビゲーション、文字収まりを確認。`/live` と `/PLAYPIT/events` の正規URLへの転送も確認|
+|Safari・実端末・負荷・本番構成|**未検証**|Chromiumの起動確認で代替できない|
 
 ## 実際のログ
 

@@ -11,6 +11,7 @@ public interface EventRepository extends JpaRepository<Event,Long> {
     Page<Event> findByEventTypeAndStatusOrderByStartAtDesc(String eventType,String status,Pageable pageable);
     @Query("select e from Event e where e.eventType=:type and e.status='PUBLISHED' and e.endAt>=:now order by e.startAt asc") List<Event> findUpcomingEvents(@Param("type") String type,@Param("now") LocalDateTime now,Pageable pageable);
     @Query("select e from Event e where e.eventType=:type and e.status='PUBLISHED' and e.endAt<:now order by e.startAt desc") Page<Event> findPastEvents(@Param("type") String type,@Param("now") LocalDateTime now,Pageable pageable);
+    @Query("select distinct e from Event e join EventCreator ec on ec.eventId=e.eventId where ec.creatorId=:creatorId and e.status='PUBLISHED' order by e.startAt desc,e.eventId desc") List<Event> findPublishedEventsByCreatorId(@Param("creatorId") Long creatorId);
     boolean existsBySlugAndEventIdNot(String slug,Long eventId);
     boolean existsBySlug(String slug);
 }

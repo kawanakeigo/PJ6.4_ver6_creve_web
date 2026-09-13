@@ -32,6 +32,9 @@ import world.creve.platform.util.PageBounds;
     public List<EventResponse> getUpcomingPlaypitEvents() {
         return upcoming("PLAYPIT");
     }
+    public List<EventResponse> getPublishedEventsByCreatorId(Long creatorId) {
+        return events.findPublishedEventsByCreatorId(creatorId).stream().map(this::summary).toList();
+    }
     public List<EventResponse> upcoming(String type) {
         return events.findUpcomingEvents(type,LocalDateTime.now(clock),PageRequest.of(0,3)).stream().map(this::summary).toList();
     }

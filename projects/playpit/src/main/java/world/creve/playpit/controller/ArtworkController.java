@@ -33,6 +33,7 @@ import world.creve.playpit.service.*;
         model.addAttribute("artwork",artwork);
         model.addAttribute("creatorId",artwork.creatorId());
         model.addAttribute("artworkId",artwork.artworkId());
+        model.addAttribute("selectedEventSlug",null);
         var data=uka.getUkaData(event.eventId(),null,artwork.artworkId());
         model.addAttribute("uka",data);
         model.addAttribute("messageCount",data.messageCount());

@@ -5,7 +5,7 @@
  <groupId>world.creve</groupId><artifactId>creve-parent</artifactId><version>1.0.0-SNAPSHOT</version><packaging>pom</packaging>
  <name>CreVe project workspace</name>
  <properties><java.version>21</java.version><project.build.sourceEncoding>UTF-8</project.build.sourceEncoding><junit.version>5.13.4</junit.version></properties>
- <modules><module>platform</module><module>projects/creve</module><module>projects/playpit</module><module>projects/live</module><module>projects/lp</module><module>app</module></modules>
+ <modules><module>platform</module><module>projects/creve</module><module>projects/playpit</module><module>projects/nlj</module><module>projects/lp</module><module>app</module></modules>
  <build><pluginManagement><plugins>
   <plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-compiler-plugin</artifactId><configuration><release>21</release><parameters>true</parameters></configuration></plugin>
   <plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-surefire-plugin</artifactId><configuration><useModulePath>false</useModulePath></configuration></plugin>

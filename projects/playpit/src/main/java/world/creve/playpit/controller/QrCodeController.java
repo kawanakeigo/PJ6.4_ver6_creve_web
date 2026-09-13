@@ -34,6 +34,10 @@ import world.creve.platform.util.SafeUrls;
         creators.validateCreatorParticipation(e.eventId(),c.creatorId());
         return png(base+"/playpit/"+e.slug()+"/creators/"+c.slug()+"?source=qr");
     }
+    @GetMapping(value="/creators/{creatorSlug}/qr.png",produces=MediaType.IMAGE_PNG_VALUE) public ResponseEntity<byte[]> globalCreatorQr(@PathVariable String creatorSlug)throws Exception {
+        var c=creators.getCreatorDetailBySlug(creatorSlug);
+        return png(base+"/creators/"+c.slug()+"?source=qr");
+    }
     private ResponseEntity<byte[]> png(String url)throws Exception {
         var matrix=new QRCodeWriter().encode(url,BarcodeFormat.QR_CODE,512,512,Map.of(EncodeHintType.MARGIN,4));
         var out=new ByteArrayOutputStream();

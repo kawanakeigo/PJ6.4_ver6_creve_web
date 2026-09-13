@@ -1,0 +1,2 @@
+/* NLJ owns these overrides. Shared structural styles live in platform. */
+.hero{border-bottom:1px solid var(--line);}

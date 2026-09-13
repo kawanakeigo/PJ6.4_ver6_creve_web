@@ -42,6 +42,10 @@ import world.creve.platform.util.PageBounds;
     public List<ArtworkSummaryResponse> getArtworksByEventAndCreator(Long eventId,Long creatorId,int page) {
         return artworks.findArtworksByEventIdAndCreatorId(eventId,creatorId,PageRequest.of(PageBounds.page(page),30));
     }
+    public List<ArtworkSummaryResponse> getPublishedArtworksByCreatorId(Long creatorId,int page) {
+        creators.requirePublished(creatorId);
+        return artworks.findPublishedArtworksByCreatorId(creatorId,PageRequest.of(PageBounds.page(page),30));
+    }
     public ArtworkDetailResponse detail(Artwork a) {
         Creator c=creators.requirePublished(a.getCreatorId());
         return new ArtworkDetailResponse(a.getArtworkId(),a.getSlug(),a.getTitle(),a.getDescription(),a.getBackground(),a.getConcept(),a.getMaterials(),a.getProductionYear(),a.getMainImageUrl(),c.getCreatorId(),c.getSlug(),c.getName(),media.findByArtworkIdOrderByDisplayOrderAsc(a.getArtworkId()).stream().map(m->new MediaResponse(m.getMediaType(),m.getUrl(),m.getAltText())).toList());

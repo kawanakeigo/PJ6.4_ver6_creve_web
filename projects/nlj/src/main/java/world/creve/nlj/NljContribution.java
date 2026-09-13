@@ -1,25 +1,25 @@
-package world.creve.live;
+package world.creve.nlj;
 import java.util.List;
 import org.springframework.stereotype.Component;
 import world.creve.platform.spi.ProjectContribution;
 import world.creve.platform.dto.EventResponse;
-import world.creve.live.service.LiveService;
-@Component public class LiveContribution implements ProjectContribution {
-    private final LiveService live;
-    public LiveContribution(LiveService live) {
-        this.live=live;
+import world.creve.nlj.service.NljService;
+@Component public class NljContribution implements ProjectContribution {
+    private final NljService nlj;
+    public NljContribution(NljService nlj) {
+        this.nlj=nlj;
     }
     public int displayOrder() { return 20; }
     public String key() {
-        return "LIVE";
+        return "NLJ";
     }
     public String title() {
-        return "ライブ";
+        return "NLJ";
     }
     public String path() {
-        return "/live";
+        return "/NLJ";
     }
     public List<EventResponse> upcomingEvents() {
-        return live.getUpcomingLiveEvents();
+        return nlj.getUpcomingNljEvents();
     }
 }

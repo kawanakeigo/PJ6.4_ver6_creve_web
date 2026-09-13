@@ -1,4 +1,4 @@
-# CreVe / PLAYPIT — 設計修正版・事業別モジュール構成
+# CreVe / PLAYPIT / NLJ — 設計修正版・事業別モジュール構成
 
 2026-09-14。元の提出ZIPは変更せず、新しく再構成したソース一式です。
 
@@ -25,7 +25,7 @@ creve-web/                         ← 作業フォルダ・親Mavenプロジェ
 │   │   └── src/main/
 │   │       ├── java/world/creve/playpit/
 │   │       └── resources/{templates/playpit,static/playpit}/
-│   ├── live/                      ← ライブのJava・画面・CSS
+│   ├── nlj/                       ← NLJのJava・画面・CSS
 │   └── lp/                        ← LPのJava・画面・CSS
 ├── app/                           ← 起動・実行設定・管理者初期作成
 ├── config/public/                 ← 運営者が確定する公開文章
@@ -34,7 +34,7 @@ creve-web/                         ← 作業フォルダ・親Mavenプロジェ
 └── verification/                  ← 実施済み検証の結果と再実行コード
 ```
 
-単なるフォルダ分けではなく、**各PJにpom.xmlを持たせたMavenモジュール**です。CreVe・PLAYPIT・ライブ・LP間の直接importはありません。各PJが共有基盤に依存し、`app` が組み合わせて起動します。既存URL `/`、`/playpit/...`、`/live/...`、`/lp/...` は維持します。
+単なるフォルダ分けではなく、**各PJにpom.xmlを持たせたMavenモジュール**です。CreVe・PLAYPIT・NLJ・LP間の直接importはありません。各PJが共有基盤に依存し、`app` が組み合わせて起動します。正規URLは `/`、`/creators/...`、`/playpit/...`、`/NLJ/...`、`/lp/...` です。旧 `/PLAYPIT/...` と `/live/...` は正規URLへ転送します。
 
 **サーバーをPJごとに分けた構成ではありません。** 元設計の「一つのSpring Boot＋Thymeleafアプリ」を維持しながら、ソース・画面資材・依存関係を分離しています。別Gitリポジトリ化・別サーバー公開・DB分割は今回行っていません。
 
@@ -140,6 +140,7 @@ java -jar app/target/app-1.0.0-SNAPSHOT.jar
 ## 7. 詳細資料
 
 `docs/ARCHITECTURE.md`：事業別分離と元設計との対応。
+`docs/SITE_STRUCTURE.md`：公開URLの全体構成と実装配置。
 `docs/DECISIONS.md`：設計本文にない補足判断と未確定事項。
 `docs/REMEDIATION.md`：前回監査A01〜A35への対応。
 `docs/VERIFICATION.md`：確認できたこと・できていないこと。

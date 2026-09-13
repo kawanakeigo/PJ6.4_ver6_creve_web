@@ -27,6 +27,7 @@ import world.creve.playpit.dto.response.UkaResponse;
         model.addAttribute("creatorCounts",messages.creatorCounts(event.eventId()));
         model.addAttribute("creatorId",creatorId);
         model.addAttribute("artworkId",artworkId);
+        model.addAttribute("selectedEventSlug",null);
         return "playpit/uka";
     }
     @GetMapping("/api/uka") @ResponseBody public UkaResponse getUkaData(@RequestParam Long eventId,@RequestParam(required=false)Long creatorId,@RequestParam(required=false)Long artworkId) {

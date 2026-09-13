@@ -2,7 +2,7 @@ package world.creve.platform.service;
 import java.util.*;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.*;
 import world.creve.platform.entity.*;
 import world.creve.platform.repository.*;
 import world.creve.platform.dto.*;
@@ -25,6 +25,9 @@ import world.creve.platform.util.PageBounds;
     }
     public void validateCreatorParticipation(Long eventId,Long creatorId) {
         if(!participants.existsByEventIdAndCreatorId(eventId,creatorId))throw new InvalidParticipationException();
+    }
+    public Page<CreatorSummaryResponse> getPublishedCreators(int page) {
+        return creators.findPublishedCreators(PageRequest.of(PageBounds.page(page),30));
     }
     public List<CreatorSummaryResponse> getCreatorsByEventId(Long eventId) {
         return getCreatorsByEventId(eventId,0);
