@@ -1,0 +1,6 @@
+CREATE ROLE creve LOGIN PASSWORD 'creve_local';
+CREATE ROLE playpit LOGIN PASSWORD 'playpit_local';
+CREATE ROLE nlj LOGIN PASSWORD 'nlj_local';
+CREATE DATABASE creve OWNER creve;
+CREATE DATABASE playpit OWNER playpit;
+CREATE DATABASE nlj OWNER nlj;

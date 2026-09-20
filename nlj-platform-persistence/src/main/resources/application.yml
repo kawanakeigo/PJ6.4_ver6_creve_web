@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: nlj-platform-persistence
+  profiles:
+    default: dev
+  datasource:
+    url: ${NLJ_DATASOURCE_URL:jdbc:postgresql://localhost:55432/nlj}
+    username: ${NLJ_DATASOURCE_USERNAME:nlj}
+    password: ${NLJ_DATASOURCE_PASSWORD:nlj_local}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+  flyway:
+    enabled: false
+  thymeleaf:
+    cache: false
+server:
+  port: ${NLJ_PORT:8082}
+  servlet:
+    session:
+      cookie:
+        name: NLJ_ADMIN_SESSION
+        http-only: true
+        same-site: lax
+nlj:
+  creve-public-base-url: ${CREVE_PUBLIC_BASE_URL:http://localhost:8080}
+  line-channel-id: ${LINE_CHANNEL_ID:}
+  liff-id: ${LIFF_ID:}
+  demo-catalog: ${NLJ_DEMO_CATALOG:false}
+  public-ranking-enabled: ${PUBLIC_RANKING_ENABLED:false}
+  artist-exp-public-enabled: ${ARTIST_EXP_PUBLIC_ENABLED:false}

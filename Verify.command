@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 set -euo pipefail
 cd "$(dirname "$0")"
-exec bash scripts/verify.sh
+exec bash scripts/verify-p0.sh

@@ -1,0 +1,62 @@
+:root{--black:#090b0a;--white:#f7f8f4;--gray:#9ba19c;--line:#303530;--green:#9ff735;--coral:#ff655f;--yellow:#ffd84a}
+*{box-sizing:border-box}
+body{margin:0;background:var(--black);color:var(--white);font-family:Arial,"Noto Sans JP",sans-serif;line-height:1.65}
+a{color:inherit}
+button{font:inherit}
+.wrap{width:min(1120px,calc(100% - 40px));margin-inline:auto}
+.nlj-header{height:70px;padding:0 max(20px,calc((100% - 1120px)/2));display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);background:var(--black)}
+.nlj-mark{font-size:24px;font-weight:900;color:var(--green);text-decoration:none}
+.nlj-header nav{display:flex;gap:24px}
+.nlj-header nav a{font-size:13px;text-decoration:none}
+.nlj-hero{min-height:calc(100vh - 132px);max-height:820px;background:url('/images/nlj-hero.png') center/cover no-repeat;display:flex;align-items:center}
+.hero-copy{width:min(1120px,calc(100% - 40px));margin:auto}
+.hero-copy h1{font-size:86px;line-height:.9;margin:16px 0 22px}
+.hero-copy>p:not(.kicker){font-size:20px}
+.kicker,.section-heading>p,.artist-label{font-size:12px;font-weight:900;color:var(--green)}
+.action{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:11px 18px;background:var(--green);color:#10140d;border:0;border-radius:4px;font-weight:900;text-decoration:none;cursor:pointer}
+.action:disabled{background:#697067;color:#cfd3cf;cursor:not-allowed}
+.event-band{padding:90px 0;background:var(--white);color:var(--black)}
+.section-heading{display:flex;align-items:end;justify-content:space-between;border-bottom:3px solid var(--black);margin-bottom:28px}
+.section-heading h2{font-size:44px;margin:0}
+.event-list article{display:grid;grid-template-columns:180px 1fr 1fr 160px;gap:24px;align-items:center;padding:26px 0;border-bottom:1px solid #bdc2bd}
+.event-list h3,.event-list p{margin:0}
+.event-list a{font-weight:800}
+.page{min-height:calc(100vh - 160px);padding-block:70px}
+.page>h1{font-size:58px;line-height:1.15;margin:10px 0}
+.lede{font-size:20px;color:#c4c9c4;max-width:700px}
+.cycle-line{display:flex;gap:16px;align-items:center;padding:16px 0;margin:28px 0 60px;border-block:1px solid var(--line)}
+.cycle-line span{font-size:12px;color:var(--gray)}
+.artist-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.artist-list article{border:1px solid var(--line);border-top:5px solid var(--coral);padding:24px;min-height:320px;display:flex;flex-direction:column}
+.artist-list article:nth-child(2){border-top-color:var(--green)}
+.artist-list article:nth-child(3){border-top-color:var(--yellow)}
+.artist-list h3{font-size:28px;margin:18px 0 4px}
+.artist-list .action{margin-top:auto}
+.artist-order{font-size:12px;color:var(--gray)}
+.vote-layout{display:grid;grid-template-columns:1fr 460px;gap:70px}
+.vote-panel,.pending-panel{border:1px solid var(--line);padding:30px;border-radius:6px}
+.vote-panel h2{font-size:38px}
+.vote-panel dl div{display:grid;grid-template-columns:100px 1fr;padding:12px 0;border-top:1px solid var(--line)}
+.vote-panel dt{color:var(--gray);font-size:12px}
+.vote-panel dd{margin:0}
+.vote-panel .action{width:100%;margin-top:22px}
+.result{min-height:54px;color:#c9cdc9}
+.pending-panel{max-width:720px;border-left:6px solid var(--yellow)}
+footer{border-top:1px solid var(--line);padding:38px 0}
+footer .wrap{display:flex;justify-content:space-between}
+:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
+@media(max-width:760px){.nlj-header{height:auto;min-height:64px;padding:12px 20px}
+.nlj-header nav{gap:12px}
+.nlj-hero{min-height:calc(100svh - 112px);align-items:flex-start;background-position:62% center}
+.hero-copy{padding-block:18px}
+.hero-copy .kicker{margin:0 0 8px}
+.hero-copy h1{font-size:48px;margin:10px 0}
+.hero-copy>p:not(.kicker){font-size:17px;margin:8px 0}
+.hero-copy .action{min-height:44px}
+.event-list article{grid-template-columns:1fr;gap:8px}
+.artist-list,.vote-layout{grid-template-columns:1fr}
+.section-heading{align-items:start;flex-direction:column}
+.section-heading h2{font-size:34px}
+.page>h1{font-size:42px}
+.vote-layout{gap:24px}
+}

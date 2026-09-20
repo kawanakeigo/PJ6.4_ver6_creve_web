@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+ <th:block th:replace="~{common/head :: head('クリエイター編集')}"></th:block>
+ <link rel="stylesheet" th:href="@{/playpit/css/admin.css}">
+ <script defer th:src="@{/playpit/js/admin.js}"></script>
+</head>
+<body >
+<a class="skip-link" href="#mainContent">本文へ移動</a>
+<div th:replace="~{common/header :: header}"></div>
+<main id="mainContent"><h1>クリエイターの登録・編集</h1><div th:replace="~{common/admin-nav :: adminNav}"></div><p class="notice" th:if="${param.saved}">保存しました。</p><form method="post" th:object="${form}" th:action="${id == null} ? @{/admin/creators} : @{/admin/creators/{id}(id=${id})}" class="editor-form"><div class="error" th:if="${#fields.hasAnyErrors()}"><p th:each="err:${#fields.allErrors()}" th:text="${err}"></p></div><label for="slug">URL識別子（半角英小文字・数字・ハイフン）（必須）</label><input id="slug" th:field="*{slug}" type="text" maxlength="100" required><label for="name">クリエイター名（必須）</label><input id="name" th:field="*{name}" type="text" maxlength="100" required><label for="nameKana">ふりがな</label><input id="nameKana" th:field="*{nameKana}" type="text" maxlength="100"><label for="profile">プロフィール</label><textarea id="profile" th:field="*{profile}" maxlength="20000" rows="5"></textarea><label for="concept">制作テーマ・制作意図</label><textarea id="concept" th:field="*{concept}" maxlength="20000" rows="5"></textarea><label for="genre">ジャンル</label><input id="genre" th:field="*{genre}" type="text" maxlength="100"><label for="profileImageUrl">プロフィール画像URL</label><input id="profileImageUrl" th:field="*{profileImageUrl}" type="text" maxlength="500"><label for="websiteUrl">WebサイトURL</label><input id="websiteUrl" th:field="*{websiteUrl}" type="text" maxlength="500"><label for="status">公開状態（必須）</label><select id="status" th:field="*{status}"><option value="DRAFT">下書き</option><option value="PUBLISHED">公開</option><option value="HIDDEN">非公開</option><option value="ARCHIVED">アーカイブ</option></select><label for="snsLinks">SNSリンク（1行に ラベル|URL）</label><textarea id="snsLinks" th:field="*{snsLinks}" maxlength="5000" rows="5"></textarea><button>保存する</button></form></main>
+<div th:replace="~{common/footer :: footer}"></div>
+</body></html>

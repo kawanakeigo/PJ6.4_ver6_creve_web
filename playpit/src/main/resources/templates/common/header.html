@@ -1,0 +1,10 @@
+<header xmlns:th="http://www.thymeleaf.org" th:fragment="header" class="global-header">
+ <a class="brand" th:href="${creveSiteUrl + '/'}" aria-label="CreVe トップ">CreVe</a>
+ <button type="button" id="globalMenuButton" aria-controls="globalMenu" aria-expanded="false">メニュー</button>
+ <nav id="globalMenu" aria-label="サイト内ナビゲーション">
+  <a th:href="${creveSiteUrl + '/about'}">CreVeについて</a>
+  <a th:href="@{/creators}" th:classappend="${requestPath != null and requestPath.startsWith('/creators')} ? 'active' : ''">クリエイター</a>
+  <a th:each="link : ${projectLinks}" th:href="@{${link.path}}" th:text="${link.title}" th:classappend="${requestPath != null and requestPath.startsWith(link.path)} ? 'active' : ''">プロジェクト</a>
+  <a th:href="${creveSiteUrl + '/vr'}">VR構想</a><a th:href="${creveSiteUrl + '/news'}">お知らせ</a><a th:href="${creveSiteUrl + '/contact'}">お問い合わせ</a>
+ </nav>
+</header>

@@ -1,0 +1,10 @@
+nlj:
+  demo-catalog: false
+spring:
+  thymeleaf:
+    cache: true
+server:
+  servlet:
+    session:
+      cookie:
+        secure: true

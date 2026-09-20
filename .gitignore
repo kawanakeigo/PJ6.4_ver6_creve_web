@@ -2,12 +2,12 @@
 .env
 .env.*
 !.env.example
-private-backups/
 *.log
 .DS_Store
 .idea/
 .classpath
 .project
 .settings/
-verification/local-results/
 __pycache__/
+.run/
+var/

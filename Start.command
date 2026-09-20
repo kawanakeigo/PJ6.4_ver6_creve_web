@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 set -euo pipefail
 cd "$(dirname "$0")"
-exec bash scripts/start.sh
+exec bash scripts/start-p0.sh

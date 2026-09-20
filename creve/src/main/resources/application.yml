@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: creve
+  profiles:
+    default: dev
+  datasource:
+    url: ${CREVE_DATASOURCE_URL:jdbc:postgresql://localhost:55432/creve}
+    username: ${CREVE_DATASOURCE_USERNAME:creve}
+    password: ${CREVE_DATASOURCE_PASSWORD:creve_local}
+  flyway:
+    enabled: true
+  thymeleaf:
+    cache: false
+server:
+  port: ${CREVE_PORT:8080}
+  servlet:
+    session:
+      timeout: 30m
+      cookie:
+        name: CREVE_SESSION
+        http-only: true
+        same-site: lax
+features:
+  studio: ${FEATURES_STUDIO:false}
+creve:
+  demo-data: ${CREVE_DEMO_DATA:false}

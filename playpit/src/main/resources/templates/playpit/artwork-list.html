@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+<th:block th:replace="~{common/head :: head('展示作品')}"></th:block>
+<link rel="stylesheet" th:href="@{/playpit/css/playpit.css}"/>
+<link rel="stylesheet" th:href="@{/playpit/css/artwork.css}"/>
+</head>
+<body>
+<a class="skip-link" href="#mainContent">本文へ移動</a>
+<div th:replace="~{common/header :: header}"></div>
+<main id="mainContent">
+<a th:href="@{/playpit/{e}(e=${event.slug})}" th:text="${event.title}"></a><h1>展示作品</h1>
+<div class="cards"><th:block th:each="item : ${artworks}"><article th:replace="~{playpit/fragments/cards :: artworkCard(${item})}"></article></th:block></div>
+<p th:if="${#lists.isEmpty(artworks)}">表示する情報はありません。</p>
+<nav aria-label="一覧のページ" class="pagination"><a th:href="@{${requestPath}(page=${page-1})}" th:if="${page &gt; 0}">前へ</a><span th:text="${page+1}"></span><a th:href="@{${requestPath}(page=${page+1})}" th:if="${#lists.size(artworks) == 30}">次へ</a></nav>
+</main>
+<div th:replace="~{common/footer :: footer}"></div>
+</body></html>

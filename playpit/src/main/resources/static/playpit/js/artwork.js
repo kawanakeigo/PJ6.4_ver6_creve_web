@@ -1,0 +1,2 @@
+'use strict';
+(function(){function initializeArtwork(){document.querySelectorAll('[data-media-image]').forEach(button=>button.addEventListener('click',()=>{const image=document.getElementById('artworkMainImage');if(image){image.src=button.dataset.src;image.alt=button.dataset.alt||'';}}));}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',initializeArtwork);else initializeArtwork();})();

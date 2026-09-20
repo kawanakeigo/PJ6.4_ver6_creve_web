@@ -1,0 +1,10 @@
+<section xmlns:th="http://www.thymeleaf.org" th:fragment="words" class="words-section" th:attr="data-words-page=${messagePage.number}">
+ <h2>届いた感想</h2><p th:text="${messageCount} + '件の感想が公開されています。'"></p>
+ <div data-words-list><article th:each="p : ${words}" class="word-card"><p th:text="${p.message}" class="preserve-lines"></p><p><span th:text="${p.publicName}"></span> · <time th:text="${p.createdAt}"></time></p><p th:if="${p.artworkTitle}" th:text="${p.artworkTitle}"></p><p th:if="${p.creatorName}" th:text="${p.creatorName}"></p><button type="button" class="text-button" th:attr="data-report-message=${p.messageId}">通報</button></article></div>
+ <p th:if="${#lists.isEmpty(words)}" data-words-empty>まだ感想はありません。</p>
+ <nav aria-label="感想のページ" class="pagination" data-words-pagination>
+  <a th:if="${messagePage.hasPrevious()}" th:href="@{${requestPath}(page=${messagePage.number - 1},creatorId=${creatorId},artworkId=${artworkId},event=${selectedEventSlug})}">前の感想</a>
+  <span th:text="${messagePage.number + 1} + ' / ' + ${T(java.lang.Math).max(1,messagePage.totalPages)}"></span>
+  <a th:if="${messagePage.hasNext()}" th:href="@{${requestPath}(page=${messagePage.number + 1},creatorId=${creatorId},artworkId=${artworkId},event=${selectedEventSlug})}">次の感想</a>
+ </nav>
+</section>

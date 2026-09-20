@@ -1,0 +1,12 @@
+features:
+  studio: ${FEATURES_STUDIO:false}
+creve:
+  demo-data: false
+spring:
+  thymeleaf:
+    cache: true
+server:
+  servlet:
+    session:
+      cookie:
+        secure: true
