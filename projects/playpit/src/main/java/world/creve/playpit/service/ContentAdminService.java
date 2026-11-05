@@ -62,6 +62,9 @@ import org.slf4j.LoggerFactory;
     public Page<Artwork> artworks(int page) {
         return artworks.findAll(PageRequest.of(Math.max(0,page),30,Sort.by("artworkId")));
     }
+    public Page<Artwork> artworksByCreator(Long creatorId,int page) {
+        creator(creatorId);return artworks.findByCreatorIdOrderByArtworkIdDesc(creatorId,PageRequest.of(Math.max(0,page),12));
+    }
     public List<EventCreator> participants(Long eventId) {
         return participants.findByEventIdOrderByDisplayOrderAsc(eventId,PageRequest.of(0,300)).getContent();
     }
@@ -93,6 +96,7 @@ import org.slf4j.LoggerFactory;
     public Long saveCreator(Long id,CreatorForm f) {
         if(id==null?creators.existsBySlug(f.getSlug()):creators.existsBySlugAndCreatorIdNot(f.getSlug(),id))throw new InvalidMessageException("この識別子は使用中です。");
         Creator c=id==null?new Creator():creator(id);
+        if(id!=null&&!Objects.equals(c.getSlug(),f.getSlug()))throw new InvalidMessageException("専用ページのURLを維持するため、登録後のURL識別子は変更できません。");
         c.setSlug(slug(f.getSlug()));
         c.setName(f.getName());
         c.setNameKana(f.getNameKana());
@@ -120,13 +124,19 @@ import org.slf4j.LoggerFactory;
         log.info("creator_saved creatorId={}",c.getCreatorId());
         return c.getCreatorId();
     }
+    private String newArtworkSlug() {
+        for(int attempt=0;attempt<5;attempt++) {
+            String candidate="work-"+UUID.randomUUID().toString().replace("-","");
+            if(!artworks.existsBySlug(candidate))return candidate;
+        }
+        throw new InvalidMessageException("作品のURLを準備できませんでした。もう一度保存してください。");
+    }
     public Long saveArtwork(Long id,ArtworkForm f) {
         creator(f.getCreatorId());
-        if(id==null?artworks.existsBySlug(f.getSlug()):artworks.existsBySlugAndArtworkIdNot(f.getSlug(),id))throw new InvalidMessageException("この識別子は使用中です。");
         Artwork a=id==null?new Artwork():artwork(id);
         if(id!=null&&!a.getCreatorId().equals(f.getCreatorId()))throw new InvalidMessageException("登録後の制作者変更は、参加関係・既存感想に影響するためこの画面では変更できません。");
         a.setCreatorId(f.getCreatorId());
-        a.setSlug(slug(f.getSlug()));
+        if(id==null)a.setSlug(newArtworkSlug());
         a.setTitle(f.getTitle());
         a.setDescription(f.getDescription());
         a.setBackground(f.getBackground());
@@ -155,13 +165,17 @@ import org.slf4j.LoggerFactory;
         log.info("artwork_saved artworkId={}",a.getArtworkId());
         return a.getArtworkId();
     }
-    public void addParticipant(Long eventId,Long creatorId,int order,String title) {
+    public void addParticipant(Long eventId,Long creatorId,int order,String title) {addParticipant(eventId,creatorId,order,title,null);}
+    public void addParticipant(Long eventId,Long creatorId,int order,String title,String spaceType) {
+        if("__KEEP".equals(spaceType))spaceType=null;
+        if(spaceType!=null&&!spaceType.isBlank()&&!java.util.Set.of("LARGE","ATELIER","MEDIUM","SMALL").contains(spaceType))throw new InvalidMessageException();
         event(eventId);
         creator(creatorId);
         if(title!=null&&title.length()>150)throw new InvalidMessageException();
         var ec=participants.findByEventIdAndCreatorId(eventId,creatorId).orElseGet(EventCreator::new);
         ec.setEventId(eventId);
         ec.setCreatorId(creatorId);
+        if(spaceType!=null)ec.setSpaceType(spaceType.isBlank()?null:spaceType);
         ec.setDisplayOrder(order);
         ec.setExhibitionTitle(title);
         participants.save(ec);

@@ -11,3 +11,7 @@ private-backups/
 .settings/
 verification/local-results/
 __pycache__/
+
+# Optional local image storage; default is outside the repository.
+uploads/
+.local-data/

@@ -1,5 +1,6 @@
 package world.creve.platform.service;
 import java.util.*;
+import java.time.Clock;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.data.domain.*;
@@ -9,10 +10,12 @@ import world.creve.platform.dto.*;
 import world.creve.platform.exception.*;
 import world.creve.platform.util.PageBounds;
 @Service @Transactional(readOnly=true) public class CreatorService {
+    private final Clock clock;
     private final CreatorRepository creators;
     private final EventCreatorRepository participants;
     private final CreatorLinkRepository links;
-    public CreatorService(CreatorRepository creators,EventCreatorRepository participants,CreatorLinkRepository links) {
+    public CreatorService(CreatorRepository creators,EventCreatorRepository participants,CreatorLinkRepository links,Clock clock) {
+        this.clock=clock;
         this.creators=creators;
         this.participants=participants;
         this.links=links;
@@ -27,7 +30,10 @@ import world.creve.platform.util.PageBounds;
         if(!participants.existsByEventIdAndCreatorId(eventId,creatorId))throw new InvalidParticipationException();
     }
     public Page<CreatorSummaryResponse> getPublishedCreators(int page) {
-        return creators.findPublishedCreators(PageRequest.of(PageBounds.page(page),30));
+        var pageable=PageRequest.of(PageBounds.page(page),30);
+        var sorted=CreatorRanking.sort(creators.findPublishedCreators(Pageable.unpaged()).getContent(),participants.findPublicRankingParticipations(),clock);
+        int from=(int)Math.min(pageable.getOffset(),sorted.size()),to=Math.min(from+30,sorted.size());
+        return new PageImpl<>(sorted.subList(from,to),pageable,sorted.size());
     }
     public List<CreatorSummaryResponse> getCreatorsByEventId(Long eventId) {
         return getCreatorsByEventId(eventId,0);

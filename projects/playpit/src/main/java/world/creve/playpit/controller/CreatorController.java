@@ -1,5 +1,8 @@
 package world.creve.playpit.controller;
 import java.util.List;
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.util.UriComponentsBuilder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -12,13 +15,11 @@ import world.creve.playpit.service.*;
     private final CreatorService creators;
     private final ArtworkService artworks;
     private final MessageService messages;
-    private final UkaService uka;
-    public CreatorController(EventService events,CreatorService creators,ArtworkService artworks,MessageService messages,UkaService uka) {
+    public CreatorController(EventService events,CreatorService creators,ArtworkService artworks,MessageService messages) {
         this.events=events;
         this.creators=creators;
         this.artworks=artworks;
         this.messages=messages;
-        this.uka=uka;
     }
     @GetMapping("/creators")public String showGlobalCreatorList(@RequestParam(defaultValue="0")int page,Model model) {
         model.addAttribute("creators",creators.getPublishedCreators(page));
@@ -36,16 +37,19 @@ import world.creve.playpit.service.*;
         model.addAttribute("playpitEvents",playpitEvents);
         model.addAttribute("selectedEvent",selectedEvent);
         model.addAttribute("selectedEventSlug",selectedEvent==null?null:selectedEvent.slug());
-        model.addAttribute("artworks",artworks.getPublishedArtworksByCreatorId(creator.creatorId(),artworkPage));
+        var displayedWorks=selectedEvent==null ? artworks.getPublishedArtworksByCreatorId(creator.creatorId(),artworkPage) : artworks.getArtworksByEventAndCreator(selectedEvent.eventId(),creator.creatorId(),artworkPage);
+        // Keep the opening selection stable while paging through the same public/event scope.
+        var firstWorks=artworkPage<=0 ? displayedWorks : (selectedEvent==null
+            ? artworks.getPublishedArtworksByCreatorId(creator.creatorId(),0)
+            : artworks.getArtworksByEventAndCreator(selectedEvent.eventId(),creator.creatorId(),0));
+        model.addAttribute("artworks",displayedWorks);
+        model.addAttribute("openingWorks",firstWorks.stream().limit(3).toList());
         model.addAttribute("artworkPage",Math.max(0,artworkPage));
         if(selectedEvent!=null) {
             model.addAttribute("event",selectedEvent);
-            var data=uka.getUkaData(selectedEvent.eventId(),creator.creatorId(),null);
-            model.addAttribute("uka",data);
-            model.addAttribute("messageCount",data.messageCount());
             var words=messages.getPublishedMessages(selectedEvent.eventId(),creator.creatorId(),null,page,30);
             model.addAttribute("messagePage",words);
-            model.addAttribute("words",words.getContent().stream().map(uka::toPetal).toList());
+            model.addAttribute("words",words.getContent().stream().map(world.creve.playpit.dto.response.WordResponse::from).toList());
         }
         return "playpit/global-creator-detail";
     }
@@ -56,24 +60,16 @@ import world.creve.playpit.service.*;
         model.addAttribute("page",Math.max(0,page));
         return "playpit/creator-list";
     }
-    @GetMapping("/playpit/{eventSlug}/creators/{creatorSlug}")public String showCreatorDetail(@PathVariable String eventSlug,@PathVariable String creatorSlug,@RequestParam(defaultValue="0")int page,@RequestParam(defaultValue="0")int artworkPage,Model model) {
+    @GetMapping("/playpit/{eventSlug}/creators/{creatorSlug}")public ResponseEntity<Void> showCreatorDetail(@PathVariable String eventSlug,@PathVariable String creatorSlug,@RequestParam(defaultValue="0")int page,@RequestParam(defaultValue="0")int artworkPage,@RequestParam(required=false)String source) {
         var event=events.getPublishedPlaypitEventBySlug(eventSlug);
         var creator=creators.getCreatorDetailBySlug(creatorSlug);
         creators.validateCreatorParticipation(event.eventId(),creator.creatorId());
-        model.addAttribute("event",event);
-        model.addAttribute("creator",creator);
-        model.addAttribute("creatorId",creator.creatorId());
-        model.addAttribute("artworkId",null);
-        model.addAttribute("selectedEventSlug",null);
-        model.addAttribute("artworks",artworks.getArtworksByEventAndCreator(event.eventId(),creator.creatorId(),artworkPage));
-        model.addAttribute("artworkPage",Math.max(0,artworkPage));
-        var data=uka.getUkaData(event.eventId(),creator.creatorId(),null);
-        model.addAttribute("uka",data);
-        model.addAttribute("messageCount",data.messageCount());
-        var words=messages.getPublishedMessages(event.eventId(),creator.creatorId(),null,page,30);
-        model.addAttribute("messagePage",words);
-        model.addAttribute("words",words.getContent().stream().map(uka::toPetal).toList());
-        return "playpit/creator-detail";
+        var destination=UriComponentsBuilder.fromPath("/creators/{creator}")
+            .queryParam("event",event.slug()).queryParam("page",Math.max(0,page))
+            .queryParam("artworkPage",Math.max(0,artworkPage));
+        if("qr".equals(source))destination.queryParam("source","qr");
+        return ResponseEntity.status(HttpStatus.PERMANENT_REDIRECT)
+            .location(destination.buildAndExpand(creator.slug()).encode().toUri()).build();
     }
     private EventResponse selectEvent(List<EventResponse> playpitEvents,String selectedEventSlug) {
         if(selectedEventSlug==null||selectedEventSlug.isBlank())return playpitEvents.isEmpty()?null:playpitEvents.get(0);

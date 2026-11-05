@@ -35,7 +35,12 @@ import org.slf4j.LoggerFactory;
         ));
         // Default session CSRF protection stays enabled; JavaScript sends the rendered masked token.
         http.sessionManagement(s->s.sessionFixation(f->f.changeSessionId()));
-        http.headers(h->h.contentSecurityPolicy(c->c.policyDirectives("default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' https: http:; media-src 'self' https: http:; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'")));
+        // Only the PLAYPIT top and dedicated recruitment LP route can embed the approved player.
+        String basePolicy="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' https: http:; media-src 'self' https: http:; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'";
+        http.headers(h->h.addHeaderWriter((request,response)-> {
+            String path=request.getRequestURI().substring(request.getContextPath().length());
+            response.setHeader("Content-Security-Policy",basePolicy+(("/playpit".equals(path) || path.matches("/lp/playpit/[a-z0-9-]+")) ? "; frame-src 'self' https://www.youtube-nocookie.com" : ""));
+        }));
         return http.build();
     }
 }

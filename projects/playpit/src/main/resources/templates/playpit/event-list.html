@@ -2,16 +2,17 @@
 
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head>
-<th:block th:replace="~{common/head :: head('PLAYPITイベント一覧')}"></th:block>
+<th:block th:replace="~{playpit/fragments/head :: head('PLAYPITイベント一覧')}"></th:block>
 <link rel="stylesheet" th:href="@{/playpit/css/playpit.css}"/>
 </head>
-<body>
+<body class="playpit-public exhibition-list">
 <a class="skip-link" href="#mainContent">本文へ移動</a>
-<div th:replace="~{common/header :: header}"></div>
+<div th:replace="~{common/navigation :: headerFor(true)}"></div>
 <main id="mainContent">
-<p class="eyebrow">PLAYPIT</p><h1 th:text="${archive} ? '過去のPLAYPIT' : 'イベント一覧'"></h1>
+<p class="eyebrow">PLAYPIT</p><h1 class="editorial-page-title" th:text="${archive} ? 'Past exhibitions' : 'Exhibitions'"></h1>
+<nav class="exhibition-tabs" aria-label="展示一覧の切り替え"><a th:href="@{/playpit/events}" th:attr="aria-current=${!archive ? 'page' : null}">開催予定・開催中・過去の展示</a><a th:href="@{/playpit/archive}" th:attr="aria-current=${archive ? 'page' : null}">過去の展示</a></nav>
 <section th:each="group : ${eventGroups}" th:if="${!#lists.isEmpty(group.value)}"><h2 th:text="${group.key}"></h2><div class="cards"><th:block th:each="e : ${group.value}"><article th:replace="~{playpit/fragments/cards :: eventCard(${e},'/playpit')}"></article></th:block></div></section><p th:if="${events.empty}">該当するイベントはありません。</p>
 <nav aria-label="イベントのページ" class="pagination"><a th:href="@{${requestPath}(page=${events.number-1})}" th:if="${events.hasPrevious()}">前へ</a><span th:text="${events.number+1}"></span><a th:href="@{${requestPath}(page=${events.number+1})}" th:if="${events.hasNext()}">次へ</a></nav>
 </main>
-<div th:replace="~{common/footer :: footer}"></div>
+<div th:replace="~{common/navigation :: footerFor(true)}"></div>
 </body></html>

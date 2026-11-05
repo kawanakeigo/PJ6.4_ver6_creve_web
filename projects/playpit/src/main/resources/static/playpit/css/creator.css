@@ -1,1 +1,23 @@
 .creator-hero{display:grid;grid-template-columns:240px 1fr;gap:40px;margin:40px 0}.creator-hero>img{width:100%;border-radius:8px}.creator-hero nav,.event-context nav{display:flex;gap:12px 20px;flex-wrap:wrap}.event-context a.active{font-weight:700;text-decoration-thickness:3px}.participation-list{display:grid;gap:10px;padding-left:20px}@media(max-width:680px){.creator-hero{grid-template-columns:1fr}.creator-hero>img{max-width:240px}}
+
+/* B theme: stable artist profile and its existing event-specific works. */
+.playpit-public .creator-hero{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:6vw;padding:25px 0 55px;border-bottom:1px solid var(--ink);align-items:center}
+.playpit-public .creator-hero:not(:has(>img)){grid-template-columns:minmax(0,1fr)}
+.playpit-public .creator-hero>img{height:auto;border-radius:0;max-width:520px}
+.playpit-public .creator-hero h1{font-size:clamp(40px,6vw,90px);line-height:1.1;letter-spacing:-.04em;margin-top:0}
+.playpit-public .creator-hero h1:after{content:'';display:block;width:80px;height:7px;background:var(--poster-yellow);margin-top:24px}
+.playpit-public .creator-works{padding:35px 0;border-bottom:1px solid var(--ink)}
+.playpit-public .creator-works .cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:5vw}
+.playpit-public .creator-works .card h3{font-size:26px}.playpit-public .event-context{padding:24px 0;border-bottom:1px solid var(--line)}
+.playpit-public .event-context h2{font-size:18px}.playpit-public .event-context a{padding:8px 0}
+@media(max-width:760px){.playpit-public .creator-hero{grid-template-columns:minmax(0,1fr);gap:28px}.playpit-public .creator-hero>img{max-width:100%}.playpit-public .creator-works .cards{grid-template-columns:minmax(0,1fr)}}
+
+/* Public works introduce the artist; the registered icon and words stay their own. */
+.playpit-public .creator-opening{display:grid;grid-template-columns:repeat(auto-fit,minmax(0,1fr));gap:3vw;padding:38px 0 72px;align-items:center}
+.creator-opening .opening-work{min-width:0;margin:0}.creator-opening img{display:block;width:100%;height:auto;max-height:70vh;object-fit:contain}.creator-opening h2{font-size:16px;font-weight:400;line-height:1.6;margin:18px 0 0;overflow-wrap:anywhere}
+.playpit-public .creator-about{display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;padding:90px 24px 64px;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);background:radial-gradient(circle at 0 0,rgba(0,0,0,.025) 0 24%,transparent 24%),linear-gradient(135deg,transparent 75%,rgba(0,0,0,.025) 75%);background-size:280px 280px}
+.creator-about .creator-icon{width:min(360px,85%);aspect-ratio:1;display:grid;place-items:center;border-radius:50%;overflow:hidden;background:rgba(255,255,255,.65);margin-bottom:32px}.creator-about .creator-icon img{display:block;width:100%;height:100%;object-fit:cover;border-radius:50%;min-height:0}
+.creator-about h1{font-size:clamp(38px,6vw,80px);line-height:1.2;letter-spacing:-.035em;overflow-wrap:anywhere;margin:8px 0 32px;max-width:100%}.creator-about .eyebrow{margin:0}
+.creator-introduction{width:100%;max-width:40em;text-align:left;font-size:17px;line-height:2.15}.creator-introduction .preserve-lines{white-space:pre-wrap;overflow-wrap:anywhere}.creator-concept{margin-top:32px}.creator-concept h2{font-size:16px}
+.creator-links{display:flex;flex-wrap:wrap;justify-content:center;gap:16px 24px;max-width:100%;margin-top:24px;overflow-wrap:anywhere}.creator-scroll{display:flex;flex-direction:column;gap:12px;margin-top:64px;font-size:13px;letter-spacing:.08em}.creator-scroll span{font-size:24px}
+@media(max-width:760px){.playpit-public .creator-opening{grid-template-columns:minmax(0,1fr);gap:44px;padding:28px 0 48px}.creator-opening img{max-height:65vh}.playpit-public .creator-about{padding:56px 18px 40px;background-size:180px 180px}.creator-about .creator-icon{width:min(280px,90%)}.creator-introduction{font-size:16px;line-height:2}.creator-scroll{margin-top:40px}}

@@ -1,1 +1,5 @@
 .media-gallery{display:flex;gap:15px;flex-wrap:wrap;margin:24px 0}.media-gallery button{background:white;border:1px solid var(--line);padding:6px}.media-gallery img{object-fit:contain}.media-gallery video{max-width:100%;max-height:360px}.media-gallery audio{width:100%;max-width:460px}
+
+.playpit-public.artwork-public h1{font-size:clamp(36px,6vw,82px);line-height:1.2;border-bottom:1px solid var(--ink);padding-bottom:30px}
+.playpit-public.artwork-public #artworkMainImage{display:block;max-width:960px;margin:40px auto;height:auto}
+.playpit-public.artwork-public main>h2{padding-top:26px;border-top:1px solid var(--line)}

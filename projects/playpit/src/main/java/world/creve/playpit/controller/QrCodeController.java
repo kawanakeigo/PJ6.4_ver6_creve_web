@@ -32,7 +32,7 @@ import world.creve.platform.util.SafeUrls;
         var e=events.getPublishedPlaypitEventBySlug(eventSlug);
         var c=creators.getCreatorDetailBySlug(creatorSlug);
         creators.validateCreatorParticipation(e.eventId(),c.creatorId());
-        return png(base+"/playpit/"+e.slug()+"/creators/"+c.slug()+"?source=qr");
+        return png(base+"/creators/"+c.slug()+"?event="+e.slug()+"&source=qr");
     }
     @GetMapping(value="/creators/{creatorSlug}/qr.png",produces=MediaType.IMAGE_PNG_VALUE) public ResponseEntity<byte[]> globalCreatorQr(@PathVariable String creatorSlug)throws Exception {
         var c=creators.getCreatorDetailBySlug(creatorSlug);

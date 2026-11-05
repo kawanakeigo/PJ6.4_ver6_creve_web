@@ -10,6 +10,9 @@ import java.time.ZoneId;
     @Column(name="display_order", nullable=false) private Integer displayOrder;
     @Column(name="created_at", nullable=false) private LocalDateTime createdAt;
     @Column(name="updated_at", nullable=false) private LocalDateTime updatedAt;
+    @Column(name="space_type", length=16) private String spaceType;
+    public String getSpaceType() {return spaceType;}
+    public void setSpaceType(String value) {spaceType=value;}
     public EventCreator() {
     }
     public Long getParticipationId() {

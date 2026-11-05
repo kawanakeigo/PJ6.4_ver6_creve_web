@@ -6,7 +6,7 @@
  function clearMessageError(){const node=document.getElementById('messageError');if(node)node.textContent='';}
  function showMessageError(message){const node=document.getElementById('messageError');if(node)node.textContent=message;}
  function disableSubmitButton(){const button=document.getElementById('submitMessageButton');if(button){button.disabled=true;button.textContent='投稿中…';}}
- function enableSubmitButton(){const button=document.getElementById('submitMessageButton');if(button){button.disabled=form?.dataset.enabled!=='true';button.textContent='言葉を花びらにする';}}
+ function enableSubmitButton(){const button=document.getElementById('submitMessageButton');if(button){button.disabled=form?.dataset.enabled!=='true';button.textContent='感想を送る';}}
  function validateMessageForm(){
   if(!form)return false;clearMessageError();const text=document.getElementById('messageText').value.trim(),name=document.getElementById('displayName').value;
   if(!text){showMessageError('感想を入力してください。');return false;}
@@ -25,15 +25,6 @@
   const key=typeof crypto.randomUUID==='function'?crypto.randomUUID():Array.from(crypto.getRandomValues(new Uint8Array(16)),b=>b.toString(16).padStart(2,'0')).join('');pendingMemory={payload:serialized,key};try{sessionStorage.setItem(storageKey,JSON.stringify(pendingMemory));}catch(error){}
   return key;
  }
- async function showPetalAnimation(text,petal){
-  const board=document.querySelector('[data-uka-board]');if(!board)return;
-  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){window.Uka?.addNewPetal(petal);return;}
-  const origin=document.getElementById('messageText').getBoundingClientRect(),target=board.getBoundingClientRect();
-  const element=document.createElement('div');element.className='flying-petal';element.textContent=text;document.body.appendChild(element);element.style.left=(origin.left+origin.width/2-55)+'px';element.style.top=(origin.top+origin.height/2-35)+'px';
-  const x=target.left+target.width*(petal?.positionX??50)/100-(origin.left+origin.width/2);
-  const y=target.top+target.height*(petal?.positionY??50)/100-(origin.top+origin.height/2);
-  try{const animation=element.animate([{transform:'translate(0,0) scale(1)',opacity:1},{transform:`translate(${x}px,${y}px) rotate(-35deg) scale(.3)`,opacity:.4}],{duration:900,easing:'ease-in-out',fill:'forwards'});await animation.finished;}catch(error){}finally{element.remove();window.Uka?.addNewPetal(petal);}
- }
  async function submitMessage(event){
   event?.preventDefault();if(inFlight)return;
   if(form?.dataset.enabled!=='true'){showMessageError('現在は投稿を受け付けていません。');return;}
@@ -51,7 +42,7 @@
    confirmed=true;pendingMemory=null;try{sessionStorage.removeItem(storageKey);}catch(error){}
    document.getElementById('messageSuccess').textContent=result.completionMessage||'投稿を受け付けました。';
    if(result.status==='PUBLISHED'){
-    try{const uka=await window.Uka.refresh();const petal=uka.petals.find(p=>p.messageId===result.messageId);await showPetalAnimation(data.message,petal);await window.Uka.refreshWords();}
+    try{await window.PlaypitWords.refreshWords();}
     catch(error){showMessageError('投稿は保存されましたが、表示の更新に失敗しました。ページを再読み込みしてください。');}
    }
    resetMessageForm();
@@ -59,6 +50,6 @@
   finally{inFlight=false;enableSubmitButton();}
  }
  function initializeMessageForm(){form=document.getElementById('messageForm');if(!form)return;form.addEventListener('submit',submitMessage);document.getElementById('messageText')?.addEventListener('input',updateMessageCount);updateMessageCount();enableSubmitButton();}
- window.PlaypitMessage=Object.freeze({initializeMessageForm,updateMessageCount,validateMessageForm,submitMessage,disableSubmitButton,enableSubmitButton,showMessageError,clearMessageError,showPetalAnimation,resetMessageForm});
+ window.PlaypitMessage=Object.freeze({initializeMessageForm,updateMessageCount,validateMessageForm,submitMessage,disableSubmitButton,enableSubmitButton,showMessageError,clearMessageError,resetMessageForm});
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',initializeMessageForm);else initializeMessageForm();
 })();

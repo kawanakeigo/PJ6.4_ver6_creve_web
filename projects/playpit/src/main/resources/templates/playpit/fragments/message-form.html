@@ -11,6 +11,6 @@
   <label class="checkbox"><input type="checkbox" id="anonymousFlag" name="anonymous" checked>匿名で投稿する</label>
   <label class="checkbox"><input type="checkbox" id="agreementFlag" name="agreement" required><a th:href="@{/terms}" target="_blank" rel="noopener">利用規約</a>と<a th:href="@{/privacy}" target="_blank" rel="noopener">プライバシーポリシー</a>を確認し、同意する</label>
   <div id="messageError" class="error" role="alert"></div><p id="messageSuccess" role="status" aria-live="polite"></p>
-  <button id="submitMessageButton" type="submit" th:disabled="${!postingEnabled}">言葉を花びらにする</button>
+  <button id="submitMessageButton" type="submit" th:disabled="${!postingEnabled}">感想を送る</button>
  </form>
 </section>

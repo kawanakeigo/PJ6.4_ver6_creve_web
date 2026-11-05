@@ -16,7 +16,16 @@ import world.creve.playpit.service.*;
         this.messages=messages;
     }
     @GetMapping("/playpit")public String showTopPage(Model model) {
-        model.addAttribute("events",events.list("PLAYPIT",0));
+        var published=events.homeExhibitions();
+        var upcoming=events.getUpcomingPlaypitEvents();
+        var featured=upcoming.isEmpty() ? published.getContent().stream().findFirst().orElse(null) : upcoming.getFirst();
+        model.addAttribute("events",published);
+        model.addAttribute("event",featured);
+        var participants=featured==null ? java.util.List.<world.creve.platform.dto.CreatorSummaryResponse>of() : creators.getCreatorsByEventId(featured.eventId());
+        var works=featured==null ? java.util.List.<world.creve.platform.dto.ArtworkSummaryResponse>of() : artworks.getArtworksByEventId(featured.eventId());
+        model.addAttribute("creators",participants);
+        model.addAttribute("artworks",works);
+        model.addAttribute("featuredWork",works.stream().filter(a->a.mainImageUrl()!=null && !a.mainImageUrl().isBlank()).findFirst().orElse(null));
         return "playpit/index";
     }
     @GetMapping("/playpit/events")public String showEventList(@RequestParam(defaultValue="0")int page,Model model) {

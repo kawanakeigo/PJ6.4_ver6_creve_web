@@ -1,0 +1,5 @@
+<div xmlns:th="http://www.thymeleaf.org" th:fragment="exhibitions" class="home-exhibitions">
+ <div class="cards home-exhibition-details"><th:block th:each="e,stat : ${events.content}" th:if="${stat.index < 3}"><article th:replace="~{playpit/fragments/cards :: eventCard(${e},'/playpit')}"></article></th:block></div>
+ <div class="home-exhibition-archive" th:if="${events.content.size() > 3}"><a class="home-exhibition-compact" th:each="e,stat : ${events.content}" th:if="${stat.index >= 3}" th:href="@{/playpit/{slug}(slug=${e.slug})}"><span class="compact-event-icon"><img th:if="${!#strings.isEmpty(e.mainImageUrl)}" th:src="${e.mainImageUrl}" alt="" loading="lazy" width="80" height="80"><span th:if="${#strings.isEmpty(e.mainImageUrl)}" aria-label="展示アイコン未設定">—</span></span><span class="compact-event-title" th:text="${e.title}"></span><time th:datetime="${#temporals.format(e.startAt,'yyyy')}" th:text="${#temporals.format(e.startAt,'yyyy')}"></time></a></div>
+ <p th:if="${events.empty}">公開中のイベントはありません。</p>
+</div>

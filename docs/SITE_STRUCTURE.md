@@ -14,7 +14,7 @@ creve.world
 │   ├── /archive                   過去のPLAYPIT・羽花
 │   └── /{eventId}                 イベント詳細、参加クリエイター、展示作品
 │       ├── /creators
-│       │   └── /{creatorId}       イベント内プロフィール、作品、SNS、感想投稿
+│       │   └── /{creatorId}       共通プロフィールへ308転送（イベントを引継ぐ）
 │       ├── /artworks
 │       │   └── /{artworkId}       作品詳細、制作者、感想投稿、投稿済み感想
 │       └── /uka                    イベント全体の羽花
@@ -31,4 +31,4 @@ creve.world
 
 ソースは事業境界に合わせ、CreVe公式画面を `projects/creve`、PLAYPIT・感想・羽花・クリエイター公開画面を `projects/playpit`、NLJを `projects/nlj`、LPを `projects/lp` に置く。認証とEvent・Creator・Artworkの共通データは `platform` が所有する。トップレベルの `/creators` がPLAYPITモジュール内にあるのは、同ページがPLAYPITイベント単位の感想投稿と羽花を含むためである。
 
-複数のPLAYPITへ参加したクリエイターは、`/creators/{creatorId}?event={eventId}` で感想と羽花の対象イベントを切り替える。指定がなければ開始日時が新しい公開中の参加イベントを使用する。作品と参加履歴は全公開イベントを横断して表示する。
+複数のPLAYPITへ参加したクリエイターは、`/creators/{creatorId}?event={eventId}` で感想と羽花の対象イベントを切り替える。指定がなければ開始日時が新しい公開中の参加イベントを使用する。参加履歴は公開イベントを横断して表示する。作品・感想・羽花は選択中のPLAYPITに限定する。公開PLAYPIT参加がない場合は公開作品の一覧を表示する。

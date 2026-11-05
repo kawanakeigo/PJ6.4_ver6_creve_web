@@ -1,0 +1,11 @@
+<!doctype html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head><th:block th:replace="~{playpit/fragments/head :: head('PLAYPITについて')}"></th:block><link rel="stylesheet" th:href="@{/playpit/css/playpit.css}"></head>
+<body class="playpit-public playpit-about"><a class="skip-link" href="#mainContent">本文へ移動</a><div th:replace="~{common/navigation :: headerFor(true)}"></div>
+<main id="mainContent">
+<header class="about-opening"><p class="eyebrow">ABOUT PLAYPIT</p><h1>表現を持ち寄る。<br>次の一歩が、<br>生まれる。</h1><p class="about-opening-caption">作品を発表する人も、出会う人も。</p></header>
+<section class="about-introduction" aria-labelledby="aboutIntroduction"><div><p class="eyebrow">01 / PLAYPIT</p><h2 id="aboutIntroduction">作品を通じた<br>つながりをつくる。</h2></div><div class="about-copy"><p>PLAYPITは、それぞれの表現と新しい挑戦が交わる場を目指します。</p><p>作家のこれまでとこれからを届け、<br>作品を通じたつながりをつくる。</p><a class="editorial-action" th:href="@{/creators}">クリエイターを知る <span aria-hidden="true">↗</span></a></div></section>
+<!-- 名前の由来・創設の経緯は、本人確認済みの原文を受領してから追加する。 -->
+<section class="about-film" aria-labelledby="aboutFilm"><div class="editorial-heading"><h2 id="aboutFilm">Inside PLAYPIT <small>展示の風景</small></h2></div><a class="about-film-link" href="https://youtu.be/RuZj3S_MjQo" target="_blank" rel="noopener noreferrer"><span class="about-film-play" aria-hidden="true">↗</span><span><strong>作品と人が出会う、<br>展示会のひととき。</strong><small>展示会紹介をYouTubeで見る（新しいタブ）</small></span></a></section>
+<section class="about-history" aria-labelledby="aboutHistory"><div class="editorial-heading"><h2 id="aboutHistory">Exhibitions <small>これまでの展示</small></h2></div><div class="cards"><th:block th:each="e : ${pastEvents.content}"><article th:replace="~{playpit/fragments/cards :: eventCard(${e},'/playpit')}"></article></th:block></div><p th:if="${pastEvents.empty}">過去の展示は公開準備中です。</p><a class="editorial-action" th:href="@{/playpit/archive}">過去の展示一覧へ <span aria-hidden="true">↗</span></a></section>
+</main><div th:replace="~{common/navigation :: footerFor(true)}"></div></body></html>

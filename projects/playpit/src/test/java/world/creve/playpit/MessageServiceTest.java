@@ -54,7 +54,7 @@ class MessageServiceTest {
         var response=service.registerMessage(request);
         assertEquals(10L,response.messageId());
         assertEquals("PUBLISHED",response.status());
-        assertEquals("あなたの言葉が、一枚の花びらになりました。",response.completionMessage());
+        assertEquals("感想を公開しました。",response.completionMessage());
         verify(repo).saveAndFlush(argThat(m->m.getMessage().equals("感動しました")&&m.getCreatorId().equals(2L)&&m.getAnonymous()));
         verify(creators).validateCreatorParticipation(1L,2L);
     }

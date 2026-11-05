@@ -41,6 +41,9 @@ import world.creve.platform.util.PageBounds;
     public List<NewsResponse> getLatestNews() {
         return newsSources.stream().flatMap(s->s.latestNews().stream()).sorted(Comparator.comparing(NewsResponse::publishedAt).reversed()).limit(3).toList();
     }
+    public Page<EventResponse> homeExhibitions() {
+        return events.findByEventTypeAndStatusOrderByStartAtDesc("PLAYPIT","PUBLISHED",Pageable.unpaged()).map(this::summary);
+    }
     public Page<EventResponse> list(String type,int page) {
         return events.findByEventTypeAndStatusOrderByStartAtDesc(type,"PUBLISHED",PageRequest.of(PageBounds.page(page),30)).map(this::summary);
     }

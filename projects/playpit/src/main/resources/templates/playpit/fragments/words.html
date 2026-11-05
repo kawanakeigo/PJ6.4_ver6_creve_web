@@ -1,10 +1,16 @@
 <section xmlns:th="http://www.thymeleaf.org" th:fragment="words" class="words-section" th:attr="data-words-page=${messagePage.number}">
- <h2>届いた言葉</h2><p>花びらを操作せず、一覧でも感想を読むことができます。</p>
- <div data-words-list><article th:each="p : ${words}" class="word-card"><p th:text="${p.message}" class="preserve-lines"></p><p><span th:text="${p.displayName}"></span> · <time th:text="${p.createdAt}"></time></p><p th:text="${p.artworkTitle}"></p><p th:text="${p.creatorName}"></p></article></div>
+ <h2>届いた言葉</h2><p>作品やクリエイターに届いた感想をご覧いただけます。</p>
+ <div data-words-list><article th:each="p : ${words}" class="word-card"><p th:text="${p.message}" class="preserve-lines"></p><p><span th:text="${p.displayName}"></span> · <time th:text="${p.createdAt}"></time></p><p th:text="${p.artworkTitle}"></p><p th:text="${p.creatorName}"></p><button type="button" data-word-detail th:attr="data-message-id=${p.messageId},data-message=${p.message},data-display-name=${p.displayName},data-created-at=${p.createdAt},data-artwork-title=${p.artworkTitle},data-creator-name=${p.creatorName}">詳細・通報</button></article></div>
  <p th:if="${#lists.isEmpty(words)}" data-words-empty>まだ感想はありません。</p>
  <nav aria-label="感想のページ" class="pagination" data-words-pagination>
   <a th:if="${messagePage.hasPrevious()}" th:href="@{${requestPath}(page=${messagePage.number - 1},creatorId=${creatorId},artworkId=${artworkId},event=${selectedEventSlug})}">前の感想</a>
   <span th:text="${messagePage.number + 1} + ' / ' + ${T(java.lang.Math).max(1,messagePage.totalPages)}"></span>
   <a th:if="${messagePage.hasNext()}" th:href="@{${requestPath}(page=${messagePage.number + 1},creatorId=${creatorId},artworkId=${artworkId},event=${selectedEventSlug})}">次の感想</a>
  </nav>
+ <dialog id="messageModal" aria-labelledby="messageModalTitle">
+  <h2 id="messageModalTitle">感想の詳細</h2><p id="modalMessage" class="preserve-lines"></p>
+  <dl><dt>表示名</dt><dd id="modalDisplayName"></dd><dt>投稿日</dt><dd id="modalCreatedAt"></dd><dt>作品名</dt><dd id="modalArtworkTitle"></dd><dt>クリエイター</dt><dd id="modalCreatorName"></dd></dl>
+  <details><summary>この投稿を通報する</summary><form id="reportForm"><label for="reportReason">通報理由</label><textarea id="reportReason" maxlength="300" required></textarea><button type="submit">運営に報告する</button><p id="reportResult" role="status"></p></form></details>
+  <button type="button" id="closeMessageModalButton">閉じる</button>
+ </dialog>
 </section>

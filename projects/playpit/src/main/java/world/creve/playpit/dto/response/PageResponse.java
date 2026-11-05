@@ -1,8 +1,8 @@
 package world.creve.playpit.dto.response;
 import java.time.*;
 import java.util.*;
-public record PageResponse(List<PetalResponse> items, int page, int size, long totalElements, int totalPages) {
-    public List<PetalResponse> getItems() {
+public record PageResponse(List<WordResponse> items, int page, int size, long totalElements, int totalPages) {
+    public List<WordResponse> getItems() {
         return items;
     }
     public int getPage() {

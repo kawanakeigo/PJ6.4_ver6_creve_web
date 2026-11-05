@@ -1,16 +1,34 @@
 <!DOCTYPE html>
-
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
-<head>
-<th:block th:replace="~{common/head :: head('PLAYPIT')}"></th:block>
-<link rel="stylesheet" th:href="@{/playpit/css/playpit.css}"/>
-</head>
-<body>
+<head><th:block th:replace="~{playpit/fragments/head :: head('PLAYPIT')}"></th:block><link rel="stylesheet" th:href="@{/playpit/css/playpit.css}"><script defer th:src="@{/playpit/js/exhibition-video.js}"></script></head>
+<body class="playpit-public playpit-home">
 <a class="skip-link" href="#mainContent">本文へ移動</a>
-<div th:replace="~{common/header :: header}"></div>
+<div th:replace="~{common/navigation :: headerFor(true)}"></div>
 <main id="mainContent">
-<section class="hero"><p class="eyebrow">PLAYPIT</p><h1>PLAYPIT</h1><p class="lead">まだ言葉にならない表現が、ここで遊びはじめる。作品・人・来場者の言葉を、羽花として残す展示体験です。</p><a class="button" th:href="@{/playpit/events}">イベント一覧</a></section>
-<div class="cards"><th:block th:each="e : ${events.content}"><article th:replace="~{playpit/fragments/cards :: eventCard(${e},'/playpit')}"></article></th:block></div><p th:if="${events.empty}">公開中のイベントはありません。</p><a th:href="@{/playpit/archive}">過去のPLAYPIT</a>
-</main>
-<div th:replace="~{common/footer :: footer}"></div>
+<section class="poster-hero" th:if="${event != null}">
+ <div><p class="eyebrow" th:text="${event.phase} + ' / EXHIBITION'">EXHIBITION</p>
+ <h1 class="poster-title" th:if="${event.title == 'BeforeAfter展'}" aria-label="BeforeAfter展"><span>Before</span><span>After<small>展</small></span></h1>
+ <h1 class="poster-title other-title" th:unless="${event.title == 'BeforeAfter展'}"><span th:text="${event.title}"></span></h1>
+ <p class="poster-intro" th:if="${event.title == 'BeforeAfter展'}">変わらないもの。<br>変わっていくもの。<br>そのあいだに、作品がある。</p>
+ <p class="poster-intro" th:unless="${event.title == 'BeforeAfter展'}" th:text="${event.summary}"></p>
+ <p class="poster-date"><time th:datetime="${event.startAt}" th:text="${#temporals.format(event.startAt,'MM.dd')}"></time><span aria-hidden="true"> — </span><time th:datetime="${event.endAt}" th:text="${#temporals.format(event.endAt,event.startAt.year == event.endAt.year and event.startAt.month == event.endAt.month ? 'dd' : 'MM.dd')}"></time><small th:text="${#temporals.format(event.startAt,'yyyy')} + ' / ' + ${#temporals.format(event.endAt,'yyyy/MM/dd')}"></small></p>
+ <p class="poster-venue"><span th:text="${event.venueName}"></span><br><span th:if="${event.endAt.hour != 0 or event.endAt.minute != 0}" th:text="'最終日 ' + ${#temporals.format(event.endAt,'HH:mm')} + '終了'"></span></p>
+ <a class="editorial-action" th:href="@{/playpit/{e}(e=${event.slug})}">展示の詳細を見る <span aria-hidden="true">↗</span></a></div>
+ <figure class="poster-visual" th:if="${event.mainImageUrl != null and !#strings.isEmpty(event.mainImageUrl)}"><img th:src="${event.mainImageUrl}" th:alt="${event.title}"><figcaption th:text="${event.title}"></figcaption></figure>
+ <figure class="poster-visual" th:if="${(event.mainImageUrl == null or #strings.isEmpty(event.mainImageUrl)) and featuredWork != null}"><a th:href="@{/playpit/{e}/artworks/{a}(e=${event.slug},a=${featuredWork.slug})}"><img th:src="${featuredWork.mainImageUrl}" th:alt="${featuredWork.title}"></a><figcaption><span th:text="${featuredWork.title}"></span> / <span th:text="${featuredWork.creatorName}"></span></figcaption></figure>
+ <div class="poster-empty" th:if="${(event.mainImageUrl == null or #strings.isEmpty(event.mainImageUrl)) and featuredWork == null}"><strong aria-hidden="true">ART.<br>PEOPLE.<br>CONVERSATION.</strong><p>作品を見て、話して、また出会う。</p><p class="editorial-note">展示ビジュアル・作品は公開準備中です。</p></div>
+</section>
+<section class="poster-hero" th:if="${event == null}"><div><p class="eyebrow">ART IS A MEETING PLACE.</p><h1 class="poster-title other-title">PLAYPIT!</h1><p class="poster-intro">表現を持ち寄る。<br>次の一歩が、生まれる。</p><p>公開中のイベントはありません。</p><a class="editorial-action" th:href="@{/playpit/archive}">過去の展示を見る <span aria-hidden="true">↗</span></a></div></section>
+<div th:replace="~{playpit/fragments/event-presentation :: film}"></div>
+<section class="editorial-section" id="artists"><div class="editorial-heading"><h2>Artists <small>作家を知る</small></h2><p th:if="${event != null}" th:text="${event.title} + 'の参加クリエイター'"></p></div>
+ <p class="editorial-empty" th:if="${#lists.isEmpty(creators)}">参加クリエイターの紹介は公開準備中です。</p>
+ <div class="editorial-artists"><article class="editorial-artist" th:each="c : ${creators}"><img th:if="${c.profileImageUrl}" th:src="${c.profileImageUrl}" th:alt="${c.name}" loading="lazy"><div><p class="eyebrow" th:text="${c.genre}"></p><h3><a th:href="@{/creators/{c}(c=${c.slug},event=${event.slug})}" th:text="${c.name}"></a></h3><p class="preserve-lines" th:text="${c.profile}"></p><a class="editorial-action" th:href="@{/creators/{c}(c=${c.slug},event=${event.slug})}">作家のページへ <span aria-hidden="true">↗</span></a></div></article></div>
+ <a class="editorial-action" th:href="@{/creators}">クリエイター一覧 <span aria-hidden="true">↗</span></a>
+</section>
+<section class="editorial-section" id="works"><div class="editorial-heading"><h2>Works <small>作品に出会う</small></h2></div><p class="editorial-empty" th:if="${#lists.isEmpty(artworks)}">展示作品は公開準備中です。</p>
+ <article class="editorial-work" th:each="a : ${artworks}"><a th:if="${a.mainImageUrl}" th:href="@{/playpit/{e}/artworks/{a}(e=${event.slug},a=${a.slug})}"><img th:src="${a.mainImageUrl}" th:alt="${a.title}" loading="lazy"></a><div><p class="eyebrow">EXHIBITED WORK</p><h3><a th:href="@{/playpit/{e}/artworks/{a}(e=${event.slug},a=${a.slug})}" th:text="${a.title}"></a></h3><a th:href="@{/creators/{c}(c=${a.creatorSlug},event=${event.slug})}" th:text="${a.creatorName}"></a></div></article>
+</section>
+<section class="editorial-section editorial-about" id="about"><div><p class="eyebrow">ABOUT PLAYPIT</p><h2>表現を持ち寄る。<br>次の一歩が、生まれる。</h2></div><div><p>作品を発表する人も、出会う人も。<br>PLAYPITは、それぞれの表現と新しい挑戦が交わる場を目指します。</p><p>作家のこれまでとこれからを届け、<br>作品を通じたつながりをつくる。</p><a class="editorial-action" th:href="@{/playpit/about}">PLAYPITについて <span aria-hidden="true">↗</span></a></div></section>
+<section class="editorial-section"><div class="editorial-heading"><h2>Exhibitions <small>展示一覧</small></h2></div><div th:replace="~{playpit/fragments/home-exhibitions :: exhibitions}"></div><div class="actions"><a class="editorial-action" th:href="@{/playpit/events}">イベント一覧 <span aria-hidden="true">↗</span></a><a class="editorial-action" th:href="@{/playpit/archive}">過去のPLAYPIT <span aria-hidden="true">↗</span></a></div></section>
+</main><div th:replace="~{common/navigation :: footerFor(true)}"></div>
 </body></html>

@@ -1,0 +1,35 @@
+<header xmlns:th="http://www.thymeleaf.org" th:fragment="headerFor(playpitNavigation)" class="global-header">
+ <a th:if="${playpitNavigation != true}" class="brand" th:href="@{/}" aria-label="CreVe トップ">CreVe</a>
+ <a th:if="${playpitNavigation == true}" class="brand playpit-brand" th:href="@{/playpit}" aria-label="PLAYPIT トップ"><img th:src="@{/playpit/images/brand/playpit-logo.png}" alt="PLAYPIT!" width="382" height="55"></a>
+ <button type="button" id="globalMenuButton" aria-controls="globalMenu" aria-expanded="false">メニュー</button>
+ <nav id="globalMenu" aria-label="サイト内ナビゲーション">
+  <th:block th:if="${playpitNavigation == true}" th:insert="~{common/navigation :: playpitMenu}"></th:block>
+  <th:block th:if="${playpitNavigation != true}">
+  <a th:if="${playpitNavigation != true}" th:href="@{/about}">CreVeについて</a>
+  <a th:href="@{/creators}" th:classappend="${requestPath != null and requestPath.startsWith('/creators')} ? 'active' : ''">クリエイター</a>
+  <a th:each="link : ${projectLinks}" th:if="${playpitNavigation != true or link.path != '/NLJ'}" th:href="@{${link.path}}" th:text="${link.title}" th:classappend="${requestPath != null and requestPath.startsWith(link.path)} ? 'active' : ''">プロジェクト</a>
+  <a th:if="${playpitNavigation != true}" th:href="@{/vr}">VR構想</a><a th:href="${playpitNavigation == true} ? @{/playpit/news} : @{/news}">お知らせ</a><a th:href="${playpitNavigation == true} ? @{/playpit/contact} : @{/contact}">お問い合わせ</a>
+  </th:block>
+ </nav>
+</header>
+
+<footer xmlns:th="http://www.thymeleaf.org" th:fragment="footerFor(playpitNavigation)" class="global-footer">
+ <a th:if="${playpitNavigation != true}" class="brand" th:href="@{/}">CreVe</a>
+ <a th:if="${playpitNavigation == true}" class="brand playpit-brand" th:href="@{/playpit}" aria-label="PLAYPIT トップ"><img th:src="@{/playpit/images/brand/playpit-logo.png}" alt="PLAYPIT!" width="382" height="55" loading="lazy"></a>
+ <nav aria-label="フッターナビゲーション"><th:block th:if="${playpitNavigation == true}" th:insert="~{common/navigation :: playpitMenu}"></th:block><th:block th:if="${playpitNavigation != true}"><a th:if="${playpitNavigation != true}" th:href="@{/about}">CreVeについて</a>
+ <a th:if="${playpitNavigation == true}" th:href="@{/playpit/news}">お知らせ</a>
+ <a th:href="@{/creators}">クリエイター</a>
+ <a th:each="link : ${projectLinks}" th:if="${playpitNavigation != true or link.path != '/NLJ'}" th:href="@{${link.path}}" th:text="${link.title}">プロジェクト</a>
+ </th:block><a th:if="${socialUrl != null}" th:href="${socialUrl}" target="_blank" rel="noopener noreferrer">SNS</a>
+ <a th:if="${playpitNavigation != true}" th:href="@{/contact}">お問い合わせ</a><a th:href="@{/privacy}">プライバシーポリシー</a><a th:href="@{/terms}">利用規約</a></nav>
+ <small>© CreVe. 作品の著作権は各権利者に帰属します。</small>
+</footer>
+
+<div xmlns:th="http://www.thymeleaf.org"><th:block th:fragment="playpitMenu">
+  <a th:href="@{/playpit}" th:attr="aria-current=${requestPath == '/playpit' ? 'page' : null}">HOME</a>
+  <a th:href="@{/creators}" th:attr="aria-current=${requestPath != null and requestPath.startsWith('/creators') ? 'page' : null}">CREATER</a>
+  <a th:href="@{/playpit/events}" th:attr="aria-current=${requestPath == '/playpit/events' or requestPath == '/playpit/archive' ? 'page' : null}">EXHIBITION</a>
+  <a th:href="@{/playpit/about}" th:attr="aria-current=${requestPath == '/playpit/about' ? 'page' : null}">ABOUT</a>
+  <a th:href="@{/playpit/news}" th:attr="aria-current=${requestPath == '/playpit/news' ? 'page' : null}">NEWS</a>
+  <a th:href="@{/playpit/contact}" th:attr="aria-current=${requestPath == '/playpit/contact' ? 'page' : null}">CONTACT</a>
+ </th:block></div>

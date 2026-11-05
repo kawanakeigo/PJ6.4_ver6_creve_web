@@ -1,1 +1,5 @@
 .editor-form textarea{min-height:170px}.table-scroll td{max-width:360px;overflow-wrap:anywhere}
+
+.admin-image-preview{display:block;width:200px;max-width:100%;height:160px;object-fit:contain;margin:12px 0;background:#f4f5ee}
+
+.participant-preview-scroll{max-width:100%;overflow-x:auto}.participant-preview-scroll table{min-width:1080px}.participant-preview-scroll th,.participant-preview-scroll td{min-width:5em;vertical-align:top;overflow-wrap:anywhere}.participant-preview-scroll:focus-visible{outline:3px solid #365c46;outline-offset:3px}

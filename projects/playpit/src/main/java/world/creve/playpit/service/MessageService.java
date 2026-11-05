@@ -89,7 +89,7 @@ import world.creve.playpit.util.PetalLayout;
         return response(m);
     }
     public MessageResponse response(Message m) {
-        String text=m.getStatus()==MessageStatus.PUBLISHED?"あなたの言葉が、一枚の花びらになりました。":"投稿を受け付けました。運営の確認後に公開されます。";
+        String text=m.getStatus()==MessageStatus.PUBLISHED?"感想を公開しました。":"投稿を受け付けました。運営の確認後に公開されます。";
         return new MessageResponse(m.getMessageId(),m.getStatus().name(),m.getPetalType(),m.getPetalSeed(),m.getCreatedAt().toString(),text);
     }
     public void validatePublicScope(Long eventId,Long creatorId,Long artworkId) {

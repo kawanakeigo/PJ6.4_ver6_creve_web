@@ -10,7 +10,8 @@ public class ArtworkForm {
     public void setCreatorId(Long value) {
         creatorId=value;
     }
-    @NotBlank @Size(max=100) private String slug;
+    // Display only: identifiers are assigned by the server and retained on edit.
+    private String slug;
     public String getSlug() {
         return slug;
     }

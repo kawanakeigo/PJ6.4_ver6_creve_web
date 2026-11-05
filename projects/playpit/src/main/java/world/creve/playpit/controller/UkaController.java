@@ -1,36 +1,11 @@
 package world.creve.playpit.controller;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
-import world.creve.platform.service.EventService;
-import world.creve.playpit.service.*;
-import world.creve.playpit.dto.response.UkaResponse;
+/** Retired routes remain explicit so old bookmarks receive a clear outcome. */
 @Controller public class UkaController {
-    private final EventService events;
-    private final UkaService uka;
-    private final MessageService messages;
-    public UkaController(EventService events,UkaService uka,MessageService messages) {
-        this.events=events;
-        this.uka=uka;
-        this.messages=messages;
-    }
-    @GetMapping("/playpit/{eventSlug}/uka") public String showUka(@PathVariable String eventSlug,@RequestParam(required=false)Long creatorId,@RequestParam(required=false)Long artworkId,@RequestParam(defaultValue="0")int page,Model model) {
-        var event=events.getPublishedPlaypitEventBySlug(eventSlug);
-        var data=uka.getUkaData(event.eventId(),creatorId,artworkId);
-        model.addAttribute("event",event);
-        model.addAttribute("uka",data);
-        model.addAttribute("growthStage",data.growthStage());
-        model.addAttribute("messageCount",data.messageCount());
-        var words=messages.getPublishedMessages(event.eventId(),creatorId,artworkId,page,30);
-        model.addAttribute("messagePage",words);
-        model.addAttribute("words",words.getContent().stream().map(uka::toPetal).toList());
-        model.addAttribute("creatorCounts",messages.creatorCounts(event.eventId()));
-        model.addAttribute("creatorId",creatorId);
-        model.addAttribute("artworkId",artworkId);
-        model.addAttribute("selectedEventSlug",null);
-        return "playpit/uka";
-    }
-    @GetMapping("/api/uka") @ResponseBody public UkaResponse getUkaData(@RequestParam Long eventId,@RequestParam(required=false)Long creatorId,@RequestParam(required=false)Long artworkId) {
-        return uka.getUkaData(eventId,creatorId,artworkId);
-    }
+ @GetMapping("/playpit/{eventSlug}/uka") @ResponseStatus(HttpStatus.GONE)
+ public String retiredPage(){return "playpit/uka-retired";}
+ @GetMapping("/api/uka") @ResponseBody
+ public ResponseEntity<java.util.Map<String,String>> retiredApi(){return ResponseEntity.status(HttpStatus.GONE).body(java.util.Map.of("code","FEATURE_RETIRED","message","この機能は提供を終了しました。感想は作品・クリエイターページからご覧ください。"));}
 }

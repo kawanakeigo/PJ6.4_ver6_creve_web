@@ -9,13 +9,11 @@ import world.creve.playpit.service.*;
     private final ArtworkService artworks;
     private final CreatorService creators;
     private final MessageService messages;
-    private final UkaService uka;
-    public ArtworkController(EventService events,ArtworkService artworks,CreatorService creators,MessageService messages,UkaService uka) {
+    public ArtworkController(EventService events,ArtworkService artworks,CreatorService creators,MessageService messages) {
         this.events=events;
         this.artworks=artworks;
         this.creators=creators;
         this.messages=messages;
-        this.uka=uka;
     }
     @GetMapping("/playpit/{eventSlug}/artworks")public String showArtworkList(@PathVariable String eventSlug,@RequestParam(defaultValue="0")int page,Model model) {
         var event=events.getPublishedPlaypitEventBySlug(eventSlug);
@@ -34,12 +32,9 @@ import world.creve.playpit.service.*;
         model.addAttribute("creatorId",artwork.creatorId());
         model.addAttribute("artworkId",artwork.artworkId());
         model.addAttribute("selectedEventSlug",null);
-        var data=uka.getUkaData(event.eventId(),null,artwork.artworkId());
-        model.addAttribute("uka",data);
-        model.addAttribute("messageCount",data.messageCount());
         var words=messages.getPublishedMessages(event.eventId(),null,artwork.artworkId(),page,30);
         model.addAttribute("messagePage",words);
-        model.addAttribute("words",words.getContent().stream().map(uka::toPetal).toList());
+        model.addAttribute("words",words.getContent().stream().map(world.creve.playpit.dto.response.WordResponse::from).toList());
         return "playpit/artwork-detail";
     }
 }

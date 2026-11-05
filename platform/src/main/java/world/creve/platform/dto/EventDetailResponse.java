@@ -2,6 +2,9 @@ package world.creve.platform.dto;
 import java.time.*;
 import java.util.*;
 public record EventDetailResponse(Long eventId, String eventType, String slug, String title, String summary, String description, String mainImageUrl, LocalDateTime startAt, LocalDateTime endAt, String venueName, String address, String access, String price, String ticketUrl, String phase) {
+    public java.util.List<String> getDescriptionLines() {
+        return description == null ? java.util.List.of() : description.lines().toList();
+    }
     public Long getEventId() {
         return eventId;
     }
