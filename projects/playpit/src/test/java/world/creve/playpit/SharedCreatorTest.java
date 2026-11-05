@@ -20,7 +20,7 @@ class SharedCreatorTest {
     final CreatorService creators=mock(CreatorService.class);
     final ArtworkService artworks=mock(ArtworkService.class);
     final MessageService messages=mock(MessageService.class);
-    
+
     final CreatorController controller=new CreatorController(events,creators,artworks,messages);
     EventResponse event(long id,String slug) { return new EventResponse(id,"PLAYPIT",slug,slug,null,null,null,null,null,null); }
     void profile() { when(creators.getCreatorDetailBySlug("artist")).thenReturn(new CreatorDetailResponse(7L,"artist","作者",null,"共通プロフィール",null,null,null,null,List.of())); }
